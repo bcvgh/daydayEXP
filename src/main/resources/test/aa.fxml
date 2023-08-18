@@ -1,0 +1,537 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.web.*?>
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.effect.Bloom?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="574.0" prefWidth="851.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bcvgh.controller.MainController">
+
+    <children>
+
+        <!--代理和代理配置 实现部分-->
+        <HBox minHeight="0.0" minWidth="0.0"  prefHeight="27.0" prefWidth="851.0" >
+            <!--代理和代理配置 实现部分-->
+            <Button fx:id="proxySetupBtn" mnemonicParsing="false" text="代理"/>
+            <Label fx:id="proxyStatusLabel" minWidth="-Infinity" prefHeight="21.0" prefWidth="750.0" text="代理状态" textFill="#151051" HBox.hgrow="ALWAYS">
+                <HBox.margin>
+                    <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
+                </HBox.margin>
+                <padding>
+                    <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                </padding>
+                <effect>
+                    <Bloom />
+                </effect>
+            </Label>
+            <!--<MenuBar>-->
+            <!--<menus>-->
+            <!--<Menu mnemonicParsing="false" text="设置">-->
+            <!--<items>-->
+            <!--<MenuItem fx:id="proxySetupBtn" mnemonicParsing="false" text="代理" />-->
+            <!--</items>-->
+            <!--</Menu>-->
+            <!--</menus>-->
+            <!--</MenuBar>-->
+            <!--<children>-->
+            <!--<Label fx:id="proxyStatusLabel" GridPane.columnIndex="1" GridPane.rowIndex="2" />-->
+            <!--</children>-->
+        </HBox>
+        <!--<MenuBar layoutY="1.0" prefHeight="27.0" prefWidth="851.0" styleClass="\@table" AnchorPane.bottomAnchor="546.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="1.0">-->
+        <!--<menus>-->
+        <!--<Menu mnemonicParsing="false" text="设置">-->
+        <!--<items>-->
+        <!--<MenuItem fx:id="proxySetupBtn" mnemonicParsing="false" text="代理" />-->
+        <!--</items>-->
+        <!--</Menu>-->
+        <!--<Menu mnemonicParsing="false" text="关于">-->
+        <!--<items>-->
+        <!--<MenuItem mnemonicParsing="false" onAction="#about" text="关于" />-->
+        <!--</items>-->
+        <!--</Menu>-->
+        <!--</menus>-->
+        <!--</MenuBar>-->
+
+
+        <!--用友EXP Tab实现部分-->
+        <TabPane layoutY="27.0" prefHeight="540.0" prefWidth="851.0" tabClosingPolicy="UNAVAILABLE">
+            <tabs>
+                <Tab text="致远OA">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="465.0" prefWidth="851.0">
+                            <ChoiceBox fx:id="choice_cve" layoutX="80.0" layoutY="34.0" prefHeight="27.0" prefWidth="314.0"  />
+                            <GridPane layoutX="1.0" layoutY="542.0" prefHeight="30.0" prefWidth="851.0">
+                                <columnConstraints>
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="562.0" minWidth="10.0" prefWidth="234.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="562.0" minWidth="10.0" prefWidth="262.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="324.0" minWidth="10.0" prefWidth="300.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="122.0" minWidth="10.0" prefWidth="61.0" />
+                                </columnConstraints>
+                                <rowConstraints>
+                                    <RowConstraints />
+                                    <RowConstraints maxHeight="16.0" minHeight="10.0" prefHeight="15.0" vgrow="SOMETIMES" />
+                                    <RowConstraints maxHeight="15.0" minHeight="10.0" prefHeight="15.0" vgrow="SOMETIMES" />
+                                </rowConstraints>
+                                <children>
+                                    <Label prefHeight="17.0" prefWidth="150.0" text=" 请勿用于非法用途" GridPane.rowIndex="2" />
+                                    <Label fx:id="author" text="author: %s"  GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                                    <Label fx:id="tool_name" prefHeight="17.0"  text=" %s %s" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+                                    <Separator orientation="VERTICAL" prefHeight="200.0" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+                                </children>
+                            </GridPane>
+
+                            <TextField fx:id="url" layoutX="454.0" layoutY="34.0" prefHeight="27.0" prefWidth="213.0" promptText="http://127.0.0.1" />
+                            <Button fx:id="check" layoutX="691.0" layoutY="32.0" mnemonicParsing="false"  text="检         测">
+                                <textFill>
+                                    <LinearGradient endX="1.0" endY="1.0">
+                                        <stops>
+                                            <Stop color="BLACK" />
+                                            <Stop offset="1.0" />
+                                        </stops>
+                                    </LinearGradient>
+                                </textFill>
+                                <font>
+                                    <Font size="15.0" />
+                                </font>
+                            </Button>
+                            <Hyperlink fx:id="id_help" layoutX="790.0" layoutY="34.0"  text="⚠" />
+
+
+                            <TabPane layoutY="87.0" prefHeight="413.0" prefWidth="851.0" tabClosingPolicy="UNAVAILABLE">
+                                <tabs>
+                                    <Tab text="基本信息">
+                                        <content>
+                                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="167.0" prefWidth="690.0">
+                                                <children>
+                                                    <TextArea fx:id="basic_info" layoutX="4.0" layoutY="7.0" prefHeight="368.0" prefWidth="843.0" >
+                                                        <HBox.margin>
+                                                            <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
+                                                        </HBox.margin>
+                                                    </TextArea>
+                                                </children>
+                                            </AnchorPane>
+                                        </content>
+
+                                    </Tab>
+                                    <Tab text="命令执行/回显">
+                                        <content>
+                                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                                <children>
+                                                    <TextField fx:id="cmd" layoutX="61.0" layoutY="8.0" prefHeight="27.0" prefWidth="537.0" promptText="whoami/目录遍历不输入命令参数" />
+                                                    <Button fx:id="execute" layoutX="753.0" layoutY="5.0" mnemonicParsing="false"  text="执行">
+                                                        <textFill>
+                                                            <LinearGradient endX="1.0" endY="1.0">
+                                                                <stops>
+                                                                    <Stop color="BLACK" />
+                                                                    <Stop offset="1.0" />
+                                                                </stops>
+                                                            </LinearGradient>
+                                                        </textFill>
+                                                        <font>
+                                                            <Font size="15.0" />
+                                                        </font></Button>
+                                                    <ChoiceBox fx:id="encoding" layoutX="627.0" layoutY="7.0" prefHeight="27.0" prefWidth="94.0" />
+                                                    <TextArea fx:id="cmd_info" layoutX="4.0"  layoutY="43.0" prefHeight="332.0" prefWidth="843.0" >
+                                                        <HBox.margin>
+                                                            <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
+                                                        </HBox.margin>
+                                                    </TextArea>
+                                                    <Text layoutX="17.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="命令">
+                                                        <fill>
+                                                            <LinearGradient endX="1.0" endY="1.0">
+                                                                <stops>
+                                                                    <Stop color="BLACK" />
+                                                                    <Stop offset="1.0" />
+                                                                </stops>
+                                                            </LinearGradient>
+                                                        </fill>
+                                                        <font>
+                                                            <Font size="15.0" />
+                                                        </font>
+                                                    </Text>
+                                                </children>
+                                            </AnchorPane>
+                                        </content>
+                                    </Tab>
+                                    <!--<Tab text="文件上传">-->
+                                    <!--<content>-->
+                                    <!--<AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">-->
+                                    <!--<children>-->
+                                    <!--<TextArea fx:id="upload_info" layoutX="4.0" layoutY="38.0" prefHeight="337.0" prefWidth="843.0"  >-->
+                                    <!--<HBox.margin>-->
+                                    <!--<Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />-->
+                                    <!--</HBox.margin>-->
+                                    <!--</TextArea>-->
+                                    <!--<TextField fx:id="upload_path" layoutX="68.0" layoutY="7.0" prefHeight="27.0" prefWidth="447.0" promptText="test.jspx/目录遍历没有上传功能" />-->
+                                    <!--<Button fx:id="upload" layoutX="661.0" layoutY="4.0" mnemonicParsing="false" onAction="#get_shell_file" text="上传文件">-->
+                                    <!--<textFill>-->
+                                    <!--<LinearGradient endX="1.0" endY="1.0">-->
+                                    <!--<stops>-->
+                                    <!--<Stop color="BLACK" />-->
+                                    <!--<Stop offset="1.0" />-->
+                                    <!--</stops>-->
+                                    <!--</LinearGradient>-->
+                                    <!--</textFill>-->
+                                    <!--<font>-->
+                                    <!--<Font size="15.0" />-->
+                                    <!--</font>-->
+                                    <!--</Button>-->
+                                    <!--<Text layoutX="13.0" layoutY="26.0" strokeType="OUTSIDE" strokeWidth="0.0" text="文件名">-->
+                                    <!--<fill>-->
+                                    <!--<LinearGradient endX="1.0" endY="1.0">-->
+                                    <!--<stops>-->
+                                    <!--<Stop color="BLACK" />-->
+                                    <!--<Stop offset="1.0" />-->
+                                    <!--</stops>-->
+                                    <!--</LinearGradient>-->
+                                    <!--</fill>-->
+                                    <!--<font>-->
+                                    <!--<Font size="15.0" />-->
+                                    <!--</font>-->
+                                    <!--</Text>-->
+                                    <!--<TextArea fx:id="upload_msg" layoutY="401.0" prefHeight="30.0" prefWidth="851.0" />-->
+                                    <!--<ChoiceBox fx:id="platform" layoutX="546.0" layoutY="6.0" prefHeight="27.0" prefWidth="85.0" />-->
+                                    <!--</children>-->
+                                    <!--</AnchorPane>-->
+                                    <!--</content>-->
+                                    <!--</Tab>-->
+                                    <Tab text="批量检查">
+                                        <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="380" prefWidth="851.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+                                            <opaqueInsets>
+                                                <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
+                                            </opaqueInsets>
+                                            <padding>
+                                                <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                            </padding>
+                                            <center>
+                                                <SplitPane dividerPositions="0.29797979797979796" prefHeight="160.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                                                    <items>
+                                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                                                            <children>
+                                                                <VBox prefHeight="373.0" prefWidth="230.0" spacing="2.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                                    <children>
+                                                                        <TextArea fx:id="id_checkarea" prefHeight="348.0" prefWidth="128.0" VBox.vgrow="ALWAYS" />
+                                                                    </children>
+                                                                    <opaqueInsets>
+                                                                        <Insets top="2.0" />
+                                                                    </opaqueInsets>
+                                                                    <padding>
+                                                                        <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                                    </padding>
+                                                                </VBox>
+                                                            </children>
+                                                        </AnchorPane>
+                                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                                                            <children>
+                                                                <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                                    <tabs>
+                                                                        <Tab text="漏洞存在(列表输出)">
+                                                                            <content>
+                                                                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                                                                    <children>
+                                                                                        <SplitPane dividerPositions="0.5" layoutX="140.0" layoutY="69.0" orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                                                            <items>
+                                                                                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                                                                                                    <children>
+                                                                                                        <ListView fx:id="id_listview" layoutX="119.0" layoutY="26.0"  prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                                                                        </ListView>
+                                                                                                    </children>
+                                                                                                </AnchorPane>
+                                                                                            </items>
+                                                                                        </SplitPane>
+                                                                                    </children>
+                                                                                </AnchorPane>
+                                                                            </content>
+                                                                        </Tab>
+                                                                        <Tab text="漏洞存在(文本输出)">
+                                                                            <content>
+                                                                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                                                                    <children>
+                                                                                        <TextArea fx:id="id_alivearea" layoutX="14.0" layoutY="157.0" prefHeight="200.0" prefWidth="128.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                                                                    </children>
+                                                                                </AnchorPane>
+                                                                            </content>
+                                                                        </Tab>
+                                                                        <Tab text="漏洞不存在">
+                                                                            <content>
+                                                                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                                                                    <children>
+                                                                                        <TextArea fx:id="id_unalivearea" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                                                                    </children>
+                                                                                </AnchorPane>
+                                                                            </content>
+                                                                        </Tab>
+                                                                    </tabs>
+                                                                </TabPane>
+                                                            </children>
+                                                        </AnchorPane>
+                                                    </items>
+                                                </SplitPane>
+                                            </center>
+                                            <top>
+                                                <HBox prefHeight="0.0" prefWidth="797.0" spacing="2.0" BorderPane.alignment="CENTER">
+
+                                                    <children>
+                                                        <TextField fx:id="id_urlInput" promptText="漏洞" HBox.hgrow="ALWAYS" prefHeight="23.0" prefWidth="120.0">
+                                                            <HBox.margin>
+                                                                <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
+                                                            </HBox.margin>
+                                                        </TextField>
+                                                        <ComboBox fx:id="id_thread" prefHeight="23.0" prefWidth="87.0" promptText="线程数">
+                                                            <HBox.margin>
+                                                                <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                            </HBox.margin>
+                                                        </ComboBox>
+                                                        <Button fx:id="id_startcheck" mnemonicParsing="false"  text="开始检测">
+                                                            <HBox.margin>
+                                                                <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                            </HBox.margin>
+                                                        </Button>
+                                                        <Button fx:id="id_stop" mnemonicParsing="false"  text="停止">
+                                                            <HBox.margin>
+                                                                <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                            </HBox.margin>
+                                                        </Button>
+                                                        <Label fx:id="id_status" minWidth="-Infinity" prefHeight="21.0" prefWidth="80.0" text="已完成" textFill="#151051" HBox.hgrow="ALWAYS">
+                                                            <HBox.margin>
+                                                                <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
+                                                            </HBox.margin>
+                                                            <padding>
+                                                                <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                            </padding>
+                                                            <effect>
+                                                                <Bloom />
+                                                            </effect>
+                                                        </Label>
+                                                    </children>
+                                                    <BorderPane.margin>
+                                                        <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                    </BorderPane.margin>
+                                                </HBox>
+                                            </top>
+                                        </BorderPane>
+                                        <!--<content>-->
+                                        <!--<AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">-->
+                                        <!--<children>-->
+                                        <!--<ChoiceBox fx:id="thread" layoutX="66.0" layoutY="6.0" prefHeight="3.0" prefWidth="36.0" />-->
+                                        <!--<Text layoutX="19.0" layoutY="26.0" strokeType="OUTSIDE" strokeWidth="0.0" text="线程">-->
+                                        <!--<font>-->
+                                        <!--<Font size="15.0" />-->
+                                        <!--</font>-->
+                                        <!--<fill>-->
+                                        <!--<LinearGradient endX="1.0" endY="1.0">-->
+                                        <!--<stops>-->
+                                        <!--<Stop color="BLACK" />-->
+                                        <!--<Stop offset="1.0" />-->
+                                        <!--</stops>-->
+                                        <!--</LinearGradient>-->
+                                        <!--</fill>-->
+                                        <!--</Text>-->
+                                        <!--<Button fx:id="import_file" layoutX="480.0" layoutY="5.0" mnemonicParsing="false" onAction="#batch_test" prefHeight="18.0" prefWidth="50.0" text="导入">-->
+                                        <!--<textFill>-->
+                                        <!--<LinearGradient endX="1.0" endY="1.0">-->
+                                        <!--<stops>-->
+                                        <!--<Stop color="BLACK" />-->
+                                        <!--<Stop offset="1.0" />-->
+                                        <!--</stops>-->
+                                        <!--</LinearGradient>-->
+                                        <!--</textFill>-->
+                                        <!--<font>-->
+                                        <!--<Font size="15.0" />-->
+                                        <!--</font>-->
+                                        <!--</Button>-->
+                                        <!--<TextField fx:id="file_path" layoutX="129.0" layoutY="6.0" prefHeight="27.0" prefWidth="329.0" />-->
+                                        <!--<Text fx:id="time" layoutX="617.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="用时    %s">-->
+                                        <!--<fill>-->
+                                        <!--<LinearGradient endX="1.0" endY="1.0">-->
+                                        <!--<stops>-->
+                                        <!--<Stop color="BLACK" />-->
+                                        <!--<Stop offset="1.0" />-->
+                                        <!--</stops>-->
+                                        <!--</LinearGradient>-->
+                                        <!--</fill>-->
+                                        <!--<font>-->
+                                        <!--<Font size="15.0" />-->
+                                        <!--</font>-->
+                                        <!--</Text>-->
+                                        <!--<TableView fx:id="table_view" layoutY="40.0" prefHeight="392.0" prefWidth="851.0">-->
+                                        <!--<columns>-->
+                                        <!--<TableColumn fx:id="id" prefWidth="57.0" text="序号" />-->
+                                        <!--<TableColumn fx:id="cvename" prefWidth="344.0" text="漏洞名称" />-->
+                                        <!--<TableColumn fx:id="target" prefWidth="344.0" text="目标" />-->
+                                        <!--<TableColumn fx:id="isVul" prefWidth="105.0" text="是否存在漏洞" />-->
+                                        <!--</columns>-->
+                                        <!--</TableView>-->
+                                        <!--<Text fx:id="time1" fill="#946464" layoutX="714.0" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" text="PS:  双击行复制url" />-->
+                                        <!--<Button fx:id="export_file" layoutX="550.0" layoutY="5.0" mnemonicParsing="false" onAction="#export" prefHeight="18.0" prefWidth="50.0" text="导出">-->
+                                        <!--<font>-->
+                                        <!--<Font size="15.0" />-->
+                                        <!--</font>-->
+                                        <!--<textFill>-->
+                                        <!--<LinearGradient endX="1.0" endY="1.0">-->
+                                        <!--<stops>-->
+                                        <!--<Stop color="BLACK" />-->
+                                        <!--<Stop offset="1.0" />-->
+                                        <!--</stops>-->
+                                        <!--</LinearGradient>-->
+                                        <!--</textFill>-->
+                                        <!--</Button>-->
+                                        <!--</children></AnchorPane>-->
+                                        <!--</content>-->
+                                    </Tab>
+                                    <Tab text="FastJson_JNDI">
+                                        <content>
+                                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                                <children>
+                                                    <TextArea fx:id="jndi_info" layoutX="4.0" layoutY="38.0" prefHeight="337.0" prefWidth="843.0" >
+                                                        <HBox.margin>
+                                                            <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
+                                                        </HBox.margin>
+                                                    </TextArea>
+                                                    <TextField fx:id="jndi_path" layoutX="55.0" layoutY="7.0" prefHeight="27.0" prefWidth="370.0" text="ldap://127.0.0.1/Deserialization/CommonsBeanutils2/TomcatEcho" promptText="ldap://127.0.0.1:1389/Basic/[PayloadType]/[Params]" />
+                                                    <TextField fx:id="jndi_echo" layoutX="480.0" layoutY="7.0" prefHeight="27.0" prefWidth="100.0" promptText="whoami" text="whoami" />
+                                                    <Button fx:id="jndi_exec" layoutX="708.0" layoutY="4.0" mnemonicParsing="false"  text="JNDI执行">
+                                                        <textFill>
+                                                            <LinearGradient endX="1.0" endY="1.0">
+                                                                <stops>
+                                                                    <Stop color="BLACK" />
+                                                                    <Stop offset="1.0" />
+                                                                </stops>
+                                                            </LinearGradient>
+                                                        </textFill>
+                                                        <font>
+                                                            <Font size="15.0" />
+                                                        </font>
+                                                    </Button>
+                                                    <Text layoutX="13.0" layoutY="26.0" strokeType="OUTSIDE" strokeWidth="0.0" text="JNDI:">
+                                                        <fill>
+                                                            <LinearGradient endX="1.0" endY="1.0">
+                                                                <stops>
+                                                                    <Stop color="BLACK" />
+                                                                    <Stop offset="1.0" />
+                                                                </stops>
+                                                            </LinearGradient>
+                                                        </fill>
+                                                        <font>
+                                                            <Font size="15.0" />
+                                                        </font>
+                                                    </Text>
+                                                    <Text layoutX="440.0" layoutY="26.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Echo:">
+                                                        <fill>
+                                                            <LinearGradient endX="1.0" endY="1.0">
+                                                                <stops>
+                                                                    <Stop color="BLACK" />
+                                                                    <Stop offset="1.0" />
+                                                                </stops>
+                                                            </LinearGradient>
+                                                        </fill>
+                                                        <font>
+                                                            <Font size="15.0" />
+                                                        </font>
+                                                    </Text>
+                                                    <TextArea fx:id="jndi_message" layoutY="401.0" prefHeight="30.0" prefWidth="851.0" />
+                                                    <ChoiceBox fx:id="jndi_platform" layoutX="600.0" layoutY="6.0" prefHeight="27.0" prefWidth="85.0" />
+                                                </children>
+                                            </AnchorPane>
+                                        </content>
+                                    </Tab>
+                                    <Tab text="Java_Runtime">
+                                        <content>
+                                            <AnchorPane  minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                                <children>
+                                                    <RadioButton fx:id="mRadiobutton3" layoutX="42.0" layoutY="10.0" mnemonicParsing="false"  selected="true" text="Bash" toggleGroup="$codegroup">
+                                                        <toggleGroup>
+                                                            <ToggleGroup fx:id="codegroup" />
+                                                        </toggleGroup>
+                                                    </RadioButton>
+                                                    <RadioButton fx:id="mRadiobutton4" layoutX="122.0" layoutY="10.0" mnemonicParsing="false"  text="PowerShell" toggleGroup="$codegroup"/>
+                                                    <RadioButton fx:id="mRadiobutton5" layoutX="222.0" layoutY="10.0" mnemonicParsing="false"  text="Python" toggleGroup="$codegroup"/>
+                                                    <RadioButton fx:id="mRadiobutton6" layoutX="302.0" layoutY="10.0" mnemonicParsing="false"  text="Perl" toggleGroup="$codegroup"/>
+                                                    <TextField fx:id="mTextArea14" layoutX="27.0" layoutY="38.0"  prefHeight="30.0" prefWidth="800.0"  promptText="whoami">
+                                                    </TextField>
+                                                    <TextArea fx:id="mTextArea15" layoutX="27.0" layoutY="72.0" prefHeight="95.0" prefWidth="800.0">
+                                                    </TextArea>
+                                                    <TextArea fx:id="shellhelp_info" layoutX="27.0" layoutY="171.0" prefHeight="195.0" prefWidth="800.0">
+                                                    </TextArea>
+                                                </children>
+                                            </AnchorPane>
+                                        </content>
+                                    </Tab>
+                                </tabs>
+                            </TabPane>
+
+
+
+                            <Text layoutX="11.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="选择漏洞">
+                                <fill>
+                                    <LinearGradient endX="1.0" endY="1.0">
+                                        <stops>
+                                            <Stop color="BLACK" />
+                                            <Stop offset="1.0" />
+                                        </stops>
+                                    </LinearGradient>
+                                </fill>
+                                <font>
+                                    <Font size="15.0" />
+                                </font>
+                            </Text>
+                            <Text layoutX="410.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="地址">
+                                <fill>
+                                    <LinearGradient endX="1.0" endY="1.0">
+                                        <stops>
+                                            <Stop color="BLACK" />
+                                            <Stop offset="1.0" />
+                                        </stops>
+                                    </LinearGradient>
+                                </fill>
+                                <font>
+                                    <Font size="15.0" />
+                                </font>
+                            </Text>
+
+                        </AnchorPane>
+                    </content>
+                </Tab>
+                <Tab text="泛微OA" fx:id="weaver">
+                    <content>
+                    </content>
+                </Tab>
+                <Tab text="通达OA" fx:id="tongda">
+                    <content>
+                    </content>
+                </Tab>
+                <Tab text="用友OA" fx:id="yongyon">
+                    <content>
+                    </content>
+                </Tab>
+                <Tab text="万户OA" fx:id="wanhu">
+                    <content>
+                    </content>
+                </Tab>
+                <Tab text="蓝凌OA" fx:id="landray">
+                    <content>
+                    </content>
+                </Tab>
+            </tabs>
+        </TabPane>
+
+    </children>
+</AnchorPane>
