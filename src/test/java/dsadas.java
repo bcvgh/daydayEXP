@@ -13,6 +13,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.concurrent.*;
 import java.util.stream.Stream;
@@ -49,6 +50,23 @@ public class dsadas {
         System.out.println("----程序结束运行----，程序运行时间【" + (date2.getTime() - date1.getTime()) + "毫秒】");
     }
 
+    @Test
+    public void it(){
+        /**遍历每个jsonpoc文件的name,tag**/
+        HashMap<String , ArrayList<String>> vulName = new HashMap<>();
+        String[] dirNames = FileUtil.FileList("src/main/java/com/bcvgh/poc/json");
+        for (String dirName : dirNames){
+            ArrayList<String> filenames = new ArrayList<>();
+            String[] fileNames = FileUtil.FileList("src/main/java/com/bcvgh/poc/json/"+dirName);
+            for (String fileName : fileNames){
+                String poc = FileUtil.FileRead("src/main/java/com/bcvgh/poc/json/"+dirName+"/"+fileName);
+                JSONObject pocJson = JsonUtil.StringToJson(poc);
+                filenames.add(pocJson.getString("name"));
+            }
+            vulName.put(dirName,filenames);
+        }
+    }
+
 }
 
 class MyCallable implements Callable<Object> {
@@ -69,3 +87,5 @@ class MyCallable implements Callable<Object> {
         return taskNum + "任务返回运行结果,当前任务时间【" + time + "毫秒】";
     }
 }
+
+

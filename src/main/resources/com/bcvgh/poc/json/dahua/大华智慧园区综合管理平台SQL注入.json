@@ -1,0 +1,15 @@
+{
+  "num": 2,
+  "name":"大华智慧园区综合管理平台SQL注入",
+  "tag":"dahua",
+  "type":"sql",
+  "detail": {
+    "pocGet": "/portal/services",
+    "header": {
+      "cookie": "hades-session-id=cbbce521-a761-403d-b699-9849d2cb06b9;",
+      "content-type": "multipart/form-data; boundary=----WebKitFormBoundaryCJEleSRxsqS0lAFv",
+      "User-Agent": "Mozilla/5.0 (Linux;"
+    },
+    "pattern": "Available SOAP"
+  }
+}
