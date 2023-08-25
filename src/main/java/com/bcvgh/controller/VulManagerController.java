@@ -10,6 +10,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.*;
@@ -21,10 +22,13 @@ import com.bcvgh.util.PocUtil;
 
 public class VulManagerController {
 
-    public   HashSet<String> vulTypes = new HashSet<>();
+//    public   HashSet<String> vulTypes = new HashSet<>();
 //    public  HashMap<String , JSONObject> vulName = new HashMap<>();
-    public  HashMap<String , ArrayList<String>> vulName = new HashMap<>();
+    public static   HashMap<String , ArrayList<String>> vulName = new HashMap<>();
     public static String VulName;
+    public static String tag;
+    public static String Url;
+    public static String type;
 
     @FXML
 //    private ChoiceBox<String> VulChoice;
@@ -41,7 +45,7 @@ public class VulManagerController {
     private Button VulExploit;
 
     @FXML
-    private TextField Address;
+    public TextField Address;
 
 
     static {
@@ -66,11 +70,11 @@ public class VulManagerController {
 //        HashMap<String , JSONObject> vulName = new HashMap();
 //        HashSet<String> vulTypes = new HashSet<>();
         /**方法1**/
-//        String[] dirNames = FileUtil.FileList("./poc/json");
+//        String[] dirNames = FileUtil.FileList("src/main/java/com/bcvgh/poc/json");
 //        for (String dirName : dirNames){
-//            String[] fileNames = FileUtil.FileList("./poc/json/"+dirName);
+//            String[] fileNames = FileUtil.FileList("src/main/java/com/bcvgh/poc/json/"+dirName);
 //            for (String fileName : fileNames){
-//                String poc = FileUtil.FileRead("./poc/json/"+dirName+"/"+fileName);
+//                String poc = FileUtil.FileRead("src/main/java/com/bcvgh/poc/json/"+dirName+"/"+fileName);
 //                JSONObject poc3 = JsonUtil.StringToJson(poc);
 //                this.vulName.put(poc3.get("name").toString(),poc3);
 //                this.vulTypes.add(JsonUtil.StringToJson(poc).get("tag").toString());
@@ -78,12 +82,12 @@ public class VulManagerController {
 //        }
 
         /**方法2**/
-        String[] dirNames = FileUtil.FileList("./poc/json");
+        String[] dirNames = FileUtil.FileList("src/main/java/com/bcvgh/poc/json/");
         for (String dirName : dirNames) {
             ArrayList<String> filenames = new ArrayList<>();
-            String[] fileNames = FileUtil.FileList("./poc/json/" + dirName);
+            String[] fileNames = FileUtil.FileList("src/main/java/com/bcvgh/poc/json/" + dirName);
             for (String fileName : fileNames) {
-                String poc = FileUtil.FileRead("./poc/json/" + dirName + "/" + fileName);
+                String poc = FileUtil.FileRead("src/main/java/com/bcvgh/poc/json/" + dirName + "/" + fileName);
                 JSONObject pocJson = JsonUtil.StringToJson(poc);
                 filenames.add(pocJson.getString("name"));
             }
@@ -161,6 +165,7 @@ public class VulManagerController {
 
 
     public void NewExploit(ActionEvent event) {
+        VulManagerController.Url = this.Address.getText();
         if (VulManagerController.VulName!=null){
             Stage newTargetStage = new Stage();
             Parent root = null;
@@ -170,7 +175,6 @@ public class VulManagerController {
                 e.printStackTrace();
             }
             newTargetStage.setTitle("-漏洞利用-");
-
             Scene scene = new Scene(root);
             newTargetStage.setScene(scene);
             newTargetStage.show();
@@ -183,6 +187,7 @@ public class VulManagerController {
             alert.showAndWait();
         }
     }
+
 
     @FXML
     public void NewScan(ActionEvent event) {
@@ -245,7 +250,7 @@ public class VulManagerController {
 //            for(String name : this.vulTypes){
 //                List<Future<Object>> futures = new ArrayList<>();
 //                if (VulChoice.getText().equals(name)){
-//                    String[] FileName = FileUtil.FileList("./poc/json/"+name);
+//                    String[] FileName = FileUtil.FileList("src/main/java/com/bcvgh/poc/json/"+name);
 //                    ExecutorService executor = Executors.newFixedThreadPool(5);  /**创建线程池，多线程处理并返回结果**/
 //                    for (int i =0;i < FileName.length;i++){
 //                        Callable c = new MyCallable(url,FileName[i],name);

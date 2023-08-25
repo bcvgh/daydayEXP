@@ -4,7 +4,7 @@ public interface VulTemplate {
 
     String checkVul();
 
-    Boolean PatternMatch(String resText);
+//    Boolean PatternMatch(String resText);
 
 
 

@@ -4,10 +4,12 @@ import com.bcvgh.util.HttpTools;
 import com.bcvgh.util.Response;
 
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class VulPocTemplateImp implements VulTemplate{
+    private JSONObject poc; /**new**/
     private String tag;
     private String name;
     private boolean isVul = false;
@@ -35,6 +37,7 @@ public class VulPocTemplateImp implements VulTemplate{
     }
 
     public VulPocTemplateImp(String url, JSONObject poc) {
+        this.poc = poc;/**new**/
         this.name = poc.getString("name");
         this.Url = url;
         this.PocGet = poc.getJSONObject("detail").getString("pocGet");
@@ -51,7 +54,7 @@ public class VulPocTemplateImp implements VulTemplate{
         this.PocPost = poc.getJSONObject("detail").getString("pocPost");}
     }
 
-    @Override
+//    @Override
     public Boolean PatternMatch(String resText){
         String pattern = this.PocPattern;
 //        Pattern PocPattern = Pattern.compile(pattern);
@@ -87,9 +90,10 @@ public class VulPocTemplateImp implements VulTemplate{
 
     }
 
-    public void exploitVul(String target){
-
-    }
+//    public void exploitVul(String target){
+//        JSONObject exp = this.poc.getJSONObject("exp");
+//        Iterator<JSONObject> steps =
+//    }
 
 
 }

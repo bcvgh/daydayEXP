@@ -1,0 +1,16 @@
+{
+  "num": 2,
+  "name":"致远sp2文件上传",
+  "tag":"zhiyuan",
+  "type":"upload",
+  "detail": {
+    "pocGet": "/seeyon/ajax.do;JSESSIONID=9013E76D97A1601201720C5AB57F7CBE",
+    "pocPost": "id=1",
+    "header": {
+      "cookie": "hades-session-id=cbbce521-a761-403d-b699-9849d2cb06b9;",
+      "content-type": "application/x-www-form-urlencoded",
+      "User-Agent": "Mozilla/5.0 (Linux;"
+    },
+    "pattern": "java.lang.NullPointerException:null"
+  }
+}
