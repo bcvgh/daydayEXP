@@ -1,0 +1,6 @@
+.custom-menu-item {
+    -fx-min-width: 200px;
+    -fx-min-height: 30px;
+    -fx-max-width: 200px;
+    -fx-max-height: 30px;
+}
