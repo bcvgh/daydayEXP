@@ -1,8 +1,7 @@
-// -*- coding: utf-8 -*-
 package com.bcvgh.controller;
 
-import com.alibaba.fastjson.JSONObject;
-import com.bcvgh.util.*;
+import com.bcvgh.core.poc.PocUsageImp;
+import com.bcvgh.utils.*;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -10,33 +9,28 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import java.io.IOException;
-import java.util.*;
-import java.util.concurrent.*;
-
-
-import com.bcvgh.util.PocUtil;
-
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class VulManagerController {
 
-//    public   HashSet<String> vulTypes = new HashSet<>();
-//    public  HashMap<String , JSONObject> vulName = new HashMap<>();
-    public static   HashMap<String , ArrayList<String>> vulName = new HashMap<>();
-    public static String VulName;
-    public static String tag;
-    public static String Url;
-    public static String type;
-
     @FXML
-//    private ChoiceBox<String> VulChoice;
-
-    public  Menu VulChoice;
+    private TextField Address;
 
     @FXML
     private Button VulScan;
+
+    @FXML
+    private MenuBar VulSelect;
+
+    @FXML
+    private Menu VulChoice;
 
     @FXML
     private TextArea VulOut;
@@ -44,282 +38,124 @@ public class VulManagerController {
     @FXML
     private Button VulExploit;
 
-    @FXML
-    public TextField Address;
+    public HashMap<String , ArrayList<HashMap<String,String>>> pocParse = new HashMap<>();
 
-
-    static {
-        HashMap<String, ArrayList> VulPoc = new HashMap<>();
-//        VulPoc.put("泛微",{"泛微1","泛微2"});
-    }
-
-
-    public void initialize() {
-        initPane();
-    }
-
-    private void initPane() {
-
-//        VulChoice.getItems().add("--请选择漏洞类型--");
-//        VulChoice.getSelectionModel().selectFirst();
-//        VulChoice.getItems().add("--请选择漏洞类型--");
-//        MenuItem a = new MenuItem("123");
-//        VulChoice.getItems().add(a);
-
-        /**遍历poc jsonW文件，显示漏洞列表**/
-//        HashMap<String , JSONObject> vulName = new HashMap();
-//        HashSet<String> vulTypes = new HashSet<>();
-        /**方法1**/
-//        String[] dirNames = FileUtil.FileList("src/main/java/com/bcvgh/poc/json");
-//        for (String dirName : dirNames){
-//            String[] fileNames = FileUtil.FileList("src/main/java/com/bcvgh/poc/json/"+dirName);
-//            for (String fileName : fileNames){
-//                String poc = FileUtil.FileRead("src/main/java/com/bcvgh/poc/json/"+dirName+"/"+fileName);
-//                JSONObject poc3 = JsonUtil.StringToJson(poc);
-//                this.vulName.put(poc3.get("name").toString(),poc3);
-//                this.vulTypes.add(JsonUtil.StringToJson(poc).get("tag").toString());
-//            }
-//        }
-
-        /**方法2**/
-        String[] dirNames = FileUtil.FileList("src/main/java/com/bcvgh/poc/json/");
-        for (String dirName : dirNames) {
-            ArrayList<String> filenames = new ArrayList<>();
-            String[] fileNames = FileUtil.FileList("src/main/java/com/bcvgh/poc/json/" + dirName);
-            for (String fileName : fileNames) {
-                String poc = FileUtil.FileRead("src/main/java/com/bcvgh/poc/json/" + dirName + "/" + fileName);
-                JSONObject pocJson = JsonUtil.StringToJson(poc);
-                filenames.add(pocJson.getString("name"));
-            }
-            vulName.put(dirName, filenames);
+    public void initialize(){
+        pocParse = PocUtil.PocParse(PocUtil.PocPath);
+        PocUtil.GetTagName();
+        try {
+            GenList(pocParse);
         }
-        for (Map.Entry<String, ArrayList<String>> entry : this.vulName.entrySet()) {
+        catch (Exception e){
+            System.out.println("加载poc失败，请检查Poc文件格式！");
+        }
+    }
+
+    /**生成漏洞列表**/
+    private void GenList(HashMap<String , ArrayList<HashMap<String,String>>> pocParse){
+        for (Map.Entry<String, ArrayList<HashMap<String,String>>> entry : pocParse.entrySet()) {
             String tag = entry.getKey();
-            ArrayList<String> names = entry.getValue();
-            Menu VulType = new Menu(tag);
-            VulType.setOnAction(event -> {
-                VulChoice.setText(VulType.getText());
+            ArrayList<HashMap<String,String>> names = entry.getValue();
+            Menu VulTag = new Menu(PocUtil.GetTagCN(tag));
+//            VulTag.getStyleClass().add("custom-menu-item");
+            VulTag.setOnAction(event -> {
+                VulChoice.setText(VulTag.getText());
+                PocUtil.tag = tag;
+                PocUtil.name = "";
+                PocUtil.type = "";
+
                 VulChoice.hide();
             });
-            Iterator<String> iterator = names.iterator();
+            Iterator<HashMap<String,String>> iterator = names.iterator();
             while (iterator.hasNext()) {
 //                String a = iterator.next();
-                MenuItem subVn = new MenuItem(iterator.next());
+                HashMap<String,String> b = iterator.next();
+                MenuItem subVn = new MenuItem(b.get("name"));
+//                subVn.getStyleClass().add("custom-menu-item");
                 subVn.setOnAction(event -> {
                     VulChoice.setText(subVn.getText());
-                    VulManagerController.VulName = subVn.getText();
+                    PocUtil.name = b.get("name");
+                    PocUtil.type = b.get("type");
+                    PocUtil.tag = b.get("tag");
                 });
-                VulType.getItems().add(subVn);
-
+                VulTag.getItems().add(subVn);
             }
-            VulChoice.getItems().add(VulType);
+            VulChoice.getItems().add(VulTag);
         }
     }
-//        Iterator<String> vts = vulTypes.iterator();
-//        while (vts.hasNext()) {
-//            String vt = vts.next();
-//            Menu VulType = new Menu(vt);
-//            VulType.setOnAction(event -> {
-////                System.out.println(VulType.getText());
-//                VulChoice.setText(VulType.getText());
-//                VulChoice.hide();
-//            });
-//            Iterator vns = vulName.entrySet().iterator();
-//            while (vns.hasNext()){
-//                Map.Entry entry = (Map.Entry)vns.next();
-//                JSONObject a = (JSONObject) entry.getValue();
-//                if (a.get("tag").equals(vt)){
-//                    MenuItem subVn = new MenuItem((String) entry.getKey());
-//
-//                    subVn.setOnAction(event -> {
-//                        VulChoice.setText(subVn.getText());
-//                        VulManagerController.VulName = subVn.getText();
-////                        ModelUtil.VulModel((JSONObject)entry.getValue());
-//                        System.out.println(subVn.getText());
-//                    });
-//
-//                    VulType.getItems().add(subVn);
-//                }
-//            }
-//            VulChoice.getItems().add(VulType);
-//        }
-
-        /**漏洞利用，根据选择的漏洞名称，生生成新的stage舞台**/
-
-
-
-
-
-//        Menu tutorialManeu = new Menu("Tutorial");
-//        tutorialManeu.getItems().addAll(
-//                new CheckMenuItem("Java"),
-//                new CheckMenuItem("JavaFX"),
-//                new CheckMenuItem("Swing"));
-//        VulChoice.getItems().add(tutorialManeu);
-
-//        VulChoice.setOnAction((event -> {
-////            Integer vulIndex = VulChoice.getSelectionModel().getSelectedIndex();
-//
-//            }));
-//        }
-
-
-    public void NewExploit(ActionEvent event) {
-        VulManagerController.Url = this.Address.getText();
-        if (VulManagerController.VulName!=null){
-            Stage newTargetStage = new Stage();
-            Parent root = null;
-            try {
-                root = FXMLLoader.load(getClass().getResource("/com/bcvgh/VulExploit.fxml"));
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            newTargetStage.setTitle("-漏洞利用-");
-            Scene scene = new Scene(root);
-            newTargetStage.setScene(scene);
-            newTargetStage.show();
-        }
-        else {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("提示");
-            alert.setHeaderText(null);
-            alert.setContentText("请选择要利用的漏洞。");
-            alert.showAndWait();
-        }
-    }
-
 
     @FXML
-    public void NewScan(ActionEvent event) {
-        String url =Address.getText();
-        VulOut.setText("");
-        Boolean isVulType = false;
-        here:
-        if (!url.equals("") && VulChoice.getText()!=null && isVulType.equals(false)){
-            for (Map.Entry<String,ArrayList<String>> entry : this.vulName.entrySet()){
-                String tag = entry.getKey();
-                ArrayList<String> names = entry.getValue();
-                Iterator<String> iterator = names.iterator();
-                if (VulChoice.getText().equals(tag)){
-                    isVulType = true;
-                    List<Future<Object>> futures = new ArrayList<>();
-                    ExecutorService executor = Executors.newFixedThreadPool(5);  /**创建线程池，多线程处理并返回结果**/
-                    while (iterator.hasNext()){
-                        String name = iterator.next();
-                        Callable c = new MyCallable(url,tag,name);
-                        Future<Object> future = executor.submit(c);
-                        futures.add(future);
-                    }
-                    for (Future<Object> future : futures) {
-                        try {
-                            PocUtil result = (PocUtil) future.get();
-                            if (!result.POC().equals("")){
-                                Platform.runLater(() -> VulOut.appendText("目标存在"+result.POC()+"漏洞!\n"));
-                            }
-                            else {
-                                Platform.runLater(() -> VulOut.appendText("目标不存在"+result.POC()+"漏洞!\n"));
-                            }
-                        } catch (InterruptedException | ExecutionException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                    executor.shutdown();
-                    if (isVulType.equals(true)) break here;
+    void NewExploit(ActionEvent event) {
+        PocUtil.url = this.Address.getText();
+        if (PocUtil.GetPocs(PocUtil.tag, PocUtil.name).keySet().contains("exp")){
+            if (PocUtil.url!=null && !PocUtil.name.equals("")){
+                Stage newTargetStage = new Stage();
+                Parent root = null;
+                try {
+                    root = FXMLLoader.load(getClass().getResource("/com/bcvgh/VulExploit.fxml"));
+                } catch (IOException e) {
+                    e.printStackTrace();
                 }
-                else {
-                    while (iterator.hasNext()) {
-                        String name = iterator.next();
-                        if (VulChoice.getText().equals(name)){
-                            isVulType = true;
-                            PocUtil poc = new PocUtil(url, tag, name);
-                            if (!poc.POC().equals("")){
-                                Platform.runLater(() -> VulOut.appendText("目标存在"+poc.POC()+"漏洞!\n"));
-                            }
-                            else {
-                                Platform.runLater(() -> VulOut.appendText("目标不存在"+poc.POC()+"漏洞!\n"));
-                            }
-                            if (isVulType.equals(true)) break here;
-                        }
-                    }
-                }
+                newTargetStage.setTitle("-漏洞利用-");
+                Scene scene = new Scene(root);
+                newTargetStage.setResizable(false);
+                newTargetStage.setScene(scene);
+                newTargetStage.show();
+            }
+            else {
+                PromptUtil.Alert("提示","请输入正确url地址或选择正确的漏洞模块！");
             }
         }
-
-
-//        if (!url.equals("") && VulChoice.getText()!=null){
-//            for(String name : this.vulTypes){
-//                List<Future<Object>> futures = new ArrayList<>();
-//                if (VulChoice.getText().equals(name)){
-//                    String[] FileName = FileUtil.FileList("src/main/java/com/bcvgh/poc/json/"+name);
-//                    ExecutorService executor = Executors.newFixedThreadPool(5);  /**创建线程池，多线程处理并返回结果**/
-//                    for (int i =0;i < FileName.length;i++){
-//                        Callable c = new MyCallable(url,FileName[i],name);
-//                        Future<Object> future = executor.submit(c);
-//                        futures.add(future);
-////                        Future<String> future = executor.submit(new PocThread(url,FileName[i],name));
-////                        futures.add(future);
-//                    }
-//                    executor.shutdown();
-//                    for (Future<Object> future : futures) {
-//                        try {
-//                            PocUtil result = (PocUtil) future.get();
-//                            if (!result.equals("")){
-//                                Platform.runLater(() -> VulOut.appendText("目标存在"+result+"漏洞!\n"));
-//                            }
-//                            else {
-//                                Platform.runLater(() -> VulOut.appendText("目标不存在"+result+"漏洞!\n"));
-//                            }
-//                        } catch (InterruptedException | ExecutionException e) {
-//                            e.printStackTrace();
-//                        }
-//                    }
-//
-//                    executor.shutdown();
-//
-//                    System.out.println(FileName.toString());
-//                }
-//            }
-
-            /**old **/
-//            for(String name : this.vulName.keySet()){
-//                if (VulChoice.getText().equals(name)){
-//                    String tag = this.vulName.get(name).getString("tag");
-//                    System.out.println("开始扫描"+name);
-//                    PocUtil poc = new PocUtil(url, name, tag);
-//                    if (!poc.POC().equals("")){
-//                        Platform.runLater(() -> VulOut.appendText("目标存在"+poc.POC()+"漏洞!\n"));
-//                    }
-//                    else {
-//                        Platform.runLater(() -> VulOut.appendText("目标不存在"+poc.POC()+"漏洞!\n"));
-//                    }
-//                }
-//            }
+        else {
+            PromptUtil.Alert("提示","json文件内无exp,请检查json文件并自行配置!");
         }
-//        else {
-//            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-//            alert.setTitle("提示");
-//            alert.setHeaderText(null);
-//            alert.setContentText("请选择漏洞poc并输入目标url");
-//            alert.showAndWait();
+
+
+    }
+
+    @FXML
+    void NewScan(ActionEvent event) {
+        this.VulOut.setText("");
+        String url = Address.getText();
+        ArrayList<String> prompt = VulScan(url);
+        try {
+            for (String i : prompt){
+                Platform.runLater(() -> VulOut.appendText(i));
+            }
+        }catch (Exception e){
+
+        }
+
+    }
+
+    private ArrayList<String> VulScan(String url){
+        Pattern urlPat = Pattern.compile("^(https?://)",Pattern.DOTALL);
+        Matcher urlMatch = urlPat.matcher(url);
+        PocUsageImp pocPocUsageImp =null;
+        if (urlMatch.find()){
+            if (PocUtil.name.isEmpty()){
+                pocPocUsageImp = new PocUsageImp(url, PocUtil.tag);
+            }
+            else {
+                pocPocUsageImp = new PocUsageImp(url, PocUtil.tag,PocUtil.name);
+            }
+            return pocPocUsageImp.prompt;
+        }
+        else {
+            PromptUtil.Alert("提示","请输入正确的地址!(以http://或https://开头)");
+            return null;
+        }
+    }
+
+//    @FXML
+//    public void ReloadPOC(ActionEvent event) {
+//        pocParse = PocUtil.PocParse(PocUtil.PocPath);
+//        PocUtil.GetTagName();
+//        try {
+//            GenList(pocParse);
 //        }
-
+//        catch (Exception e){
+//            System.out.println("加载poc失败，请检查Poc文件格式！");
+//        }
 //    }
-}
-
-class MyCallable implements Callable<Object> {
-    private String url;
-    private String tag;
-    private String name;
-
-    MyCallable(String url , String tag , String name) {
-        this.url = url;
-        this.tag= tag;
-        this.name = name;
-    }
-
-    @Override
-    public Object call() throws Exception {
-        PocUtil poc = new PocUtil(this.url, this.tag ,this.name);
-        return poc;
-    }
 }
