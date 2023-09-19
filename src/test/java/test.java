@@ -1,3 +1,4 @@
+import com.bcvgh.utils.ApiUtil;
 import com.bcvgh.utils.PocUtil;
 import javafx.application.Application;
 import javafx.scene.Scene;
@@ -17,8 +18,9 @@ public class test {
 
     @Test
     public void aaa() throws ClassNotFoundException, NoSuchMethodException, InvocationTargetException, IllegalAccessException {
-        String a = multipleEncode("encodeURL","ping 828afe11.dnslog.store",3);
-        System.out.println(a);
+//        String a = multipleEncode("UrlEncode","ping 828afe11.dnslog.store",3);
+//        System.out.println(a);
+        ApiUtil.ceyeDnslog("abc.0nva74.ceye.io","be94361a3b2d8f6ec7dfe0a3275ab79e");
     }
 
     public static String Encode(String methodName,String text) throws ClassNotFoundException, NoSuchMethodException, InvocationTargetException, IllegalAccessException {

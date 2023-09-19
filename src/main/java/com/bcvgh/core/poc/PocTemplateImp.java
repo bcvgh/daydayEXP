@@ -1,13 +1,12 @@
 package com.bcvgh.core.poc;
 
+import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.bcvgh.core.BaseTemplate;
 import com.bcvgh.utils.*;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class PocTemplateImp extends BaseTemplate implements PocTemplate{
 
@@ -16,24 +15,24 @@ public class PocTemplateImp extends BaseTemplate implements PocTemplate{
     private String PocPost;
     private String PocGet;
     private String Pattern;
+    private boolean HasDns;
 
     public PocTemplateImp(String url, JSONObject poc) {
         super(url, poc);
+        String randomString = Utils.getRandomString(4);
         this.Poc = poc.getJSONObject("poc");
-        /**placeholder**/
+        this.HasDns = JSON.toJSONString(this.Poc).contains("{dnslog}") ? true : false;
         this.Poc = this.replacePlaceholder(this.Poc,"{url}",this.Url);
-        /**placeholder**/
+        this.Poc = this.replacePlaceholder(this.Poc,"{dnslog}",PocUtil.DnsCommand);
+        this.Poc = this.replacePlaceholder(this.Poc,"{random}",randomString);
         this.header = new HashMap<>(this.Poc.getJSONObject("header"));
         this.PocPost = this.Poc.getString("pocPost");
         this.PocGet = this.Poc.getString("pocGet");
         this.Pattern = this.Poc.getString("Pattern");
 
+
     }
 
-//    private Boolean resMatch(String resText,String pattern){
-//        Boolean matcher = resText.contains(pattern);
-//        return matcher;
-//    }
 
 
 
@@ -43,33 +42,50 @@ public class PocTemplateImp extends BaseTemplate implements PocTemplate{
         result.put("name",this.name);
         if (PocPost != null){
             Response res = HttpTools.post(this.Url.concat(PocGet),PocPost,this.header,"UTF-8");
-            if (res.getText()==null){ /**之后会换成异常捕获**/
+            if (res.getText()==null || res.getText().contains("burp")){ /**之后会换成异常捕获**/
                 result.put("res","false");
-                Result.add(result);
-                return this.Result;
+//                Result.add(result);
+//                return this.Result;
             }
-            if (!this.resMatch(res.getText(),Pattern).equals("error") ){
+            else if (!this.resMatch(res.getText(),Pattern).equals("error") ){
                 result.put("res",res.getText());
-                Result.add(result);
-                return this.Result;
+//                Result.add(result);
+//                return this.Result;
+            }
+            else {
+                result.put("res","false");
             }
         }
         else if (PocGet != null){
             Response res = HttpTools.get(this.Url.concat(PocGet), this.header ,"UTF-8");
-            if (res.getText()==null){ /**之后会换成异常捕获**/
+            if (res.getText()==null || res.getText().contains("burp")){ /**之后会换成异常捕获**/
                 result.put("res","false");
-                Result.add(result);
-                return this.Result;
+//                Result.add(result);
+//                return this.Result;
             }
-            if (!this.resMatch(res.getText(),Pattern).equals("error")){
+            else if (!this.resMatch(res.getText(),Pattern).equals("error")){
 //                this.isVul =true;
                 result.put("res",res.getText());
-                Result.add(result);
-                return this.Result;
+//                Result.add(result);
+//                return this.Result;
+            }
+            else {
+                result.put("res","false");
             }
         }
-        result.put("res","false");
-        Result.add(result);
+
+        if (!PocUtil.dnsUrl.isEmpty() && this.HasDns){
+//            if (ApiUtil.ceyeDnslog(PocUtil.dnsUrl,"be94361a3b2d8f6ec7dfe0a3275ab79e")){
+//                result.put("res","dnslog");
+//            }
+            if (ApiUtil.getDnslog(PocUtil.dnsUrl)){
+                result.put("res","dnslog");
+            }
+            else {
+                result.put("res","false");
+            }
+        }
+        this.Result.add(result);
        return this.Result;
     }
 

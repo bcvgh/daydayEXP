@@ -26,7 +26,7 @@ public class PocUsageImp extends BaseUsage {
 
 
     private void PocUsage(String url, String tag, String name){
-        this.PocS = FileUtil.FileRead(PocUtil.PocPath+tag+"/"+name+".json");
+        this.PocS = FileUtil.FileRead(PocUtil.PocPath+"json\\"+tag+"\\"+name+".json");
         JSONObject PocContent = JSON.parseObject(PocS);
         this.pocTemplate = new PocTemplateImp(url, PocContent);
         ArrayList<HashMap<String,String>> result = this.pocTemplate.checkVul();
@@ -39,7 +39,7 @@ public class PocUsageImp extends BaseUsage {
         List<Future<Object>> futures = new ArrayList<>();
         ExecutorService executor = Executors.newFixedThreadPool(5);  /**创建线程池，多线程处理并返回结果**/
         for (String name : names) {
-            this.PocS = FileUtil.FileRead(PocUtil.PocPath + tag + "/" + name + ".json");
+            this.PocS = FileUtil.FileRead(PocUtil.PocPath+"json/" + tag + "/" + name + ".json");
             JSONObject PocContent = JSON.parseObject(PocS);
             Callable c = new MyCallable(url, PocContent);
             Future<Object> future = executor.submit(c);
@@ -62,10 +62,10 @@ public class PocUsageImp extends BaseUsage {
     private void PromptAdd(ArrayList<HashMap<String, String>> result){
         for (HashMap<String,String> n: result){
             if (!n.get("res").equals("false")){
-                this.prompt.add("目标存在"+n.get("name")+"漏洞!请使用对应的漏洞利用模块！\n");
+                this.prompt.add("[+] 目标存在"+n.get("name")+"漏洞!请使用对应的漏洞利用模块！\n");
             }
             else {
-                this.prompt.add("目标不存在"+n.get("name")+"漏洞...\n");
+                this.prompt.add("[-] 目标不存在"+n.get("name")+"漏洞...\n");
             }
         }
     }

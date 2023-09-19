@@ -4,11 +4,10 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.bcvgh.core.BaseTemplate;
 import com.bcvgh.utils.PocUtil;
+import com.bcvgh.utils.Response;
+import com.bcvgh.utils.Utils;
 
-import java.lang.reflect.InvocationTargetException;
 import java.util.*;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class ExpTemplateImp extends BaseTemplate implements ExpTemplate {
     public Boolean isExploited;
@@ -23,14 +22,10 @@ public class ExpTemplateImp extends BaseTemplate implements ExpTemplate {
     /**new**/
     public ExpTemplateImp(String url, JSONObject poc) {
         super(url, poc);
-        Random ran = new Random();
-        Random random = new Random();
-        int min = 1000;
-        int max = 9999;
-        int randomNumber = random.nextInt(max - min + 1) + min;
+        String randomString = Utils.getRandomString(4);
         this.Exp = poc.getJSONObject("exp");
         this.Exp = this.replacePlaceholder(this.Exp,"{url}",this.Url);
-        this.Exp = this.replacePlaceholder(this.Exp,"{random}",String.valueOf(randomNumber));
+        this.Exp = this.replacePlaceholder(this.Exp,"{random}",randomString);
     }
 
 //    public String ExpMatch(String resText,String pattern){
@@ -77,9 +72,42 @@ public class ExpTemplateImp extends BaseTemplate implements ExpTemplate {
 //        }
 //        return JSONObject.parseObject(pocString);
 //    }
-
+    @Override
     public HashMap<String,String> exploitVul(){
         return this.result;
+    }
+
+
+
+    @Override
+    public void initStep(String value){
+        JSONObject stepContent = this.Exp.getJSONObject(value);
+        this.ExpPost = stepContent.getString("expPost");
+        this.ExpGet = stepContent.getString("expGet");
+        this.pattern = stepContent.getString("Pattern");
+        this.header = new HashMap<>(stepContent.getJSONObject("header"));
+    }
+
+    @Override
+    public Boolean ExpRequest(Response res,String type) {
+        if (res.getText()==null || res.getCode()==404){
+            this.isExploited = false;
+//                    this.result.put("prompt","error");
+            this.result.put("prompt","利用失败，请检查poc可用性");
+            return true;
+        }
+        String resText = this.resMatch(res.getText(),this.pattern);
+        if (resText.equals("error")){
+            this.isExploited = false;
+        }
+        if (!resText.equals("error")){
+            this.isExploited = true;
+            this.result.put("result",resText);
+            if (type.equals("upload") && !this.resMatch(resText,"(.*\\.[a-zA-Z]{1,4})").equals(null)){
+                this.result.put("shellPath",resText);
+            };
+        }
+        return false;
     }
 
 //    public HashMap<String, String> exploitVul(){

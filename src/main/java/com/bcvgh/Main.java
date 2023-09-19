@@ -20,7 +20,7 @@ public class Main extends Application {
 //        Parent root = FXMLLoader.load(getClass().getResource("MainPage.fxml"));
         Parent root = FXMLLoader.load(getClass().getResource("/com/bcvgh/MainPage.fxml"));
         Scene scene = new Scene(root);
-        scene.getStylesheets().add(getClass().getResource("css/style.css").toExternalForm());
+//        scene.getStylesheets().add(getClass().getResource("css/style.css").toExternalForm());
         primaryStage.setTitle("daydayExp  by bcvgh");
         primaryStage.setResizable(false);
         primaryStage.setScene(scene);

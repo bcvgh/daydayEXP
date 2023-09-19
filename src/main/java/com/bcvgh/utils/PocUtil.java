@@ -8,8 +8,8 @@ import java.lang.reflect.Method;
 import java.util.*;
 
 public class PocUtil {
-//    public static String PocPath ="./poc/json/";
-    public static String PocPath ="D:\\comsoft\\st\\my\\daydayEXP\\daydayExp\\poc\\json\\";
+//    public static String PocPath ="./poc/";
+    public static String PocPath ="D:\\comsoft\\st\\my\\daydayEXP\\daydayExp\\poc\\";
 //    public static String PocPath ="src/main/java/com/bcvgh/poc/json/";
     public static   HashMap<String , ArrayList<HashMap<String,String>>> pocParse = new HashMap<>();
     public static String name ="";
@@ -18,6 +18,8 @@ public class PocUtil {
     public static String tag ="";
     public static ArrayList<String> tags;
     public static String url ="";
+    public static String dnsUrl="";
+    public static String DnsCommand ="";
 
     public static HashMap<String , ArrayList<HashMap<String,String>>> PocParse(String pocPath){
         String[] dirNames = FileUtil.FileList(pocPath);
@@ -56,9 +58,9 @@ public class PocUtil {
     }
 
     public static String GetTagCN(String tag){
-        String Tags = FileUtil.FileRead("D:\\comsoft\\st\\my\\daydayEXP\\daydayExp\\poc\\poctag.json");
-//        String Tags = FileUtil.FileRead("./poc/poctag.json");
-        JSONObject tagsJson = JSON.parseObject(Tags);
+        String Tags = FileUtil.FileRead(PocUtil.PocPath+"config.json");
+//        String Tags = FileUtil.FileRead("./poc/config.json");
+        JSONObject tagsJson = JSON.parseObject(Tags).getJSONObject("tagname");
         String tagCn = new String();
         for(String i:tagsJson.keySet()){
             if (i.equals(tag)){
@@ -69,7 +71,7 @@ public class PocUtil {
     }
 
     public static JSONObject GetPocs(String tag,String name){
-        String pocs = FileUtil.FileRead(PocUtil.PocPath+tag+"/"+name+".json");
+        String pocs = FileUtil.FileRead(PocUtil.PocPath+"json/"+tag+"/"+name+".json");
         JSONObject Pocs = JSON.parseObject(pocs);
         return Pocs;
     }

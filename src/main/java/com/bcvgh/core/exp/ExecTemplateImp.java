@@ -11,10 +11,16 @@ public class ExecTemplateImp extends ExpTemplateImp {
 
     public ExecTemplateImp(String url, JSONObject poc, HashMap<String, String> Extra){
         super(url, poc);
-        this.command = URLEncoder.encode(Extra.get("command"));
-//        this.command = Extra.get("command");
-        this.Exp = this.replacePlaceholder(this.Exp,"{command}",this.command);
+//        this.command = URLEncoder.encode(Extra.get("command"));
+        this.command = Extra.get("command");
+
         this.Exp = this.PlaceholderHandling(this.Exp,this.command);
+        for (String step : this.Exp.keySet()){
+            if (this.Exp.getJSONObject(step).getString("expGet").contains("{command}")){
+                this.Exp = this.replacePlaceholder(this.Exp,"{command}",URLEncoder.encode(this.command));
+            }
+        }
+        this.Exp = this.replacePlaceholder(this.Exp,"{command}",this.command);
     }
 
 
@@ -25,16 +31,17 @@ public class ExecTemplateImp extends ExpTemplateImp {
         this.result.put("name",this.name);
         for (Integer n = 1; n <= this.Exp.keySet().size(); n++) {
             value = "step" + Integer.toString(n);
-            JSONObject stepContent = this.Exp.getJSONObject(value);
-            this.ExpPost = stepContent.getString("expPost");
-            this.ExpGet = stepContent.getString("expGet");
-            try {
-                if (this.ExpGet.contains("{command}")){
-                    this.command = URLEncoder.encode(this.command);
-                }
-            }catch (Exception e){}
-            this.pattern = stepContent.getString("Pattern");
-            this.header = new HashMap<>(stepContent.getJSONObject("header"));
+            this.initStep(value);
+//            JSONObject stepContent = this.Exp.getJSONObject(value);
+//            this.ExpPost = stepContent.getString("expPost");
+//            this.ExpGet = stepContent.getString("expGet");
+////            try {
+////                if (this.ExpGet.contains("{command}")){
+////                    this.command = URLEncoder.encode(this.command);
+////                }
+////            }catch (Exception e){}
+//            this.pattern = stepContent.getString("Pattern");
+//            this.header = new HashMap<>(stepContent.getJSONObject("header"));
 //            for (String key : this.header.keySet()) {
 //                if (((String) this.header.get(key)).contains("{url}")){
 //                    this.header.replace(key,this.Url);
@@ -47,35 +54,43 @@ public class ExecTemplateImp extends ExpTemplateImp {
 //            if (ExpPost.contains("{command}")) ExpPost = ExpPost.replace("{command}",this.command);
             if (ExpPost !=null){
                 Response res = HttpTools.post(this.Url.concat(ExpGet),ExpPost,this.header,"UTF-8");
-                if (res.getText()==null || res.getCode()!=200){
-                    this.isExploited = false;
-                    this.result.put("prompt","error");
+                if (this.ExpRequest(res,"exec")){
                     return this.result;
                 }
-                String resText = this.resMatch(res.getText(),this.pattern);
-                if (resText.equals("error")){
-                    this.isExploited = false;
-                }
-                if (!resText.equals("error")){
-                    this.isExploited = true;
-                    this.result.put("result",resText);
-                }
+//                if (res.getText()==null || res.getCode()==302 || res.getCode()==404){
+//                    this.isExploited = false;
+////                    this.result.put("prompt","error");
+//                    this.result.put("prompt","利用失败，请检查poc可用性");
+//                    return this.result;
+//                }
+//                String resText = this.resMatch(res.getText(),this.pattern);
+//                if (resText.equals("error")){
+//                    this.isExploited = false;
+//                }
+//                if (!resText.equals("error")){
+//                    this.isExploited = true;
+//                    this.result.put("result",resText);
+//                }
             }
             else if (ExpGet !=null){
                 Response res = HttpTools.get(this.Url.concat(ExpGet),this.header,"UTF-8");
-                if (res.getText()==null){
-                    this.isExploited = false;
-                    this.result.put("prompt","error");
+                if (this.ExpRequest(res,"exec")){
                     return this.result;
                 }
-                String resText = this.resMatch(res.getText(),this.pattern);
-                if (resText.equals("error")){
-                    this.isExploited = false;
-                }
-                if (!resText.equals("error")){
-                    this.isExploited = true;
-                    this.result.put("result",resText);
-                }
+//                if (res.getText()==null || res.getCode()==302 || res.getCode()==404){
+//                    this.isExploited = false;
+////                    this.result.put("prompt","error");
+//                    this.result.put("prompt","利用失败，请检查poc可用性");
+//                    return this.result;
+//                }
+//                String resText = this.resMatch(res.getText(),this.pattern);
+//                if (resText.equals("error")){
+//                    this.isExploited = false;
+//                }
+//                if (!resText.equals("error")){
+//                    this.isExploited = true;
+//                    this.result.put("result",resText);
+//                }
             }
             i = i+1;
         }

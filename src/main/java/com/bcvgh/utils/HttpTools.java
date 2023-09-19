@@ -2,7 +2,7 @@ package com.bcvgh.utils;
 
 import com.bcvgh.controller.MainPageController;
 import com.bcvgh.controller.SetProxyController;
-import org.apache.log4j.Logger;
+//import org.apache.log4j.Logger;
 
 import javax.net.ssl.*;
 import java.io.ByteArrayOutputStream;
@@ -25,8 +25,6 @@ import java.util.Iterator;
  * @date 2021/8/20 22:57
  * @github https://github.com/yhy0
  * 取自 https://github.com/bewhale/thinkphp_gui_tools
- * 蓝鲸 师傅封装的 http 包比较好用
- * 感谢蓝鲸师傅，蓝鲸 yyds
  */
 
 
@@ -40,7 +38,7 @@ public class HttpTools {
 //    }
     private static String UA = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.90 Safari/537.36";
 
-    private static final Logger logger = Logger.getLogger(MainPageController.class);
+//    private static final Logger logger = Logger.getLogger(MainPageController.class);
 
     public HttpTools() {
     }
@@ -60,13 +58,13 @@ public class HttpTools {
 
             response = getResponse(conn, encoding);
         } catch (SocketTimeoutException var6) {
-            logger.debug(var6.getMessage());
+//            logger.debug(var6.getMessage());
             response.setError("连接超时!");
         } catch (IOException var7) {
-            logger.debug(var7.getMessage());
+//            logger.debug(var7.getMessage());
             response.setError(var7.getMessage());
         } catch (KeyManagementException | NoSuchProviderException | NoSuchAlgorithmException var8) {
-            logger.debug(var8.getMessage());
+//            logger.debug(var8.getMessage());
             response.setError(var8.getMessage());
         }
         return response;
@@ -91,7 +89,7 @@ public class HttpTools {
             outputStream.close();
             response = getResponse(conn, encoding);
         } catch (Exception var8) {
-            logger.debug(var8.getMessage());
+//            logger.debug(var8.getMessage());
             response.setError(var8.getMessage());
         }
 
@@ -108,7 +106,7 @@ public class HttpTools {
             response.setText(streamToString(conn.getInputStream(), encoding));
         } catch (IOException var3) {
             response.setError(var3.toString());
-            logger.debug(var3.toString());
+//            logger.debug(var3.toString());
         }
 
         return response;
@@ -120,18 +118,24 @@ public class HttpTools {
         sslcontext.init((KeyManager[])null, tm, new SecureRandom());
         HostnameVerifier ignoreHostnameVerifier = new HostnameVerifier() {
             public boolean verify(String s, SSLSession sslsession) {
-                logger.debug("WARNING: Hostname is not matched for cert.");
+//                logger.debug("WARNING: Hostname is not matched for cert.");
+                System.out.println("WARNING: Hostname is not matched for cert.");
                 return true;
             }
         };
         HttpsURLConnection.setDefaultHostnameVerifier(ignoreHostnameVerifier);
         HttpsURLConnection.setDefaultSSLSocketFactory(sslcontext.getSocketFactory());
         URL url_object = new URL(url);
-        HttpURLConnection conn = (HttpURLConnection)url_object.openConnection();
-        //代理
+
+//        HttpURLConnection conn = (HttpURLConnection)url_object.openConnection();
+//        代理
+        HttpURLConnection conn = null;
         Proxy proxy = (Proxy) SetProxyController.proxySetting.get("proxy");
         if(proxy != null) {
             conn = (HttpURLConnection)url_object.openConnection(proxy);
+        }
+        else {
+            conn = (HttpURLConnection)url_object.openConnection();
         }
 
         conn.setRequestProperty("User-Agent", UA);
@@ -139,8 +143,8 @@ public class HttpTools {
         conn.setRequestProperty("Accept-Language","zh-CN,zh;q=0.9");
         conn.setRequestProperty("Connection","close");
 
-        conn.setConnectTimeout(5000);
-        conn.setReadTimeout(5000);
+        conn.setConnectTimeout(8000);
+        conn.setReadTimeout(8000);
         conn.setDoOutput(true);
         conn.setDoInput(true);
         conn.setUseCaches(false);

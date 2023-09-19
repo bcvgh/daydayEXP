@@ -14,10 +14,10 @@ public class  FileUtil {
             }
             return strs;
         } catch (FileNotFoundException e) {
-            e.printStackTrace();
+            PromptUtil.Alert("警告","请正确选择需要检测的漏洞名称");
             return null;
         } catch (IOException e) {
-            e.printStackTrace();
+            PromptUtil.Alert("警告","文件读取出错啦!");
             return null;
         }
     }

@@ -1,12 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
@@ -29,7 +35,7 @@
                   </Text>
                   <TextField fx:id="Address" layoutX="514.0" layoutY="12.0" maxWidth="200.0" minWidth="200.0" prefWidth="200.0" />
                   <Button fx:id="VulScan" layoutX="720.0" layoutY="12.0" mnemonicParsing="false" onAction="#NewScan" text="检测" />
-                  <MenuBar fx:id="VulSelect" layoutX="81.0" layoutY="10.0"  prefHeight="30.0" prefWidth="250.0">
+                  <MenuBar fx:id="VulSelect" layoutX="81.0" layoutY="10.0" prefHeight="30.0" prefWidth="250.0">
                     <menus>
                         <Menu fx:id="VulChoice" mnemonicParsing="false" text="---请选择漏洞---">
                            <items>
@@ -47,12 +53,47 @@
                         <AnchorPane prefHeight="450.0" prefWidth="500.0">
                            <children>
                               <TextArea fx:id="VulOut" layoutX="10.0" layoutY="10.0" prefHeight="400.0" prefWidth="500.0" />
+<!--                              <ProgressBar fx:id="scanProgress" layoutX="11.0" layoutY="418.0" prefHeight="18.0" prefWidth="500.0" progress="0.0" />-->
                            </children>
                         </AnchorPane>
-                        <AnchorPane prefHeight="450.0" prefWidth="300.0">
+                        <GridPane prefHeight="450.0" prefWidth="300.0">
+                          <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints maxHeight="188.0" minHeight="10.0" prefHeight="89.0" vgrow="SOMETIMES" />
+                            <RowConstraints maxHeight="142.0" minHeight="10.0" prefHeight="85.0" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="235.0" minHeight="10.0" prefHeight="170.0" vgrow="SOMETIMES" />
+                            <RowConstraints maxHeight="102.0" minHeight="10.0" prefHeight="102.0" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="235.0" minHeight="10.0" prefHeight="170.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
                            <children>
-                              <Button fx:id="VulExploit" layoutX="50.0" layoutY="100.0" mnemonicParsing="false" onAction="#NewExploit" prefHeight="150.0" prefWidth="150.0" text="漏洞利用" />
-                           </children></AnchorPane>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="DNS地址：" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="TOP">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                                 <GridPane.margin>
+                                    <Insets left="10.0" />
+                                 </GridPane.margin>
+                              </Text>
+                              <Button fx:id="VulExploit" mnemonicParsing="false" onAction="#NewExploit" prefHeight="81.0" prefWidth="251.0" text="漏洞利用" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
+                              <CheckBox fx:id="dnsUrlCheck" mnemonicParsing="false" onAction="#DnsUrlCheck" text="启用" GridPane.halignment="LEFT" GridPane.valignment="BOTTOM">
+                                 <GridPane.margin>
+                                    <Insets bottom="10.0" left="10.0" />
+                                 </GridPane.margin>
+                              </CheckBox>
+                              <TextField fx:id="dnsUrl" maxWidth="180.0" minWidth="180.0" prefWidth="180.0" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="TOP">
+                                 <GridPane.margin>
+                                    <Insets right="15.0" />
+                                 </GridPane.margin>
+                              </TextField>
+                              <Separator prefWidth="200.0" GridPane.rowIndex="2" GridPane.valignment="TOP">
+                                 <GridPane.margin>
+                                    <Insets top="30.0" />
+                                 </GridPane.margin>
+                              </Separator>
+                           </children>
+                        </GridPane>
                      </children>
                   </HBox>
                </children>
