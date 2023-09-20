@@ -54,7 +54,7 @@ dnslog：在config.json中配置好dnslog api，面板中设置好dns地址即�
 
 
 
-#### POC编写
+### POC编写
 
 json文件中除了基本的name、tag等还有poc和exp两个模块(目前exp模块只支持type为upload或exec，如遇到其他类型漏洞，如：反序列化、未授权、sql注入等建议只设置好poc字段进行一个初步漏洞检测，后续手工进行利用)
 
