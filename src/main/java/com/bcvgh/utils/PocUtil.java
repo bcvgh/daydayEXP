@@ -8,9 +8,8 @@ import java.lang.reflect.Method;
 import java.util.*;
 
 public class PocUtil {
-//    public static String PocPath ="./poc/";
-    public static String PocPath ="D:\\comsoft\\st\\my\\daydayEXP\\daydayExp\\poc\\";
-//    public static String PocPath ="src/main/java/com/bcvgh/poc/json/";
+    public static String PocPath ="./poc/";
+//    public static String PocPath ="D:\\comsoft\\st\\my\\daydayEXP\\daydayExp\\poc\\";
     public static   HashMap<String , ArrayList<HashMap<String,String>>> pocParse = new HashMap<>();
     public static String name ="";
     public static String type ="";
@@ -38,6 +37,12 @@ public class PocUtil {
             pocParse.put(dirName,vulList);
         }
         return pocParse;
+    }
+
+    public static String[] GetTagVulFiles(String tag){
+        String TagPath = PocUtil.PocPath+"json/"+tag+"/";
+        String[] VulFiles = FileUtil.FileList(TagPath);
+        return VulFiles;
     }
 
     public static HashMap<String, ArrayList<String>> GetTagName(){

@@ -1,5 +1,6 @@
 package com.bcvgh.controller;
 
+import com.alibaba.fastjson.JSONObject;
 import com.bcvgh.core.poc.PocUsageImp;
 import com.bcvgh.utils.*;
 import javafx.application.Platform;
@@ -81,11 +82,20 @@ public class VulManagerController {
             Menu VulTag = new Menu(PocUtil.GetTagCN(tag));
 //            VulTag.getStyleClass().add("custom-menu-item");
             VulTag.setOnAction(event -> {
+
                 VulChoice.setText(VulTag.getText());
                 PocUtil.tag = tag;
                 PocUtil.name = "";
                 PocUtil.type = "";
-
+                /**选择一级tag时展示漏洞详情**/
+                String[] VulFiles =PocUtil.GetTagVulFiles(PocUtil.tag);
+                this.VulOut.setText("目前加载的poc情况:\n");
+                for (String VulFile : VulFiles){
+                    String VulName ="";
+                    VulName =  JSONObject.parseObject(FileUtil.FileRead(PocUtil.PocPath+"json/"+PocUtil.tag+"/"+VulFile)).keySet().contains("exp") ? "[+] "+VulFile.split("\\.json")[0]+"\n" : "[-] "+VulFile.split("\\.json")[0] +"(该漏洞暂无EXP)\n";
+                    this.VulOut.appendText(VulName);
+                }
+                /****/
                 VulChoice.hide();
             });
             Iterator<HashMap<String,String>> iterator = names.iterator();

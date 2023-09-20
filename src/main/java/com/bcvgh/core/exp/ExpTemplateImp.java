@@ -92,6 +92,7 @@ public class ExpTemplateImp extends BaseTemplate implements ExpTemplate {
     public Boolean ExpRequest(Response res,String type) {
         if (res.getText()==null || res.getCode()==404){
             this.isExploited = false;
+            if (this.result.keySet().contains("result")) this.result.remove("result");
 //                    this.result.put("prompt","error");
             this.result.put("prompt","利用失败，请检查poc可用性");
             return true;
@@ -99,6 +100,7 @@ public class ExpTemplateImp extends BaseTemplate implements ExpTemplate {
         String resText = this.resMatch(res.getText(),this.pattern);
         if (resText.equals("error")){
             this.isExploited = false;
+            if (this.result.keySet().contains("result")) this.result.remove("result");
         }
         if (!resText.equals("error")){
             this.isExploited = true;

