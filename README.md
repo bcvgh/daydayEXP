@@ -34,6 +34,7 @@ dnslog：在config.json中配置好dnslog api，面板中设置好dns地址即�
 `(命令执行类)`
 
 例如命令执行、代码执行、SQL注入xpcmdshell等都归结到这一类
+
 ![image](https://github.com/bcvgh/daydayEXP-readme/assets/56790427/b13e743f-ff0c-415a-baf3-0bdf1f3a871e)
 
 
@@ -41,6 +42,7 @@ dnslog：在config.json中配置好dnslog api，面板中设置好dns地址即�
 `(文件上传类)`
 
 例如文件上传、任意文件写入、任意文件覆盖等都归结到这一类
+
 ![image](https://github.com/bcvgh/daydayEXP-readme/assets/56790427/2127d444-46f3-461d-ac58-08807ed800ee)
 
 
