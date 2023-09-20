@@ -144,9 +144,4 @@ HtmlDecode:HTML解码
 
 如：{webshell:Base64Encode:n}，{command:UrlEncode:3}其中n表示编码次数。（如泛微browser注入漏洞可能会用到{command:UrlEncode:3}，其他一般情况编码一次即可）
 ```
-poc文件夹
-![1695212448172](https://github.com/bcvgh/daydayEXP/assets/56790427/d6bf2aec-d0aa-4f1c-89d8-b76550b854e3)
 
-
-
-```
