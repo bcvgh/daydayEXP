@@ -16,7 +16,7 @@ java -jar -Dfile.encoding=UTF-8 dadayExp-0.1-jar-with-dependencies.jar
 
 #### 漏洞检测模块
 
-选择一级列表内容可对所有该标签下的漏洞都进行检测，为多进程，默认线程为5。选择二级则对单个漏洞扫描。
+选择一级列表内容可对所有该标签下的漏洞都进行检测，为多进程，默认线程为5。选择二级则对单个漏洞扫描。（因为多线程用的是继承Callable类，可能界面效果会不太好...）
 
 ![image](https://github.com/bcvgh/daydayEXP-readme/assets/56790427/b097a76a-7b79-49cb-ae46-b26c7549b5f5)
 
