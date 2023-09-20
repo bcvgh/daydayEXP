@@ -10,6 +10,6 @@
       "content-type": "text/plain",
       "User-Agent": "Mozilla/5.0 (Linux;"
     },
-    "Pattern": "remoteHandleCallback('0','0',true)"
+    "Pattern": "(remoteHandleCallback('0','0',true))"
   }
 }

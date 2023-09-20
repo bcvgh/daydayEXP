@@ -13,6 +13,6 @@
       "Accept-Encoding": "gzip, deflate",
       "Accept": "text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2"
     },
-    "Pattern": "zip"
+    "Pattern": "(zip)"
   }
 }

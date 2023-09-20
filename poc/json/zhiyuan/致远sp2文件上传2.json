@@ -9,7 +9,7 @@
       "content-type": "multipart/form-data; boundary=4ba18df52695f1aef0f90300b40562f5249f9895539b475cc20ea3ed24db",
       "User-Agent": "Mozilla/5.0 (Linux;"
     },
-    "Pattern": "flag is empty"
+    "Pattern": "(flag is empty)"
   },
   "exp": {
     "step1": {
@@ -20,7 +20,7 @@
         "content-type": "multipart/form-data; boundary=4ba18df52695f1aef0f90300b40562f5249f9895539b475cc20ea3ed24db",
         "User-Agent": "Mozilla/5.0 (Linux;"
       },
-      "Pattern": ""
+      "Pattern": "()"
     },
     "step2": {
       "expGet": "/test1ds.jsp",
@@ -29,7 +29,7 @@
         "content-type": "multipart/form-data; boundary=4ba18df52695f1aef0f90300b40562f5249f9895539b475cc20ea3ed24db",
         "User-Agent": "Mozilla/5.0 (Linux;"
       },
-      "Pattern": ""
+      "Pattern": "()"
     }
   }
 }

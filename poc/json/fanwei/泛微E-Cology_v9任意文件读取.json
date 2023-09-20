@@ -13,6 +13,6 @@
       "Cookie": "ecology_JSessionid=aaaS6KMQ4F8_LhzqKrBJy",
       "Accept-Encoding": "gzip, deflate"
     },
-    "Pattern": "base64"
+    "Pattern": "(base64)"
   }
 }

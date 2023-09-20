@@ -9,7 +9,7 @@
       "content-type": "text/plain",
       "User-Agent": "Mozilla/5.0 (Linux;"
     },
-    "Pattern": "noright"
+    "Pattern": "(noright)"
   },
   "exp": {
     "step1": {

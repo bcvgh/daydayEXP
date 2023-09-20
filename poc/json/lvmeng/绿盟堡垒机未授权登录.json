@@ -10,6 +10,6 @@
       "content-type": "application/json",
       "User-Agent": "Mozilla/5.0 (Linux;"
     },
-    "Pattern": "{\"status\":200}"
+    "Pattern": "({\"status\":200})"
   }
 }

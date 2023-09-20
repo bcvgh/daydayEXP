@@ -10,7 +10,7 @@
       "content-type": "application/x-www-form-urlencoded",
       "User-Agent": "Mozilla/5.0 (Linux;"
     },
-    "Pattern": "java.lang.NullPointerException:null"
+    "Pattern": "(java.lang.NullPointerException:null)"
   },
   "exp": {
     "step1": {
@@ -21,7 +21,7 @@
         "content-type": "multipart/form-data; boundary=----WebKitFormBoundaryCJEleSRxsqS0lAFv",
         "User-Agent": "Mozilla/5.0 (Linux;"
       },
-      "Pattern": ""
+      "Pattern": "()"
     },
     "step2": {
       "expGet": "/406.jsp",
@@ -30,7 +30,7 @@
         "content-type": "multipart/form-data; boundary=----WebKitFormBoundaryCJEleSRxsqS0lAFv",
         "User-Agent": "Mozilla/5.0 (Linux;"
       },
-      "Pattern": ""
+      "Pattern": "()"
     }
   }
 }

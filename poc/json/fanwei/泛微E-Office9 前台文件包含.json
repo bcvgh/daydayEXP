@@ -9,6 +9,6 @@
       "content-type": "application/x-www-form-urlencoded",
       "User-Agent": "Mozilla/5.0 (Linux;"
     },
-    "pattern": "E-mobile\\App\\Init.php"
+    "Pattern": "(App\\\\Init\\.php)"
   }
 }

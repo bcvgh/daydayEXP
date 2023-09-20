@@ -10,7 +10,7 @@
       "content-type": "multipart/form-data; boundary=----WebKitFormBoundaryCJEleSRxsqS0lAFv",
       "User-Agent": "Mozilla/5.0 (Linux;"
     },
-    "Pattern": "上传文件为空，请重新上传"
+    "Pattern": "(上传文件为空，请重新上传)"
   },
   "exp": {
     "step1": {

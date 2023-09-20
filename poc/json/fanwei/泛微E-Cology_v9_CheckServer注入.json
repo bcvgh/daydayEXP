@@ -9,6 +9,6 @@
       "content-type": "text/plain",
       "User-Agent": "Mozilla/5.0 (Linux;"
     },
-    "Pattern": "system error"
+    "Pattern": "(system error)"
   }
 }

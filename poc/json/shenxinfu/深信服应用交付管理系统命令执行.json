@@ -11,7 +11,7 @@
       "User-Agent": "Mozilla/5.0 (Linux;",
       "X-Requested-With": "XMLHttpRequest"
     },
-    "Pattern": "addr"
+    "Pattern": "(addr)"
   },
   "exp": {
     "step1": {
@@ -22,7 +22,7 @@
         "content-type": "application/x-www-form-urlencoded",
         "User-Agent": "Mozilla/5.0 (Linux;"
       },
-      "Pattern": "((?<=cluster_mode_others).*)"
+      "Pattern": "cluster_mode_others(.*)"
     }
   }
 }
