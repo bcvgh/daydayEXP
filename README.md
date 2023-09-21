@@ -20,13 +20,15 @@ java -jar -Dfile.encoding=UTF-8 dadayExp-0.1-jar-with-dependencies.jar
 
 选择一级列表内容可对所有该标签下的漏洞都进行检测，为多进程，默认线程为5。选择二级则对单个漏洞扫描。（因为多线程用的是继承Callable类，可能界面效果会不太好...）
 
-![image](https://github.com/bcvgh/daydayEXP-readme/assets/56790427/b097a76a-7b79-49cb-ae46-b26c7549b5f5)
+![image](https://github.com/bcvgh/daydayEXP/assets/56790427/642384f2-344e-408c-afa6-b5b2c846c55e)
+
 
 dnslog：在config.json中配置好dnslog api，面板中设置好dns地址即可食用。应用该功能可减少命令执行无回显或POC返回包特征值不明确导致的误报、漏报。（暂只支持ceye api）
 
 下方例子中就可以看出，是否开启该模块会导致检测结果会有较大出入
-![image](https://github.com/bcvgh/daydayEXP-readme/assets/56790427/1c2c08b6-06b2-4f10-bb37-bd48793f8709)
-![image](https://github.com/bcvgh/daydayEXP-readme/assets/56790427/7face77c-f06a-4574-a189-8b112f219fff)
+![image](https://github.com/bcvgh/daydayEXP/assets/56790427/7e9db965-da7b-4251-865c-987ace0e3114)
+![image](https://github.com/bcvgh/daydayEXP/assets/56790427/87ae9304-5f4f-4c00-b4fa-e66f2df6bab4)
+
 
 
 
@@ -37,7 +39,8 @@ dnslog：在config.json中配置好dnslog api，面板中设置好dns地址即�
 
 例如命令执行、代码执行、SQL注入xpcmdshell等都归结到这一类
 
-![image](https://github.com/bcvgh/daydayEXP-readme/assets/56790427/b13e743f-ff0c-415a-baf3-0bdf1f3a871e)
+![image](https://github.com/bcvgh/daydayEXP/assets/56790427/99e2be93-71de-4e01-958a-e010385feb6a)
+
 
 
 
@@ -45,7 +48,8 @@ dnslog：在config.json中配置好dnslog api，面板中设置好dns地址即�
 
 例如文件上传、任意文件写入、任意文件覆盖等都归结到这一类
 
-![image](https://github.com/bcvgh/daydayEXP-readme/assets/56790427/2127d444-46f3-461d-ac58-08807ed800ee)
+![image](https://github.com/bcvgh/daydayEXP/assets/56790427/367b45dd-cbb8-458e-8054-bf3cf6632d5a)
+
 
 
 
