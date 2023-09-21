@@ -4,7 +4,7 @@
 ## 项目简介：
 受nuclei的设计思路影响，基于java fx写的一款支持加载自定义poc文件的、可扩展的的图形化渗透测试框架。项目反响还不错的话还会考虑继续更新....
 
-（暂只支持jdk8，其他版本还没测试过）
+
   
 ### 使用：
 
@@ -13,7 +13,10 @@
 食用建议：建议开启代理配合burp食用
 
 ```
-java -jar -Dfile.encoding=UTF-8 dadayExp-0.1-jar-with-dependencies.jar
+java -jar -Dfile.encoding=UTF-8 dadayExp-0.1-jar-with-dependencies.jar   (jdk8)
+
+因为jdk11以后就不自带javafx依赖了,所以运行需要指定javafx路径
+java --module-path {javafx lib path} --add-modules ALL-MODULE-PATH -jar dadayExp-0.1-jar-with-dependencies.jar
 ```
 
 #### 漏洞检测模块
