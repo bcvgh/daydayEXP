@@ -12,6 +12,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
+
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -55,16 +57,14 @@ public class VulManagerController {
                 "注：该工具存在一些POC验证不严谨导致漏报误报的可能，最好开启代理结合burp食用!\n\n"+
                 "1.漏洞列表选择一级列表可对该类型下的所有漏洞检测\n" +
                 "2.针对无法根据返回包进行准确判断漏洞是否存在的的poc漏洞，如(反序列化、命令执行\n无回显等)可设置好dnslog地址和api配置,降低误报率和漏报率，也可自行检测dns记录\n" +
-                "3.漏洞利用模块暂只支持可RCE漏洞，其他类型漏洞（如未授权、sql注入）可只设置poc\n进行漏洞检测\n\n" +
-                "4.dnslog api暂只支持ceye，其他平台的请求情况需要自己去对应平台验证"+
+                "3.漏洞利用模块暂只支持可RCE漏洞，其他类型漏洞（如未授权、sql注入）可只设置poc\n进行漏洞检测\n" +
+                "4.dnslog api暂只支持ceye，其他平台的请求情况需要自己去对应平台验证\n\n"+
                 "工具详细使用说明请参考readme.md\n"+
-                "\n\n\n\n\n\n\n\n\n\n\n\n该程序仅用于安全人员本地测试使用！\n" +
-                "用户滥用造成的一切后果与作者无关!\n" +
-                "使用者请务必遵守当地法律!\n" +
-                "本程序不得用于商业用途，仅限学习交流!");
+                "\n\n\n\n\n\n\n\n\n\n\n该程序仅用于安全人员本地测试使用！\n" +
+                "用户滥用造成的一切后果与作者无关!\n");
         this.VulOut.setEditable(false);
         this.dnsUrl.setEditable(false);
-        pocParse = PocUtil.PocParse(PocUtil.PocPath+"json/");
+        pocParse = PocUtil.PocParse(PocUtil.PocPath+"json"+ File.separator);
         PocUtil.GetTagName();
         try {
             GenList(pocParse);
@@ -92,7 +92,7 @@ public class VulManagerController {
                 this.VulOut.setText("目前加载的poc情况:\n");
                 for (String VulFile : VulFiles){
                     String VulName ="";
-                    VulName =  JSONObject.parseObject(FileUtil.FileRead(PocUtil.PocPath+"json/"+PocUtil.tag+"/"+VulFile)).keySet().contains("exp") ? "[+] "+VulFile.split("\\.json")[0]+"\n" : "[-] "+VulFile.split("\\.json")[0] +"(该漏洞暂无EXP)\n";
+                    VulName =  JSONObject.parseObject(FileUtil.FileRead(PocUtil.PocPath+"json"+File.separator+PocUtil.tag+File.separator+VulFile)).keySet().contains("exp") ? "[+] "+VulFile.split("\\.json")[0]+"\n" : "[-] "+VulFile.split("\\.json")[0] +"(该漏洞暂无EXP)\n";
                     this.VulOut.appendText(VulName);
                 }
                 /****/

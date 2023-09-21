@@ -3,12 +3,13 @@ package com.bcvgh.utils;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 
+import java.io.File;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.*;
 
 public class PocUtil {
-    public static String PocPath ="./poc/";
+    public static String PocPath =System.getProperty("user.dir")+ File.separator + "poc" + File.separator;;
 //    public static String PocPath ="D:\\comsoft\\st\\my\\daydayEXP\\daydayExp\\poc\\";
     public static   HashMap<String , ArrayList<HashMap<String,String>>> pocParse = new HashMap<>();
     public static String name ="";
@@ -26,7 +27,7 @@ public class PocUtil {
             ArrayList<HashMap<String,String>> vulList = new ArrayList<>();
             String[] fileNames = FileUtil.FileList(pocPath + dirName);
             for (String fileName : fileNames) {
-                String poc = FileUtil.FileRead(pocPath + dirName + "/" + fileName);
+                String poc = FileUtil.FileRead(pocPath + dirName + File.separator + fileName);
                 JSONObject pocJson = JSON.parseObject(poc);
                 HashMap<String,String>  a = new HashMap<>();
                 a.put("name", pocJson.getString("name"));
@@ -40,7 +41,7 @@ public class PocUtil {
     }
 
     public static String[] GetTagVulFiles(String tag){
-        String TagPath = PocUtil.PocPath+"json/"+tag+"/";
+        String TagPath = PocUtil.PocPath+"json"+File.separator+tag+File.separator;
         String[] VulFiles = FileUtil.FileList(TagPath);
         return VulFiles;
     }
@@ -76,7 +77,7 @@ public class PocUtil {
     }
 
     public static JSONObject GetPocs(String tag,String name){
-        String pocs = FileUtil.FileRead(PocUtil.PocPath+"json/"+tag+"/"+name+".json");
+        String pocs = FileUtil.FileRead(PocUtil.PocPath+"json"+File.separator+tag+File.separator+name+".json");
         JSONObject Pocs = JSON.parseObject(pocs);
         return Pocs;
     }

@@ -5,6 +5,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.bcvgh.core.BaseUsage;
 import com.bcvgh.utils.*;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -39,7 +40,7 @@ public class PocUsageImp extends BaseUsage {
         List<Future<Object>> futures = new ArrayList<>();
         ExecutorService executor = Executors.newFixedThreadPool(5);  /**创建线程池，多线程处理并返回结果**/
         for (String name : names) {
-            this.PocS = FileUtil.FileRead(PocUtil.PocPath+"json/" + tag + "/" + name + ".json");
+            this.PocS = FileUtil.FileRead(PocUtil.PocPath+"json"+File.separator + tag + File.separator + name + ".json");
             JSONObject PocContent = JSON.parseObject(PocS);
             Callable c = new MyCallable(url, PocContent);
             Future<Object> future = executor.submit(c);
@@ -70,7 +71,7 @@ public class PocUsageImp extends BaseUsage {
         }
     }
 //    public Poc(String url, String tag , String name){
-//        this.PocS = FileUtil.FileRead("src/main/java/com/bcvgh/poc/json/"+tag+"/"+name+".json");
+//        this.PocS = FileUtil.FileRead("src/main/java/com/bcvgh/poc/json/"+tag+File.separator+name+".json");
 //        JSONObject PocContent = JsonUtil.StringToJson(PocS);
 //        this.Poc = new VulTemplateImp(url, PocContent);
 //    }
