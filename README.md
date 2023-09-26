@@ -75,7 +75,7 @@ tag   ：  漏洞标签（如:fanwei、youyong等，需要正确填写，否则�
 type  ：  漏洞类型（如:upload、exec、sql等，需要正确填写，否则影响EXP模块正常使用）
 poc   :   漏洞检测
 	pocGet:url路径
-	pocPost:post数据
+	pocPost:post数据(需要换行的情况建议用\r\n代替\n)
 	header:
 	Pattern：匹配返回包存在的特征值，通过匹配该字段确定漏洞是否存在
 exp   ：
