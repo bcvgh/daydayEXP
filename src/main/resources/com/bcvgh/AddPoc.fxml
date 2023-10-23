@@ -113,8 +113,8 @@
                               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                            </rowConstraints>
                            <children>
-                              <Button fx:id="DeleteStep" mnemonicParsing="false" onAction="#DeleteStep" prefWidth="60.0" text="Delete" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                              <Button fx:id="AddStep" mnemonicParsing="false" onAction="#AddStep" prefWidth="60.0" text="Add" GridPane.columnIndex="1" />
+                              <Button fx:id="DeleteStep" mnemonicParsing="false" onAction="#DeleteStep" prefWidth="60.0" text="DeleteStep" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                              <Button fx:id="AddStep" mnemonicParsing="false" onAction="#AddStep" prefWidth="60.0" text="AddStep" GridPane.columnIndex="1" />
                               <Accordion fx:id="StepAccordion" GridPane.rowSpan="9" />
                            </children>
                            <padding>
