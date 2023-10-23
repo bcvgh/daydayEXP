@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.bcvgh.core.poc.PocUsageImp;
 import com.bcvgh.utils.*;
 import javafx.application.Platform;
+import javafx.collections.ObservableList;
 import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -15,10 +16,7 @@ import javafx.stage.Stage;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
+import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -48,6 +46,8 @@ public class VulManagerController {
     @FXML
     private TextField dnsUrl;
 
+    @FXML
+    private Button RenewPoc;
 
 
     public HashMap<String , ArrayList<HashMap<String,String>>> pocParse = new HashMap<>();
@@ -72,10 +72,13 @@ public class VulManagerController {
         catch (Exception e){
             System.out.println("加载poc失败，请检查Poc文件格式！");
         }
+        this.Address.setPromptText("例:http://www.baidu.com");
+        this.Address.setStyle("-fx-prompt-text-fill: lightgray;");
     }
 
     /**生成漏洞列表**/
     private void GenList(HashMap<String , ArrayList<HashMap<String,String>>> pocParse){
+        VulChoice.getItems().clear();
         for (Map.Entry<String, ArrayList<HashMap<String,String>>> entry : pocParse.entrySet()) {
             String tag = entry.getKey();
             ArrayList<HashMap<String,String>> names = entry.getValue();
@@ -113,6 +116,25 @@ public class VulManagerController {
                 VulTag.getItems().add(subVn);
             }
             VulChoice.getItems().add(VulTag);
+        }
+    }
+
+    @FXML
+    void RenewPoc(ActionEvent event) {
+        List<String> files = Arrays.asList(FileUtil.FileList(PocUtil.PocPath));
+        ArrayList<String> conf_files = PocUtil.getTags();
+        for (String conf_file : conf_files){
+            if(!files.contains(conf_file)){
+                if (!FileUtil.Mkdir(conf_file)) PromptUtil.Alert("警告","新增"+conf_file+"文件夹失败，请自行添加!");
+            }
+        }
+        pocParse = PocUtil.PocParse(PocUtil.PocPath+"json"+ File.separator);
+        PocUtil.GetTagName();
+        try {
+            GenList(pocParse);
+            PromptUtil.Alert("提示","POC更新成功");
+        }catch (Exception e){
+            PromptUtil.Alert("警告","POC更新失败");
         }
     }
 

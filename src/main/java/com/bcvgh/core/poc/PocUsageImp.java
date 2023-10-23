@@ -63,6 +63,7 @@ public class PocUsageImp extends BaseUsage {
     private void PromptAdd(ArrayList<HashMap<String, String>> result){
         for (HashMap<String,String> n: result){
             if (!n.get("res").equals("false")){
+
                 this.prompt.add("[+] 目标存在"+n.get("name")+"漏洞!请使用对应的漏洞利用模块！\n");
             }
             else {

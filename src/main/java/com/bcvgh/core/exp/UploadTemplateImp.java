@@ -57,7 +57,12 @@ public class UploadTemplateImp extends ExpTemplateImp{
 //                    break;
 //                }
 //            }
-            if (ExpGet.contains("{shellPath}")) ExpGet = ExpGet.replace("{shellPath}",this.result.get("shellPath"));
+            try {
+                if (ExpGet.contains("{shellPath}")) ExpGet = ExpGet.replace("{shellPath}",this.result.get("shellPath"));
+            }catch (Exception e){
+                this.result.put("prompt","利用失败，请检查poc可用性");
+                return this.result;
+            }
             if (ExpPost !=null){
 //                if (ExpPost.contains("{webshell}")) ExpPost = ExpPost.replace("{webshell}",this.webshell);
 //                /**newnewnew需要优化**/

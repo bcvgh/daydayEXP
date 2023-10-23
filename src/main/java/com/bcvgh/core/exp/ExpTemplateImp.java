@@ -100,7 +100,9 @@ public class ExpTemplateImp extends BaseTemplate implements ExpTemplate {
         String resText = this.resMatch(res.getText(),this.pattern);
         if (resText.equals("error")){
             this.isExploited = false;
+//            this.result.put("shellPath",resText);
             if (this.result.keySet().contains("result")) this.result.remove("result");
+
         }
         if (!resText.equals("error")){
             this.isExploited = true;

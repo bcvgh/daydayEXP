@@ -2,6 +2,7 @@ package com.bcvgh.utils;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
+import com.bcvgh.core.pojo.PocAll;
 
 import java.io.File;
 import java.lang.reflect.InvocationTargetException;
@@ -9,7 +10,13 @@ import java.lang.reflect.Method;
 import java.util.*;
 
 public class PocUtil {
-    public static String PocPath =System.getProperty("user.dir")+ File.separator + "poc" + File.separator;;
+    public static ArrayList<String> types = new ArrayList<>();
+    public static String defaultHeader =
+            "Content-Length: 29\n" +
+            "Accept-Encoding: */*\n" +
+            "User-Agent: Mozilla/5.0\n" +
+            "Connection: close\n";
+    public static String PocPath =System.getProperty("user.dir")+ File.separator + "poc" + File.separator;
 //    public static String PocPath ="D:\\comsoft\\st\\my\\daydayEXP\\daydayExp\\poc\\";
     public static   HashMap<String , ArrayList<HashMap<String,String>>> pocParse = new HashMap<>();
     public static String name ="";
@@ -67,13 +74,42 @@ public class PocUtil {
         String Tags = FileUtil.FileRead(PocUtil.PocPath+"config.json");
 //        String Tags = FileUtil.FileRead("./poc/config.json");
         JSONObject tagsJson = JSON.parseObject(Tags).getJSONObject("tagname");
-        String tagCn = new String();
         for(String i:tagsJson.keySet()){
             if (i.equals(tag)){
                 return tagsJson.getString(i);
             }
         }
         return tag;
+    }
+
+    public static String GetTagEn(String tagCN){
+        String Tags = FileUtil.FileRead(PocUtil.PocPath+"config.json");
+//        String Tags = FileUtil.FileRead("./poc/config.json");
+        JSONObject tagsJson = JSON.parseObject(Tags).getJSONObject("tagname");
+        for(String i:tagsJson.keySet()){
+            if (tagsJson.getString(i).equals(tagCN)){
+                return i;
+            }
+        }
+        return null;
+    }
+
+    public static ArrayList<String> GetTagCNS(){
+        String Tags = FileUtil.FileRead(PocUtil.PocPath+"config.json");
+        JSONObject tagsJson = JSON.parseObject(Tags).getJSONObject("tagname");
+        ArrayList<String> tagsCNS = new ArrayList<>();
+        for (String tag : tagsJson.keySet()){
+            tagsCNS.add(tagsJson.getString(tag));
+        }
+        return tagsCNS;
+    }
+
+    public static ArrayList<String> getTags(){
+        String Tags = FileUtil.FileRead(PocUtil.PocPath+"config.json");
+        JSONObject tagsJson = JSON.parseObject(Tags).getJSONObject("tagname");
+        ArrayList<String> tags = new ArrayList<>(tagsJson.keySet());
+        return tags;
+
     }
 
     public static JSONObject GetPocs(String tag,String name){
@@ -106,6 +142,57 @@ public class PocUtil {
             out = Encode(methodName, out);
         }
         return out;
+    }
+
+    public static JSONObject Object_toJSon(PocAll pocAll){
+        JSONObject PocAll_JSON = new JSONObject(true);
+        PocAll_JSON.put("num",2);
+        PocAll_JSON.put("name",pocAll.getVulName());
+        PocAll_JSON.put("tag",pocAll.getTag());
+        PocAll_JSON.put("type",pocAll.getType());
+        JSONObject poc_JSON = new JSONObject(true);
+        poc_JSON.put("pocGet",pocAll.getPoc().getPoc_get());
+        if (!pocAll.getPoc().getPco_post().isEmpty()){
+            poc_JSON.put("pocPost",pocAll.getPoc().getPco_post());
+        }
+        if (!pocAll.getPoc().getPoc_header().isEmpty()){
+            poc_JSON.put("header", PojoHeader_toJson(pocAll.getPoc().getPoc_header()));
+        }else {
+            poc_JSON.put("header",PojoHeader_toJson(PocUtil.defaultHeader));
+        }
+        PocAll_JSON.put("poc",poc_JSON);
+        poc_JSON.put("Pattern",pocAll.getPoc().getPoc_Pattern());
+        if (!pocAll.getExp().isEmpty()){
+            JSONObject AllExp = new JSONObject(true);
+            for (String step : pocAll.getExp().keySet()){
+                JSONObject stepExp = new JSONObject(true);
+                stepExp.put("expGet",pocAll.getExp().get(step).getExp_get());
+                if (!pocAll.getExp().get(step).getExp_post().isEmpty()){
+                    stepExp.put("expPost",pocAll.getExp().get(step).getExp_post());
+                }
+                if (!pocAll.getExp().get(step).getExp_header().isEmpty()){
+                    stepExp.put("header", PojoHeader_toJson(pocAll.getExp().get(step).getExp_header()));
+                }else {
+                    stepExp.put("header", PojoHeader_toJson(PocUtil.defaultHeader));
+                }
+                stepExp.put("Pattern",pocAll.getExp().get(step).getExp_Pattern());
+                AllExp.put(step,stepExp);
+            }
+            PocAll_JSON.put("exp",AllExp);
+        }
+        return PocAll_JSON;
+
+    }
+
+    public static JSONObject PojoHeader_toJson(String header){
+        JSONObject poc_headerJson = new JSONObject();
+        String[] headerKeyValue = header.split("\n");
+        for(String KeyValue : headerKeyValue){
+            String Key = KeyValue.split(":")[0];
+            String Value = KeyValue.split(":")[1];
+            poc_headerJson.put(Key,Value);
+        }
+        return poc_headerJson;
     }
 
 

@@ -43,6 +43,7 @@
                         </Menu>
                     </menus>
                   </MenuBar>
+                  <Button fx:id="RenewPoc" layoutX="343.0" layoutY="11.0" mnemonicParsing="false" onAction="#RenewPoc" prefHeight="30.0" prefWidth="117.0" text="一键更新POC" />
 <!--                  <Button fx:id="reloadPOC" layoutX="338.0" layoutY="12.0" mnemonicParsing="false" text="重新加载POC" onAction="#ReloadPOC" />-->
                </children>
             </AnchorPane>
