@@ -1,9 +1,13 @@
  <h1 align="center">daydayEXP</h1>
-<h1 align="center">
 	
 ## 项目简介：
 受nuclei的设计思路影响，基于java fx写的一款支持加载自定义poc文件的、可扩展的的图形化渗透测试框架。项目反响还不错的话还会考虑继续更新....
 
+## v0.2更新记录：
+更新：
+1.新增漏洞管理菜单，支持了POC编辑器，通过输入必要的参数信息自动生成poc文件（不需要自己手动一个个编辑json文件了!）
+2.新增一键更新poc模块，一键同步配置文件、仓库POC信息。
+![image](https://github.com/bcvgh/daydayEXP/assets/56790427/38e20af0-72b7-4e3f-b53a-bad26f5c4a13)
 
   
 ### 使用：
