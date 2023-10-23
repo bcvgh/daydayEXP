@@ -83,7 +83,7 @@ public class AddPocController {
         this.poc_get.setStyle("-fx-prompt-text-fill: lightgray;");
         this.poc_post.setPromptText("id=1&uid=2");
         this.poc_post.setStyle("-fx-prompt-text-fill: lightgray;");
-        this.poc_Pattern.setPromptText("\\d+/\\d+\\.aspx");
+        this.poc_Pattern.setPromptText("(\\d+/\\d+\\.aspx)");
         this.poc_Pattern.setStyle("-fx-prompt-text-fill: lightgray;");
     }
 
