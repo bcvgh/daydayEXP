@@ -7,7 +7,8 @@
 更新：
 1.新增漏洞管理菜单，支持了POC编辑器，通过输入必要的参数信息自动生成poc文件（不需要自己手动一个个编辑json文件了!）
 2.新增一键更新poc模块，一键同步配置文件、仓库POC信息。
-![image](https://github.com/bcvgh/daydayEXP/assets/56790427/38e20af0-72b7-4e3f-b53a-bad26f5c4a13)
+![image](https://github.com/bcvgh/daydayEXP/assets/56790427/78c01149-c8ca-4bac-a1df-9a24d6885be6)
+
 
   
 ### 使用：
