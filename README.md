@@ -73,6 +73,8 @@ json文件中除了基本的name、tag等还有poc和exp两个模块(目前exp�
 
 对照其他poc的json文件，应该就能看懂编写规则。
 
+如果需要新增一个漏洞标签，请在conf.json配置文件中新增，并在项目中"一键更新Poc"
+
 ```
 name  :   漏洞名称
 tag   ：  漏洞标签（如:fanwei、youyong等，需要正确填写，否则会影响到POC文件正确加载）
