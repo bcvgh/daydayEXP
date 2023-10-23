@@ -116,7 +116,7 @@ public class AddPocController {
 //        t_post.setPromptText("id=1&uid=2");
         t_post.setStyle("-fx-prompt-text-fill: lightgray;");
         TextField t_Pattern = new TextField();
-        t_Pattern.setPromptText("\\d+/\\d+\\.aspx");
+        t_Pattern.setPromptText("(\\d+/\\d+\\.aspx)");
         t_Pattern.setStyle("-fx-prompt-text-fill: lightgray;");
         TextArea t_header = new TextArea();
         t_header.setPromptText("例:\r\n" +
