@@ -25,6 +25,8 @@ java -jar -Dfile.encoding=UTF-8 dadayExp-0.1-jar-with-dependencies.jar   (jdk8)
 因为jdk11以后就不自带javafx依赖了,所以运行需要指定javafx路径
 java --module-path {javafx lib path} --add-modules ALL-MODULE-PATH -jar dadayExp-0.1-jar-with-dependencies.jar
 ```
+#### tips:
+某些poc添加完可能存在检测不出来，但是挂上burp代理却能正常检测，这可能是因为header头参数的问题（如Accept-Encoding），需要自行调整header参数。
 
 #### 漏洞检测模块
 
