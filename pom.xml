@@ -6,7 +6,7 @@
 
     <groupId>org.example</groupId>
     <artifactId>dadayExp</artifactId>
-    <version>0.1</version>
+    <version>0.2</version>
 
     <build>
         <plugins>
@@ -49,16 +49,23 @@
     </properties>
 
     <dependencies>
-        <dependency>
-            <groupId>log4j</groupId>
-            <artifactId>log4j</artifactId>
-            <version>1.2.17</version>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>log4j</groupId>-->
+<!--            <artifactId>log4j</artifactId>-->
+<!--            <version>2.20.0</version>-->
+<!--        </dependency>-->
+        <!-- https://mvnrepository.com/artifact/com.alibaba/fastjson -->
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>fastjson</artifactId>
-            <version>1.2.76</version>
+            <version>1.2.83</version>
         </dependency>
+<!--        <dependency>-->
+<!--            <groupId>#</groupId>-->
+<!--            <artifactId>log4</artifactId>-->
+<!--            <version>log4j-2.17.0</version>-->
+<!--            <type>pom</type>-->
+<!--        </dependency>-->
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-controls</artifactId>
@@ -73,11 +80,6 @@
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-fxml</artifactId>
             <version>17.0.1</version>
-        </dependency>
-        <dependency>
-            <groupId>com.alibaba</groupId>
-            <artifactId>fastjson</artifactId>
-            <version>1.2.76</version>
         </dependency>
         <dependency>
             <groupId>commons-io</groupId>
