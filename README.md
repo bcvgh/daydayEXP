@@ -6,8 +6,7 @@
 ## v0.3更新记录：
 更新：
 
-1.新增在线更新poc仓库功能，支持从github漏洞仓库和自定义漏洞仓库(建议使用自定义仓库,github因网络原因可能不会稳定，仓库搭建教程见正文)
-加载poc到本地
+1.新增在线更新poc仓库功能，支持从github漏洞仓库和自定义漏洞仓库加载poc到本地。(建议使用自定义仓库,github因网络原因可能不会稳定，仓库搭建教程见正文)
 
 2.支持单文件（jar包）启动工具。
 <img width="785" alt="image" src="https://github.com/bcvgh/daydayEXP/assets/56790427/5665ea70-d5a2-4b9a-a2b8-df275c2ae15f">
