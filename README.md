@@ -38,10 +38,13 @@ java --module-path {javafx lib path} --add-modules ALL-MODULE-PATH -jar dadayExp
 ```
 
 如果是单文件运行工具（没有将poc文件夹一并下载到本地），需要先`poc管理-在线更新poc仓库`从github仓库或自定义仓库加载poc文件到本地，并在主场景`一件更新poc`后使用
+
 #### 自定义仓库搭建
 将config.json文件和json文件夹一并放到服务器web目录下即可使用
 <img width="833" alt="image" src="https://github.com/bcvgh/daydayEXP/assets/56790427/8937c671-ccf4-4e88-95f3-703d72f6d2a1">
 <img width="740" alt="image" src="https://github.com/bcvgh/daydayEXP/assets/56790427/cb2fed53-ad09-47ae-99aa-7bd629dcefd6">
+<img width="451" alt="image" src="https://github.com/bcvgh/daydayEXP/assets/56790427/5cd665fe-518f-4409-b70d-da322f3c001d">
+
 
 
 #### tips:
