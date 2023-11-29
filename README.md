@@ -3,6 +3,16 @@
 ## 项目简介：
 受nuclei的设计思路影响，基于java fx写的一款支持加载自定义poc文件的、可扩展的的图形化渗透测试框架。项目反响还不错的话还会考虑继续更新....
 
+## v0.3更新记录：
+更新：
+
+1.新增在线更新poc仓库功能，支持从github漏洞仓库和自定义漏洞仓库
+加载poc到本地
+
+2.支持单文件（jar包）启动工具。
+<img width="785" alt="image" src="https://github.com/bcvgh/daydayEXP/assets/56790427/5665ea70-d5a2-4b9a-a2b8-df275c2ae15f">
+
+
 ## v0.2更新记录：
 更新：
 
@@ -14,8 +24,9 @@
 
   
 ### 使用：
+经过测试，项目可在java8、java11环境下正常使用，其他版本请自行测试。
 
-执行命令或用bat批处理脚本打开（直接打开会有中文乱码等问题，并确保poc文件在当前目录下）
+执行命令或用bat批处理脚本打开（直接打开可能会有中文乱码等问题）
 
 食用建议：建议开启代理配合burp食用
 
@@ -25,6 +36,14 @@ java -jar -Dfile.encoding=UTF-8 dadayExp-0.1-jar-with-dependencies.jar   (jdk8)
 因为jdk11以后就不自带javafx依赖了,所以运行需要指定javafx路径
 java --module-path {javafx lib path} --add-modules ALL-MODULE-PATH -jar dadayExp-0.1-jar-with-dependencies.jar
 ```
+
+如果是单文件运行工具（没有将poc文件夹一并下载到本地），需要先`poc管理-在线更新poc仓库`从github仓库或自定义仓库加载poc文件到本地，并在主场景`一件更新poc`后使用
+#### 自定义仓库搭建
+将config.json文件和json文件夹一并放到服务器web目录下即可使用
+<img width="833" alt="image" src="https://github.com/bcvgh/daydayEXP/assets/56790427/8937c671-ccf4-4e88-95f3-703d72f6d2a1">
+<img width="740" alt="image" src="https://github.com/bcvgh/daydayEXP/assets/56790427/cb2fed53-ad09-47ae-99aa-7bd629dcefd6">
+
+
 #### tips:
 某些poc添加完可能存在检测不出来，但是挂上burp代理却能正常检测，这可能是因为header头参数的问题（如Accept-Encoding），需要自行调整header参数。
 
@@ -78,7 +97,7 @@ json文件中除了基本的name、tag等还有poc和exp两个模块(目前exp�
 
 对照其他poc的json文件，应该就能看懂编写规则。
 
-如果需要新增一个漏洞标签，请在conf.json配置文件中新增，并在项目中"一键更新Poc"
+如果需要新增一个漏洞标签，请在`conf.json`配置文件中新增，并在项目中"一键更新Poc"（如果不及时更新会影响到新增poc功能）
 
 ```
 name  :   漏洞名称
