@@ -6,7 +6,7 @@
 
     <groupId>org.example</groupId>
     <artifactId>dadayExp</artifactId>
-    <version>0.2</version>
+    <version>0.3</version>
 
     <build>
         <plugins>
@@ -69,17 +69,17 @@
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-controls</artifactId>
-            <version>17.0.1</version>
+            <version>17.0.9</version>
+        </dependency>
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-fxml</artifactId>
+            <version>17.0.9</version>
         </dependency>
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-text</artifactId>
             <version>1.1</version>
-        </dependency>
-        <dependency>
-            <groupId>org.openjfx</groupId>
-            <artifactId>javafx-fxml</artifactId>
-            <version>17.0.1</version>
         </dependency>
         <dependency>
             <groupId>commons-io</groupId>

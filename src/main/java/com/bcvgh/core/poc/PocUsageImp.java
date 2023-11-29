@@ -27,7 +27,7 @@ public class PocUsageImp extends BaseUsage {
 
 
     private void PocUsage(String url, String tag, String name){
-        this.PocS = FileUtil.FileRead(PocUtil.PocPath+"json\\"+tag+"\\"+name+".json");
+        this.PocS = FileUtil.FileRead(PocUtil.PocPath+"json"+File.separator+tag+File.separator+name+".json");
         JSONObject PocContent = JSON.parseObject(PocS);
         this.pocTemplate = new PocTemplateImp(url, PocContent);
         ArrayList<HashMap<String,String>> result = this.pocTemplate.checkVul();

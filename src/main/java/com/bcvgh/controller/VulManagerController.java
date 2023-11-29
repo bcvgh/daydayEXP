@@ -64,13 +64,19 @@ public class VulManagerController {
                 "用户滥用造成的一切后果与作者无关!\n");
         this.VulOut.setEditable(false);
         this.dnsUrl.setEditable(false);
+        if (!checkPocDir()){
+            PromptUtil.Alert("警告","poc目录创建失败，请检查当前目录权限或自行添加目录。");
+        }
         pocParse = PocUtil.PocParse(PocUtil.PocPath+"json"+ File.separator);
+        if (pocParse==null){
+            this.dnsUrlCheck.getScene().getWindow().hide();
+        }
         PocUtil.GetTagName();
         try {
             GenList(pocParse);
         }
         catch (Exception e){
-            System.out.println("加载poc失败，请检查Poc文件格式！");
+            PromptUtil.Alert("警告","加载poc失败，请检查Poc文件格式！");
         }
         this.Address.setPromptText("例:http://www.baidu.com");
         this.Address.setStyle("-fx-prompt-text-fill: lightgray;");
@@ -246,6 +252,27 @@ public class VulManagerController {
         }
         return null;
     }
+
+    private Boolean checkPocDir(){
+        String path = System.getProperty("user.dir");
+        String dirs[] = FileUtil.FileList(path);
+        List<String> dirss = Arrays.asList(dirs);
+        if (dirss.contains("poc")){
+            List<String> pocDirs = Arrays.asList(FileUtil.FileList(path+File.separator+"poc"));
+            if (pocDirs.contains("json")){
+                return true;
+            }else {
+                return FileUtil.MkRootDir(path+File.separator+"poc"+File.separator,"json");
+            }
+        }else {
+            if (FileUtil.MkRootDir(path+File.separator,"poc")){
+                return FileUtil.MkRootDir(path+File.separator+"poc"+File.separator,"json");
+            }
+        }
+        return false;
+    }
+
+
 
 //    @FXML
 //    public void ReloadPOC(ActionEvent event) {

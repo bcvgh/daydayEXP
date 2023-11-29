@@ -31,6 +31,22 @@ public class MainPageController {
     private MenuItem RenewPoc;
 
     @FXML
+    void RemoteUpdatePOC(ActionEvent event){
+        Stage newTargetStage = new Stage();
+        Parent root = null;
+        try {
+            root = FXMLLoader.load(getClass().getResource("/com/bcvgh/RemoteUpdatePOC.fxml"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        newTargetStage.setTitle("-在线更新POC仓库-");
+        Scene scene = new Scene(root);
+        newTargetStage.setScene(scene);
+        newTargetStage.setResizable(false);
+        newTargetStage.show();
+    }
+
+    @FXML
     void AddPoc(ActionEvent event){
         PromptUtil.Alert("提示","输入Pattern（正则匹配）时，特殊字符（如:\\、,\"已经经过转义，无需再用\\\\、,\\\"转义）");
         Stage newTargetStage = new Stage();

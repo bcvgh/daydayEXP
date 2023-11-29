@@ -14,6 +14,16 @@ public class  FileUtil {
         }
     }
 
+    public static boolean MkRootDir(String Path,String dirname){
+        try {
+            File file = new File(Path+dirname);
+            file.mkdir();
+            return true;
+        }catch (Exception e){
+            return false;
+        }
+    }
+
     public static String FileRead(String fileName){
         BufferedReader in = null;
         String strs = "";
@@ -34,9 +44,16 @@ public class  FileUtil {
         }
     }
 
-    public static void FileWrite(String fileName,String content,String tag) throws IOException {
+    public static void FileWrite(String fileName,String content,String tag){
         content = content.replaceAll("\\\\n","\\\\r\\\\n");
-        String filePath = System.getProperty("user.dir")+ File.separator + "poc" + File.separator + "json" + File.separator + tag + File.separator + fileName;
+        String filePath ="";
+        if (tag == null){
+            filePath = System.getProperty("user.dir")+ File.separator + "poc" + File.separator+fileName;
+        }
+        else {
+            filePath = System.getProperty("user.dir")+ File.separator + "poc" + File.separator + "json" + File.separator + tag + File.separator + fileName;
+        }
+
 //        try {
 //            FileWriter fileWriter = new FileWriter(filePath);
 //            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
@@ -45,10 +62,23 @@ public class  FileUtil {
 //        } catch (Exception e) {
 //            return false;
 //        }
-        FileWriter fileWriter = new FileWriter(filePath);
+        FileWriter fileWriter = null;
+        try {
+            fileWriter = new FileWriter(filePath);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
-        bufferedWriter.write(content);
-        bufferedWriter.close();
+        try {
+            bufferedWriter.write(content);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        try {
+            bufferedWriter.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 //        return true;
     }
 

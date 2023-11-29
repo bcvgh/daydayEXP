@@ -33,14 +33,19 @@ public class PocUtil {
         for (String dirName : dirNames) {
             ArrayList<HashMap<String,String>> vulList = new ArrayList<>();
             String[] fileNames = FileUtil.FileList(pocPath + dirName);
-            for (String fileName : fileNames) {
-                String poc = FileUtil.FileRead(pocPath + dirName + File.separator + fileName);
-                JSONObject pocJson = JSON.parseObject(poc);
-                HashMap<String,String>  a = new HashMap<>();
-                a.put("name", pocJson.getString("name"));
-                a.put("type", pocJson.getString("type"));
-                a.put("tag", pocJson.getString("tag"));
-                vulList.add(a);
+            try{
+                for (String fileName : fileNames) {
+                    String poc = FileUtil.FileRead(pocPath + dirName + File.separator + fileName);
+                    JSONObject pocJson = JSON.parseObject(poc);
+                    HashMap<String,String>  a = new HashMap<>();
+                    a.put("name", pocJson.getString("name"));
+                    a.put("type", pocJson.getString("type"));
+                    a.put("tag", pocJson.getString("tag"));
+                    vulList.add(a);
+                }
+            }catch (Exception e){
+//                PromptUtil.Alert("警告","poc加载失败，请检查poc文件！");
+//                return null;
             }
             pocParse.put(dirName,vulList);
         }
@@ -193,6 +198,14 @@ public class PocUtil {
             poc_headerJson.put(Key,Value);
         }
         return poc_headerJson;
+    }
+
+    public static boolean DownLoadPoc(String url){
+        Response res = HttpTools.get(url, new HashMap<>(PojoHeader_toJson(PocUtil.defaultHeader)) ,"UTF-8");
+        if (res.getText()!=null){
+
+        }
+        return false;
     }
 
 
