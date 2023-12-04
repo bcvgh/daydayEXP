@@ -1,15 +1,1 @@
-{
-  "num": 2,
-  "name":"帆软OA_V10channel反序列化",
-  "tag":"fanruan",
-  "type":"unauthorized",
-  "poc": {
-    "pocGet": "/webroot/decision/remote/design/channel",
-    "header": {
-      "cookie": "hades-session-id=cbbce521-a761-403d-b699-9849d2cb06b9;",
-      "content-type": "application/json",
-      "User-Agent": "Mozilla/5.0 (Linux;"
-    },
-    "Pattern": "(Request method 'GET' not supported"
-  }
-}
+{  "num": 2,  "name":"帆软OA_V10channel反序列化",  "tag":"fanruan",  "type":"unauthorized",  "poc": {    "pocGet": "/webroot/decision/remote/design/channel",    "header": {      "cookie": "hades-session-id=cbbce521-a761-403d-b699-9849d2cb06b9;",      "content-type": "application/json",      "User-Agent": "Mozilla/5.0 (Linux;"    },    "Pattern": "(Request method 'GET' not supported"  }}

