@@ -15,6 +15,7 @@ public class Utils {
 
     public static String getDnsCommand(String dnsUrl){
 //        PocUtil.dnsUrl = Utils.getRandomString(4)+"."+dnsUrl;
-        return "ping -nc 1 "+dnsUrl;
+//        return "ping -nc 1 "+dnsUrl;
+        return dnsUrl;
     }
 }

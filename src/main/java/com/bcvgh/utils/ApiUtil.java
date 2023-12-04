@@ -19,11 +19,13 @@ public class ApiUtil {
     public static Boolean ceyeDnslog(String dnslog ,String apiToken){
        try{
            Thread.sleep(5000);
-           String apiUrl = String.format("http://api.ceye.io/v1/records?token=%s&type=dns&filter=%s", apiToken, dnslog);
+//           String apiUrl = String.format("http://api.ceye.io/v1/records?token=%s&type=dns&filter=%s", apiToken, dnslog);
+           String apiUrl = String.format("http://api.ceye.io/v1/records?token=%s&type=dns&filter=", apiToken);
            Response res = HttpTools.get(apiUrl,(HashMap<String, ?>) ApiUtil.header,"UTF-8");
            JSONArray data = JSONObject.parseObject(res.getText()).getJSONArray("data");
            for(int i=0;i<data.size();i++){
-               if (dnslog.equals(data.getJSONObject(i).getString("name")));
+//               if (dnslog.equals(data.getJSONObject(i).getString("name")));
+               if (dnslog.equalsIgnoreCase(data.getJSONObject(i).getString("name")));
                return true;
            }
        }catch (Exception e){
