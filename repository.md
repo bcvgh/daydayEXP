@@ -1,6 +1,6 @@
 ## 仓库搭建
 ### github仓库
-直接fork[我的poc仓库地址](https://github.com/bcvgh/daydayExp-pocs) 后进行poc管理，或自行创建POC仓库（目录结构需一直）
+直接fork[我的poc仓库地址](https://github.com/bcvgh/daydayExp-pocs) 后进行poc管理，或自行创建POC仓库（目录结构需一致）
 后设置仓库的URL地址更新即可
 ![image](https://github.com/bcvgh/daydayEXP/assets/56790427/11ecc74e-1216-4f3a-8386-3a1f15167398)
 
