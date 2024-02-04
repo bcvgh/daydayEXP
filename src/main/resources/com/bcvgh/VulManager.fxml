@@ -43,7 +43,7 @@
                         </Menu>
                     </menus>
                   </MenuBar>
-                  <Button fx:id="RenewPoc" layoutX="343.0" layoutY="11.0" mnemonicParsing="false" onAction="#RenewPoc" prefHeight="30.0" prefWidth="117.0" text="一键更新POC" />
+                  <Button fx:id="RenewPoc" layoutX="343.0" layoutY="11.0" mnemonicParsing="false" onAction="#RenewPoc" prefHeight="30.0" prefWidth="117.0" text="加载本地POC" />
 <!--                  <Button fx:id="reloadPOC" layoutX="338.0" layoutY="12.0" mnemonicParsing="false" text="重新加载POC" onAction="#ReloadPOC" />-->
                </children>
             </AnchorPane>
@@ -62,14 +62,17 @@
                             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                           </columnConstraints>
                           <rowConstraints>
-                            <RowConstraints maxHeight="188.0" minHeight="10.0" prefHeight="89.0" vgrow="SOMETIMES" />
-                            <RowConstraints maxHeight="142.0" minHeight="10.0" prefHeight="85.0" vgrow="SOMETIMES" />
-                              <RowConstraints maxHeight="235.0" minHeight="10.0" prefHeight="170.0" vgrow="SOMETIMES" />
-                            <RowConstraints maxHeight="102.0" minHeight="10.0" prefHeight="102.0" vgrow="SOMETIMES" />
-                              <RowConstraints maxHeight="235.0" minHeight="10.0" prefHeight="170.0" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="188.0" minHeight="10.0" prefHeight="97.0" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="188.0" minHeight="10.0" prefHeight="65.0" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="188.0" minHeight="10.0" prefHeight="47.0" vgrow="SOMETIMES" />
+                            <RowConstraints maxHeight="188.0" minHeight="10.0" prefHeight="51.0" vgrow="SOMETIMES" />
+                            <RowConstraints maxHeight="149.0" minHeight="10.0" prefHeight="38.0" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="235.0" minHeight="0.0" prefHeight="7.0" vgrow="SOMETIMES" />
+                            <RowConstraints maxHeight="153.0" minHeight="10.0" prefHeight="143.0" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="235.0" minHeight="5.0" prefHeight="10.0" vgrow="SOMETIMES" />
                           </rowConstraints>
                            <children>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="DNS地址：" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="TOP">
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="dnslog：" GridPane.halignment="LEFT" GridPane.rowIndex="4" GridPane.valignment="TOP">
                                  <font>
                                     <Font size="16.0" />
                                  </font>
@@ -77,22 +80,42 @@
                                     <Insets left="10.0" />
                                  </GridPane.margin>
                               </Text>
-                              <Button fx:id="VulExploit" mnemonicParsing="false" onAction="#NewExploit" prefHeight="81.0" prefWidth="251.0" text="漏洞利用" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
-                              <CheckBox fx:id="dnsUrlCheck" mnemonicParsing="false" onAction="#DnsUrlCheck" text="启用" GridPane.halignment="LEFT" GridPane.valignment="BOTTOM">
+                              <Button fx:id="VulExploit" mnemonicParsing="false" onAction="#NewExploit" prefHeight="66.0" prefWidth="251.0" text="漏洞利用" GridPane.halignment="CENTER" GridPane.rowIndex="6" />
+                              <CheckBox fx:id="dnsUrlCheck" mnemonicParsing="false" onAction="#DnsUrlCheck" text="启用" GridPane.halignment="LEFT" GridPane.rowIndex="3" GridPane.valignment="BOTTOM">
                                  <GridPane.margin>
                                     <Insets bottom="10.0" left="10.0" />
                                  </GridPane.margin>
                               </CheckBox>
-                              <TextField fx:id="dnsUrl" maxWidth="180.0" minWidth="180.0" prefWidth="180.0" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="TOP">
+                              <TextField fx:id="dnsUrl" maxWidth="180.0" minWidth="152.0" prefHeight="23.0" prefWidth="152.0" GridPane.halignment="RIGHT" GridPane.rowIndex="4" GridPane.valignment="TOP">
                                  <GridPane.margin>
                                     <Insets right="15.0" />
                                  </GridPane.margin>
                               </TextField>
-                              <Separator prefWidth="200.0" GridPane.rowIndex="2" GridPane.valignment="TOP">
+                              <Separator prefWidth="200.0" GridPane.rowIndex="5" GridPane.valignment="TOP">
                                  <GridPane.margin>
                                     <Insets top="30.0" />
                                  </GridPane.margin>
                               </Separator>
+                              <Button fx:id="MutiScan" mnemonicParsing="false" onAction="#MutiScan" prefHeight="55.0" prefWidth="132.0" text="批量导入url地址检测" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="线程：" GridPane.rowIndex="1">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                                 <GridPane.margin>
+                                    <Insets left="10.0" />
+                                 </GridPane.margin>
+                              </Text>
+                              <TextField fx:id="threadNum" maxWidth="20.0" minWidth="64.0" prefHeight="23.0" prefWidth="20.0" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                                 <GridPane.margin>
+                                    <Insets right="100.0" />
+                                 </GridPane.margin>
+                              </TextField>
+                              <Button fx:id="stopScan" mnemonicParsing="false" onAction="#stopScan" prefHeight="33.0" prefWidth="120.0" text="停止扫描任务" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
+                                 <GridPane.margin>
+                                    <Insets right="15.0" />
+                                 </GridPane.margin>
+                              </Button>
+                              <Button fx:id="ResultOutPut" mnemonicParsing="false" onAction="#ResultOutPut" prefHeight="31.0" prefWidth="144.0" text="导出扫描结果" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
                            </children>
                         </GridPane>
                      </children>

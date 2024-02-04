@@ -3,8 +3,7 @@ package com.bcvgh.controller;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
+
 import java.net.Authenticator;
 import java.net.InetSocketAddress;
 import java.net.PasswordAuthentication;
@@ -60,7 +59,7 @@ public class SetProxyController {
             this.proxyIp.setText(hisIpAddress);
             this.proxyPort.setText(hisPort);
             this.upRadio.setSelected(true);
-            System.out.println(proxyInfo);
+//            System.out.println(proxyInfo);
         } else {
             upRadio.setSelected(false);
         }

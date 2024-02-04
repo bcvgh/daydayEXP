@@ -1,47 +1,64 @@
 package com.bcvgh.core.pojo;
 
-public class Poc{
-    private String poc_get;
-    private String pco_post;
-    private String poc_Pattern;
-    private String poc_header;
+import com.alibaba.fastjson.JSONObject;
 
-    public Poc(String poc_get, String pco_post, String poc_Pattern, String poc_header) {
-        this.poc_get = poc_get;
-        this.pco_post = pco_post;
-        this.poc_Pattern = poc_Pattern;
-        this.poc_header = poc_header;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.regex.Pattern;
+
+public class Poc {
+    private String pocGet;
+    private Object pocPost;
+    private HashMap<String,Object> header;
+    private String status_code;
+    private Pattern pattern;
+
+    public Poc(JSONObject poc) {
+        this.pocGet = poc.getString("pocGet");
+        this.pocPost = poc.get("pocPost");
+        this.header = new HashMap(poc.getJSONObject("header"));
+        this.status_code = poc.getString("status_code");
+        this.pattern = Pattern.compile(poc.getString("pattern") , Pattern.DOTALL);
     }
 
-    public String getPoc_get() {
-        return poc_get;
+    public String getPocGet() {
+        return pocGet;
     }
 
-    public void setPoc_get(String poc_get) {
-        this.poc_get = poc_get;
+    public void setPocGet(String pocGet) {
+        this.pocGet = pocGet;
     }
 
-    public String getPco_post() {
-        return pco_post;
+    public Object getPocPost() {
+        return pocPost;
     }
 
-    public void setPco_post(String pco_post) {
-        this.pco_post = pco_post;
+    public void setPocPost(String pocPost) {
+        this.pocPost = pocPost;
     }
 
-    public String getPoc_Pattern() {
-        return poc_Pattern;
+    public HashMap<String,Object> getHeader() {
+        return header;
     }
 
-    public void setPoc_Pattern(String poc_Pattern) {
-        this.poc_Pattern = poc_Pattern;
+    public void setHeader(HashMap<String,Object> header) {
+        this.header = header;
     }
 
-    public String getPoc_header() {
-        return poc_header;
+    public String getstatus_code() {
+        return status_code;
     }
 
-    public void setPoc_header(String poc_header) {
-        this.poc_header = poc_header;
+    public void setstatus_code(String status_code) {
+        this.status_code = status_code;
     }
+
+    public Pattern getPattern() {
+        return pattern;
+    }
+
+    public void setPattern(Pattern pattern) {
+        this.pattern = pattern;
+    }
+
 }

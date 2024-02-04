@@ -25,9 +25,9 @@
                      <children>
                         <GridPane prefHeight="352.0" prefWidth="600.0">
                            <columnConstraints>
-                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="144.0" minWidth="4.0" prefWidth="63.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="377.0" minWidth="10.0" prefWidth="156.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="359.0" minWidth="10.0" prefWidth="342.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="144.0" minWidth="4.0" prefWidth="82.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="377.0" minWidth="10.0" prefWidth="171.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="359.0" minWidth="10.0" prefWidth="307.0" />
                            </columnConstraints>
                            <rowConstraints>
                               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -41,47 +41,47 @@
                               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                            </rowConstraints>
                            <children>
-                              <Label text="漏洞名称：" GridPane.rowIndex="1" />
-                              <TextField fx:id="id" GridPane.columnIndex="1">
+                              <Label text="漏洞名称：" />
+                              <TextField fx:id="poc_status_code" GridPane.columnIndex="1" GridPane.rowIndex="6">
                                  <GridPane.margin>
                                     <Insets right="20.0" />
                                  </GridPane.margin>
                               </TextField>
-                              <Label text="标签：" GridPane.rowIndex="2" />
-                              <TextField fx:id="poc_get" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                              <Label text="类型:" GridPane.rowIndex="3" />
-                              <Label GridPane.rowIndex="4" />
-                              <Label text="id：" />
-                              <TextField fx:id="VulName" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                              <Label text="标签：" GridPane.rowIndex="1" />
+                              <TextField fx:id="poc_get" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                              <Label text="类型:" GridPane.rowIndex="2" />
+                              <Label GridPane.rowIndex="3" />
+                              <Label text="status_code：" GridPane.rowIndex="6" />
+                              <TextField fx:id="name" GridPane.columnIndex="1">
                                  <GridPane.margin>
                                     <Insets right="20.0" />
                                  </GridPane.margin>
                               </TextField>
-                              <Label text="get:" GridPane.rowIndex="4" />
-                              <Label text="post:" GridPane.rowIndex="5" />
+                              <Label text="get:" GridPane.rowIndex="3" />
+                              <Label text="post:" GridPane.rowIndex="4" />
                               <Label text="header:" GridPane.columnIndex="2">
                                  <GridPane.margin>
                                     <Insets left="10.0" />
                                  </GridPane.margin>
                               </Label>
-                              <Label text="Pattern:" GridPane.rowIndex="7" />
-                              <TextField fx:id="poc_Pattern" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                              <Label text="pattern:" GridPane.rowIndex="7" />
+                              <TextField fx:id="poc_pattern" GridPane.columnIndex="1" GridPane.rowIndex="7" />
                               <TextArea fx:id="poc_header" prefHeight="82.0" prefWidth="339.0" GridPane.columnIndex="2" GridPane.rowIndex="1" GridPane.rowSpan="6">
                                  <GridPane.margin>
                                     <Insets left="10.0" />
                                  </GridPane.margin>
                               </TextArea>
-                              <ChoiceBox fx:id="tag" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                              <ChoiceBox fx:id="tag" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                                  <GridPane.margin>
                                     <Insets right="20.0" />
                                  </GridPane.margin>
                               </ChoiceBox>
-                              <ComboBox fx:id="type" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                              <ComboBox fx:id="type" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                                  <GridPane.margin>
                                     <Insets right="20.0" />
                                  </GridPane.margin>
                               </ComboBox>
-                              <TextArea fx:id="poc_post" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="5" GridPane.rowSpan="2" />
+                              <TextArea fx:id="poc_post" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="4" GridPane.rowSpan="2" />
                            </children>
                            <padding>
                               <Insets bottom="20.0" left="20.0" right="20.0" />

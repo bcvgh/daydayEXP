@@ -1,8 +1,8 @@
 package com.bcvgh.utils;
-
-import com.bcvgh.controller.MainPageController;
+import com.bcvgh.Main;
 import com.bcvgh.controller.SetProxyController;
-//import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import javax.net.ssl.*;
 import java.io.ByteArrayOutputStream;
@@ -36,7 +36,9 @@ public class HttpTools {
 //        System.getProperties().setProperty("http.proxyHost", "127.0.0.1");
 //        System.getProperties().setProperty("http.proxyPort", "8080");
 //    }
+private static final Logger LOGGER = LogManager.getLogger(Main.class.getName());
     private static String UA = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.90 Safari/537.36";
+
 
 //    private static final Logger logger = Logger.getLogger(MainPageController.class);
 
@@ -58,19 +60,43 @@ public class HttpTools {
 
             response = getResponse(conn, encoding);
         } catch (SocketTimeoutException var6) {
-//            logger.debug(var6.getMessage());
             response.setError("连接超时!");
         } catch (IOException var7) {
-//            logger.debug(var7.getMessage());
+            LOGGER.debug(var7.getMessage());
             response.setError(var7.getMessage());
         } catch (KeyManagementException | NoSuchProviderException | NoSuchAlgorithmException var8) {
-//            logger.debug(var8.getMessage());
             response.setError(var8.getMessage());
         }
         return response;
     }
 
-    public static Response post(String url, String postString, HashMap<String, ?> headers, String encoding) {
+//    public static Response post(String url, String postString, HashMap<String, ?> headers, String encoding) {
+//        Response response = new Response(0, (String)null, (String)null, (String)null);
+//
+//        try {
+//            HttpURLConnection conn = getCoon(url);
+//            conn.setRequestMethod("POST");
+//            Iterator var5 = headers.keySet().iterator();
+//
+//            while(var5.hasNext()) {
+//                String key = (String)var5.next();
+//                conn.setRequestProperty(key, (String)headers.get(key));
+//            }
+//
+//            OutputStream outputStream = conn.getOutputStream();
+//            outputStream.write(postString.getBytes());
+//            outputStream.flush();
+//            outputStream.close();
+//            response = getResponse(conn, encoding);
+//        } catch (Exception var8) {
+////            logger.debug(var8.getMessage());
+//            response.setError(var8.getMessage());
+//        }
+//
+//        return response;
+//    }
+
+    public static <T> Response post(String url, T postString, HashMap<String, ?> headers, String encoding) {
         Response response = new Response(0, (String)null, (String)null, (String)null);
 
         try {
@@ -84,12 +110,16 @@ public class HttpTools {
             }
 
             OutputStream outputStream = conn.getOutputStream();
-            outputStream.write(postString.getBytes());
+            if (postString instanceof String){
+                outputStream.write(((String) postString).getBytes());
+            }else {
+                outputStream.write((byte[]) postString);
+            }
             outputStream.flush();
             outputStream.close();
             response = getResponse(conn, encoding);
         } catch (Exception var8) {
-//            logger.debug(var8.getMessage());
+            LOGGER.debug(var8.getMessage());
             response.setError(var8.getMessage());
         }
 
@@ -106,7 +136,7 @@ public class HttpTools {
             response.setText(streamToString(conn.getInputStream(), encoding));
         } catch (IOException var3) {
             response.setError(var3.toString());
-//            logger.debug(var3.toString());
+            LOGGER.debug(var3.toString());
         }
 
         return response;
@@ -118,8 +148,7 @@ public class HttpTools {
         sslcontext.init((KeyManager[])null, tm, new SecureRandom());
         HostnameVerifier ignoreHostnameVerifier = new HostnameVerifier() {
             public boolean verify(String s, SSLSession sslsession) {
-//                logger.debug("WARNING: Hostname is not matched for cert.");
-                System.out.println("WARNING: Hostname is not matched for cert.");
+                LOGGER.debug("WARNING: Hostname is not matched for cert.");
                 return true;
             }
         };
@@ -168,7 +197,9 @@ public class HttpTools {
             resultString = byteArrayOutputStream.toString(encoding);
         } catch (IOException var6) {
             resultString = var6.getMessage();
-            var6.printStackTrace();
+//            var6.printStackTrace();
+            LOGGER.error(var6.getMessage());
+
         }
 
         return resultString;

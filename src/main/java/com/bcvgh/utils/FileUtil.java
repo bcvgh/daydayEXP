@@ -1,91 +1,95 @@
 package com.bcvgh.utils;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import java.io.*;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.*;
+import java.nio.file.attribute.BasicFileAttributes;
+import java.util.List;
 
-public class  FileUtil {
+public class FileUtil {
+    private static final Logger LOGGER = LogManager.getLogger(FileUtil.class.getName());
 
-    public static boolean Mkdir(String dirName){
+    public static boolean Mkdir(String path,String dirName){
         try {
-            File file = new File(PocUtil.PocPath+File.separator+"json"+File.separator+dirName);
+            File file = new File(path+File.separator+dirName);
             file.mkdir();
             return true;
         }catch (Exception e){
+            LOGGER.error(e.getMessage());
             return false;
         }
     }
 
-    public static boolean MkRootDir(String Path,String dirname){
-        try {
-            File file = new File(Path+dirname);
-            file.mkdir();
-            return true;
-        }catch (Exception e){
-            return false;
-        }
-    }
-
-    public static String FileRead(String fileName){
-        BufferedReader in = null;
-        String strs = "";
-        String str = "";
-        try {
-            in = new BufferedReader(new FileReader(fileName));
-            while ((str = in.readLine()) != null) {
-                strs = strs+str;
+    public static <T> T FileRead(String filePath,T type){
+        Object content = null;
+            Path FilePath = Paths.get(filePath);
+            if (type instanceof byte[]){
+                try {
+                    content = Files.readAllBytes(FilePath);
+                    return (T) content;
+                } catch (IOException e) {
+                    LOGGER.error(e.getMessage());
+                }
             }
-            in.close();
-            return strs;
-        } catch (FileNotFoundException e) {
-            PromptUtil.Alert("警告","请正确选择需要检测的漏洞名称");
+            if (type instanceof String){
+                try {
+                    List<String> list = Files.readAllLines(FilePath, StandardCharsets.UTF_8);
+                    content = String.join("\n",list);
+                    return (T) content;
+                } catch (IOException e) {
+                    LOGGER.error(e.getMessage());
+                }
+            }
             return null;
+    }
+
+    public static <T> Boolean FileWrite(String filePath,T content ) {
+        Path FilePath = Paths.get(filePath);
+
+        try {
+            if (content instanceof String) {
+                Files.write(FilePath, ((String) content).getBytes());
+            }
+            if (content instanceof byte[]) {
+                Files.write(FilePath, (byte[]) content);
+            }
+            return true;
         } catch (IOException e) {
-            PromptUtil.Alert("警告","文件读取出错啦!");
-            return null;
+            LOGGER.error(e.getMessage());
+            return false;
         }
     }
 
-    public static void FileWrite(String fileName,String content,String tag){
-        content = content.replaceAll("\\\\n","\\\\r\\\\n");
-        String filePath ="";
-        if (tag == null){
-            filePath = System.getProperty("user.dir")+ File.separator + "poc" + File.separator+fileName;
-        }
-        else {
-            filePath = System.getProperty("user.dir")+ File.separator + "poc" + File.separator + "json" + File.separator + tag + File.separator + fileName;
-        }
 
-//        try {
-//            FileWriter fileWriter = new FileWriter(filePath);
-//            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
-//            bufferedWriter.write(content);
-//            bufferedWriter.close();
-//        } catch (Exception e) {
-//            return false;
-//        }
-        FileWriter fileWriter = null;
-        try {
-            fileWriter = new FileWriter(filePath);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
-        try {
-            bufferedWriter.write(content);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        try {
-            bufferedWriter.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-//        return true;
-    }
-
-    public static String[] FileList(String filePath){
-        File file = new File(filePath);
+    public static String[] DirList(String dirPath){
+        File file = new File(dirPath);
         return file.list();
     }
 
+    public static Boolean DeleteDir(String path){
+        Path directory = Paths.get(path);
+        try {
+            Files.walkFileTree(directory, new SimpleFileVisitor<Path>() {
+                @Override
+                public FileVisitResult visitFile(Path file, BasicFileAttributes attributes) throws IOException {
+                    Files.delete(file); // 有效，因为它始终是一个文件
+                    return FileVisitResult.CONTINUE;
+                }
+
+                @Override
+                public FileVisitResult postVisitDirectory(Path dir, IOException exc) throws IOException {
+                    Files.delete(dir); //这将起作用，因为目录中的文件已被删除
+                    return FileVisitResult.CONTINUE;
+                }
+            });
+        } catch (IOException e) {
+            LOGGER.error(e.getMessage());
+            return false;
+        }
+        return true;
+    }
 
 }
