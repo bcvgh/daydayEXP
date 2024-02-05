@@ -24,7 +24,8 @@ java --module-path {javafx lib path} --add-modules ALL-MODULE-PATH -jar dadayExp
 
 （也可以将poc仓库中poc文件夹和config.json配置文件直接下载到工具当前目录下的poc目录中）
 
-![image](https://github.com/bcvgh/daydaypoc_test/assets/56790427/39800780-33d8-4d69-aba0-e188e1b6f9b0)
+![image](https://github.com/bcvgh/daydayEXP/assets/56790427/b4c448ac-b138-4f89-98bd-b061ddc64472)
+
 
 
 #### 仓库搭建
