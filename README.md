@@ -38,7 +38,8 @@ java --module-path {javafx lib path} --add-modules ALL-MODULE-PATH -jar dadayExp
 
 （如需要设置dnslog，请在项目启动前设置好config.json中dnslog的api等参数）
 
-![image](https://github.com/bcvgh/daydaypoc_test/assets/56790427/3c5a4aa6-562d-45b6-91fc-5c05357cfdde)
+![image](https://github.com/bcvgh/daydayEXP/assets/56790427/adb6a246-bbe4-47d8-aa33-811c15d67b36)
+
 
 
 ### 漏洞利用
@@ -56,7 +57,8 @@ other
 
 例如命令执行、代码执行、SQL注入xpcmdshell等都归结到这一类
 
-![image](https://github.com/bcvgh/daydaypoc_test/assets/56790427/01633f96-b317-4cb0-932b-3a54ab1991b4)
+![image](https://github.com/bcvgh/daydayEXP/assets/56790427/37095052-c6bb-4994-884a-62511faad11d)
+
 
 
 #### upload
@@ -64,13 +66,15 @@ other
 
 例如文件上传、任意文件写入、任意文件覆盖等都归结到这一类
 
-![image](https://github.com/bcvgh/daydaypoc_test/assets/56790427/06e3e668-2ff8-41ce-b263-e5bdd6e1be00)
+![image](https://github.com/bcvgh/daydayEXP/assets/56790427/f76af7d1-c998-4971-bf87-f93bbe2cbb1a)
+
 
 
 #### deserialization（暂只支持jdk8版本）
 原理：自行选择反序列化gadget构造payload发送利用。
 
-![image](https://github.com/bcvgh/daydaypoc_test/assets/56790427/7107dc5c-7ba4-4651-b9db-b948838c10d8)
+![image](https://github.com/bcvgh/daydayEXP/assets/56790427/ad9e720c-eb7e-4bde-b285-c479666b7649)
+
 
 
 
@@ -79,7 +83,7 @@ other
 
 (可参考帆软v10反序列化漏洞poc)
 
-![image](https://github.com/bcvgh/daydaypoc_test/assets/56790427/d51f9cec-c41e-4a56-a97a-c49e28c2d680)
+![image](https://github.com/bcvgh/daydayEXP/assets/56790427/cfda2d8d-dd85-4690-823e-fdb8db04de7d)
 
 
 ## POC编写
