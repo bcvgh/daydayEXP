@@ -1,5 +1,5 @@
  <h1>daydayEXP</h1>
-![](https://img.shields.io/badge/author-bcvgh-red)
+![Static Badge](https://img.shields.io/badge/author-bcvgh-red)
 
 ## 项目简介：
 基于java fx写的一款支持加载自定义poc文件的、可扩展的的图形化渗透测试框架。支持批量漏洞扫描、漏洞利用、结果导出等功能。
