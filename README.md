@@ -9,7 +9,7 @@
 ## 使用
 经过测试，项目可在jdk8环境下正常使用。jdk11因为缺少一些必要的组件，所以jdk11版本工具为jdk8版本项目的阉割版，无法使用反序列化利用模块（不影响针对反序列化漏洞的默认的URLDNS链探测）。
 
-（请务必使用-Dfile.encoding=UTF-8参数打开项目，否则可能出现乱码、报错等问题）
+（请务必使用`-Dfile.encoding=UTF-8`参数打开项目，否则可能出现乱码、报错等问题）
 ```
 java -jar -Dfile.encoding=UTF-8 dadayExp-1.0-jar-with-dependencies.jar   (jdk8)
 
@@ -84,6 +84,7 @@ other
 ## POC编写
 可通过`POC管理-新增POC`处添加，也可以自行编辑文本添加
 json文件中除了基本的name、tag等还包括poc和exp(目前exp只支持type为upload、deserialization和exec，如遇到其他类型漏洞，如：未授权、sql注入等建议只设置好poc字段进行一个初步漏洞检测，后续手工进行利用)
+可参考[我的poc仓库地址](https://github.com/bcvgh/daydayExp-pocs) 
 ### POC模版
 
 ```
