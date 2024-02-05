@@ -17,12 +17,15 @@ java -jar -Dfile.encoding=UTF-8 dadayExp-1.0-jar-with-dependencies.jar   (jdk8)
 java --module-path {javafx lib path} --add-modules ALL-MODULE-PATH -jar dadayExp-1.0-jar-with-dependencies.jar
 ```
 ### 使用建议
-建议设置代理配合burp使用，在更新poc仓库和修改config.json文件后请及时`加载本地poc`。（如果涉及到修改api则需要重启项目）
+<h1>建议设置代理配合burp使用！！！建议设置代理配合burp使用！！！建议设置代理配合burp使用！！！</h1>
+
 
 ### 初次使用
 打开工具，本地无poc，需要先从`poc管理-在线更新poc仓库`从github仓库或自定义仓库加载poc文件到本地，并在主面板`加载本地poc`后使用。
 
 （也可以将poc仓库中poc文件夹和config.json配置文件直接下载到工具当前目录下的poc目录中）
+
+在更新poc仓库和修改config.json文件后请及时`加载本地poc`。（如果涉及到修改api则需要重启项目）
 
 ![image](https://github.com/bcvgh/daydayEXP/assets/56790427/b4c448ac-b138-4f89-98bd-b061ddc64472)
 
