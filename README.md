@@ -181,12 +181,12 @@ exp   ：
 {{webshell}}:需要上传的文件上传内容
 
 {poc、exp内均可使用}
-{{deserialization}}:对打上此标签的位置生成反序列化数据，当在poc中使用时默认使用URLDNS链生成序列化payload，而在exp中可以根据需求自行选择构造。
+{{serialization}}:对打上此标签的位置生成反序列化数据，当在poc中使用时默认使用URLDNS链生成序列化payload，而在exp中可以根据需求自行选择构造。
 {{random}}:随机生成4位数字字母，应用于poc中需要不同特征字符的特殊场景
 {{url}}:即当前目标的url地址，应用在一些网站中可能会校验refer头的情况
 
 编码：
-使用案例：{{deserialization:GzipEncode}},{{command:Base64Encode:3}}(3为编码3次)
+使用案例：{{serialization:GzipEncode}},{{command:Base64Encode:3}}(3为编码3次)
 Base64Encode:对输入进行base64编码
 Base64decode:对输入进行base64解码码
 UrlEncode:url编码（全编码）
