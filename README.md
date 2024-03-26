@@ -16,7 +16,7 @@
 java -jar -Dfile.encoding=UTF-8 daydayExp-1.0-jar-with-dependencies.jar   (jdk8)
 
 因为jdk11以后就不自带javafx依赖了,所以运行需要指定javafx路径
-java --module-path {javafx lib path} --add-modules ALL-MODULE-PATH -jar dadayExp-1.0-jar-with-dependencies.jar
+java --module-path {javafx lib path} --add-modules ALL-MODULE-PATH -jar daydayExp-1.0-jar-with-dependencies.jar
 ```
 ### 使用建议
 <h1>建议设置代理配合burp使用！！！建议设置代理配合burp使用！！！建议设置代理配合burp使用！！！</h1>
