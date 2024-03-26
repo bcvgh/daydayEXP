@@ -13,7 +13,7 @@
 
 （请务必使用`-Dfile.encoding=UTF-8`参数打开项目，否则可能出现乱码、报错等问题）
 ```
-java -jar -Dfile.encoding=UTF-8 dadayExp-1.0-jar-with-dependencies.jar   (jdk8)
+java -jar -Dfile.encoding=UTF-8 daydayExp-1.0-jar-with-dependencies.jar   (jdk8)
 
 因为jdk11以后就不自带javafx依赖了,所以运行需要指定javafx路径
 java --module-path {javafx lib path} --add-modules ALL-MODULE-PATH -jar dadayExp-1.0-jar-with-dependencies.jar
