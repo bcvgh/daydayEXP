@@ -179,13 +179,6 @@
             <version>8.5.15</version>
         </dependency>
         <dependency>
-            <groupId>me.gv7.woodpecker</groupId>
-            <artifactId>woodpecker-sdk</artifactId>
-            <version>0.2.1</version>
-            <scope>compile</scope>
-        </dependency>
-
-        <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-core</artifactId>
             <version>4.1.4.RELEASE</version>
