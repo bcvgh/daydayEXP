@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bcvgh.controller.MainPageController">
+    <children>
+        <MenuBar prefHeight="25.0" prefWidth="600.0">
+            <menus>
+                <Menu mnemonicParsing="false" text="设置">
+                    <items>
+                        <MenuItem id="" fx:id="setProxy" mnemonicParsing="false" onAction="#SetProxy" text="代理" />
+<!--                        <MenuItem fx:id="setProxy" mnemonicParsing="false" onAction="#SetProxy" text="设置代理" />-->
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="POC管理">
+                    <items>
+                  <MenuItem fx:id="AddPoc1" mnemonicParsing="false" onAction="#AddPoc" text="新增POC" />
+                  <MenuItem fx:id="RemoteUpdatePOC" mnemonicParsing="false" onAction="#RemoteUpdatePOC" text="在线更新POC仓库" />
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Help">
+                    <items>
+                        <MenuItem mnemonicParsing="false" text="About" />
+                    </items>
+                </Menu>
+            </menus>
+        </MenuBar>
+        <TabPane layoutY="25.0" prefHeight="575.0" prefWidth="800.0" tabClosingPolicy="UNAVAILABLE">
+            <tabs>
+                <Tab fx:id="VulManager" text="漏洞管理">
+                    <content>
+                        <fx:include fx:id="vulManager" source="VulManager.fxml" />
+                    </content>
+                </Tab>
+<!--                <Tab fx:id="weaver" text="泛微OA">-->
+<!--                    <content>-->
+<!--                        <fx:include fx:id="waver" source="VulManager.fxml" />-->
+<!--                    </content>-->
+<!--                </Tab>-->
+<!--                <Tab fx:id="weaver1" text="泛微OA">-->
+<!--                    <content>-->
+<!--                        <fx:include fx:id="waver1" source="VulManager.fxml" />-->
+<!--                    </content>-->
+<!--                </Tab>-->
+<!--                <Tab fx:id="weaver2" text="泛微OA">-->
+<!--                    <content>-->
+<!--                        <fx:include fx:id="waver2" source="VulManager.fxml" />-->
+<!--                    </content>-->
+<!--                </Tab>-->
+            </tabs>
+            <VBox.margin>
+                <Insets />
+            </VBox.margin>
+        </TabPane>
+    </children>
+</VBox>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="350.0" prefWidth="450.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bcvgh.controller.RemoteUpdatePOC">
+   <children>
+      <ButtonBar buttonMinWidth="90.0" layoutX="109.0" layoutY="285.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="50.0" prefWidth="300.0">
+         <buttons>
+            <Button fx:id="UpdateCancel" mnemonicParsing="false" onAction="#UpdateCancel" text="取消" />
+            <Button fx:id="UpdatePOC" mnemonicParsing="false" onAction="#UpdatePOC" text="在线更新POC仓库" />
+         </buttons>
+      </ButtonBar>
+      <GridPane layoutX="21.0" layoutY="112.0" prefHeight="50.0" prefWidth="408.0">
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="116.0" minWidth="10.0" prefWidth="90.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="322.0" minWidth="10.0" prefWidth="310.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints maxHeight="50.0" minHeight="0.0" prefHeight="26.0" vgrow="SOMETIMES" />
+         </rowConstraints>
+         <children>
+            <Label text="POC仓库地址:" />
+            <TextField fx:id="RemotePOCURL" alignment="TOP_LEFT" GridPane.columnIndex="1" />
+         </children>
+      </GridPane>
+      <Label fx:id="Tips" layoutX="13.0" layoutY="20.0" maxWidth="1.7976931348623157E308" prefWidth="427.0" text="注意：从github仓库获取poc时可能因为国内限制出现网络连接失败，可以使用工具自带的代理或本地全局代理解决。(建议使用自定义仓库，仓库搭建方法详见https://github.com/bcvgh/daydayEXP)" />
+      <ProgressBar fx:id="downloadProgress" layoutX="23.0" layoutY="200.0" prefHeight="24.0" prefWidth="408.0" progress="0.0" />
+      <Label fx:id="downloadInfo" layoutX="23.0" layoutY="224.0" prefHeight="38.0" prefWidth="296.0" />
+   </children>
+</AnchorPane>

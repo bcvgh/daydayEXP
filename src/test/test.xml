@@ -1,0 +1,13 @@
+<repositories>
+<!-- 包含需要连接到远程仓库的信息 -->
+    <repository>
+        <id>central</id>
+        <url>https://maven.aliyun.com/repository/central</url>
+        <releases>
+            <enabled>true</enabled>
+        </releases>
+        <snapshots>
+            <enabled>true</enabled>
+        </snapshots>
+    </repository>
+</repositories>
