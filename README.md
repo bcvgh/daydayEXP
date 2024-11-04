@@ -75,7 +75,7 @@ other
 
 
 
-#### deserialization（暂只支持jdk8版本）
+#### deserialization（暂只支持jdk8版本）(最新版本已弃用)
 原理：自行选择反序列化gadget构造payload发送利用。
 
 ![image](https://github.com/bcvgh/daydayEXP/assets/56790427/ad9e720c-eb7e-4bde-b285-c479666b7649)
