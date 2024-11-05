@@ -11,7 +11,7 @@
 
 `项目启动过程报错，尝试删除当前路径下poc、log目录`
 
-（请务必使用`-Dfile.encoding=UTF-8`参数打开项目，否则可能出现乱码、报错等问题）
+请务必使用`-Dfile.encoding=UTF-8`参数打开项目，否则可能出现乱码、报错等问题 (**1.1版本支持直接启动**)
 ```
 java -jar -Dfile.encoding=UTF-8 daydayExp-1.0-jar-with-dependencies.jar   (jdk8)
 
@@ -106,8 +106,8 @@ poc   :   漏洞检测
 	pocPost:post数据(需要换行的情况建议用\r\n代替\n)
 	header:
         status_code:匹配返回包状态码,支持多选如200,403
-	pattern:匹配返回包的特征值（正则），通过匹配该字段确定漏洞是否存在
-exp   ：
+	pattern:匹配返回包的特征值（正则），通过匹配该字段确定漏洞是否存在。支持匹配head头，使用案例: head:(.*)
+exp(可忽略)   ：
 	step（n）：漏洞利用过程中的请求包先后顺序（step1代表请求的第一个数据包，step2、step3以此类推）
 		expGet:url路径
 		expPost:post数据
@@ -176,6 +176,7 @@ exp   ：
 ```
 {仅poc内可用}
 {{dnslog}}:配置好dnslog平台api即可食用。一般应用于命令执行无回显,反序列化漏洞URLDNS探测的情况，减少误报率。
+{{serialization}}:对打上此标签的位置生成反序列化数据，当在poc中使用时默认使用URLDNS链生成序列化payload。
 
 {仅exp内可用}
 {{command}}:命令执行
@@ -183,7 +184,6 @@ exp   ：
 {{webshell}}:需要上传的文件上传内容
 
 {poc、exp内均可使用}
-{{serialization}}:对打上此标签的位置生成反序列化数据，当在poc中使用时默认使用URLDNS链生成序列化payload，而在exp中可以根据需求自行选择构造。
 {{random}}:随机生成4位数字字母，应用于poc中需要不同特征字符的特殊场景
 {{url}}:即当前目标的url地址，应用在一些网站中可能会校验refer头的情况
 
