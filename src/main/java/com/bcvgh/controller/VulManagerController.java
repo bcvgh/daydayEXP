@@ -117,7 +117,7 @@ public class VulManagerController {
             }
         }catch (Exception e){
             LOGGER.error(e);
-            this.dnsUrlCheck.getScene().getWindow().hide();
+//            this.dnsUrlCheck.getScene().getWindow().hide();
             return;
         }
         this.threadNum.setText("5");

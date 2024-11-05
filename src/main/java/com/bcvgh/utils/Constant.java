@@ -25,8 +25,10 @@ public class Constant {
             "    \"anheng\": \"安恒\",\n" +
             "    \"hikvision\": \"海康威视\",\n" +
             "  },\n" +
-            "  \"dnsapi\": {\n" +
-            "    \"ceye\": \"xxxxxxxxxxxxxxxxxxxxxxxx\"\n" +
+            "  \"dnslog\": {\n" +
+            "    \"type\": \"ceye\",\n" +
+            "    \"api\": \"http://api.ceye.io/v1/records?token={{token}}&type=dns&filter=\",\n" +
+            "    \"token\": \"xxxxxxxxxxxxx\",\n" +
             "  }\n" +
             "}";
 }

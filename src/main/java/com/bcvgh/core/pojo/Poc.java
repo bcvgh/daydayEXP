@@ -11,14 +11,14 @@ public class Poc {
     private Object pocPost;
     private HashMap<String,Object> header;
     private String status_code;
-    private Pattern pattern;
+    private String patternText;
 
     public Poc(JSONObject poc) {
         this.pocGet = poc.getString("pocGet");
         this.pocPost = poc.get("pocPost");
         this.header = new HashMap(poc.getJSONObject("header"));
         this.status_code = poc.getString("status_code");
-        this.pattern = Pattern.compile(poc.getString("pattern") , Pattern.DOTALL);
+        this.patternText = poc.getString("pattern");
     }
 
     public String getPocGet() {
@@ -53,12 +53,11 @@ public class Poc {
         this.status_code = status_code;
     }
 
-    public Pattern getPattern() {
-        return pattern;
+    public String getPatternText() {
+        return patternText;
     }
 
-    public void setPattern(Pattern pattern) {
-        this.pattern = pattern;
+    public void setPatternText(String patternText) {
+        this.patternText = patternText;
     }
-
 }

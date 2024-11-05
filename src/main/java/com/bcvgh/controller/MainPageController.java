@@ -31,6 +31,7 @@ public class MainPageController {
     private static final Logger LOGGER = LogManager.getLogger(MainPageController.class.getName());
 
 
+
     @FXML
     void RemoteUpdatePOC(ActionEvent event){
         Stage newTargetStage = new Stage();

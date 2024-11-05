@@ -74,7 +74,7 @@ public class AddPocController {
 //        this.tag.setItems(FXCollections.observableList(PocUtil.getTags()));
         this.tag.setItems(FXCollections.observableList(new ArrayList<>(PocUtil.TagCn.values())));
         this.poc_header.setPromptText(Constant.StringHeader); // 设置默认字符
-        this.name.setPromptText("用友NCcloud uapjs上传命令执行");
+        this.name.setPromptText("xxxx漏洞");
         this.name.setStyle("-fx-prompt-text-fill: lightgray;");
         this.poc_get.setPromptText("/api/upload");
         this.poc_get.setStyle("-fx-prompt-text-fill: lightgray;");

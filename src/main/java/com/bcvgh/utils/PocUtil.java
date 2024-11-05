@@ -20,7 +20,7 @@ public class PocUtil {
         HashMap<String, ArrayList<String>> tag_vul = new HashMap<String, ArrayList<String>>();
         if (tags!=null){
             for (String tag : tags){
-                if (tag.equals("config.json")) continue;
+                if (tag.equals("config.json") || tag.equals(".git") || tag.equals("README.md") || tag.equals(".DS_Store")) continue;
                 String[] NamesArray = FileUtil.DirList(Constant.PocPath+ File.separator+tag);
                 ArrayList<String> Names = (ArrayList<String>) Arrays.asList(NamesArray).stream()
                         .map(s -> s.replaceAll("\\.json$", ""))

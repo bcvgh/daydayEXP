@@ -4,9 +4,11 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.io.*;
+import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.*;
 import java.nio.file.attribute.BasicFileAttributes;
+import java.util.LinkedList;
 import java.util.List;
 
 public class FileUtil {
@@ -35,15 +37,23 @@ public class FileUtil {
                 }
             }
             if (type instanceof String){
+                List<String> list = null;
                 try {
-                    List<String> list = Files.readAllLines(FilePath, StandardCharsets.UTF_8);
-                    content = String.join("\n",list);
-                    return (T) content;
+                    list = Files.readAllLines(FilePath, StandardCharsets.UTF_8);
+
                 } catch (IOException e) {
-                    LOGGER.error(e.getMessage());
+                    try {
+                        list = Files.readAllLines(FilePath, Charset.defaultCharset());
+                    } catch (IOException ioException) {
+                        LOGGER.error(e.getMessage());
+                        return null;
+                    }
+
                 }
+                content = String.join("\n",list);
             }
-            return null;
+            return (T) content;
+
     }
 
     public static <T> Boolean FileWrite(String filePath,T content ) {

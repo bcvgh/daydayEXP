@@ -46,6 +46,13 @@ public class dsadas {
     }
 
     @Test
+    public void asd() {
+        String text = "text:(asdasdas:sadasd)";
+        System.out.println(text.split("text:",2)[0]);
+
+    }
+
+    @Test
     public void add() throws ExecutionException, InterruptedException {
         System.out.println("----程序开始运行----");
         Date date1 = new Date();
@@ -188,6 +195,8 @@ public class dsadas {
 
 
 }
+
+
 
 class MyCallable implements Callable<Object> {
     private String taskNum;
